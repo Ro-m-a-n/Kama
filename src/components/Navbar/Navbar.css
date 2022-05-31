@@ -1,0 +1,10 @@
+.nav{
+  grid-area: n;
+  background-color: rgb(39, 38, 37);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+.nav a {
+  color:white;
+}
