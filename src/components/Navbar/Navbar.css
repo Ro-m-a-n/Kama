@@ -4,7 +4,13 @@
   display: flex;
   flex-direction: column;
   height: 90vh;
+  padding: 20px;
+
 }
 .nav a {
   color:white;
+  text-decoration: none;
+}
+.nav a.active{
+  color:rgb(177, 177, 175)
 }
