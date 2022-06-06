@@ -1,12 +1,10 @@
 import "./MyPosts.css";
 import Post from "./Post/Post";
 
-let postsData = [
-  { id: 1, text: "True way of Samurai", likes: 5 },
-  { id: 2, text: "I finaly understood props", likes: 100 },
-];
-let postsElements = postsData.map(el=><Post text={el.text} likes={el.likes} id={el.id}/>)
-const MyPosts = () => {
+
+
+const MyPosts = (props) => {
+  let postsElements = props.postsData.map(el=><Post text={el.text} likes={el.likes} id={el.id}/>)
   return (
     <div className="AddPost">
       <div>

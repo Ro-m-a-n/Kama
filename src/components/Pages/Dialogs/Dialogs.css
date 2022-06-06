@@ -5,12 +5,20 @@
 .Dialogs__items {
   padding: 10px;
 }
-.Dialogs__item {
+.Dialogs__item a{
+  color: black;
+  text-decoration: none;
 }
+.Dialogs__item a.active {
+  color: rgb(37, 11, 109);
+  
+}
+
 .Messages {
   padding: 10px;
 }
 .Message {
 }
-.Message.active{ color: rgb(240, 0, 0);
+.Message.active {
+  color: rgb(12, 12, 12);
 }
