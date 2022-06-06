@@ -7,3 +7,9 @@
   grid-template-columns: 2fr 10fr;
   grid-gap: 1px;
 }
+.Avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  padding: 5px;
+}

@@ -15,5 +15,12 @@ let state = {
       { id: 2, text: "Hi there" },
     ],
   },
+  sideBar:{
+    friendsNavData:[
+      { id: 1, name: "Roman" },
+      { id: 2, name: "Artem" },
+      { id: 3, name: "Vasia" },
+    ]
+  }
 };
 export default state;

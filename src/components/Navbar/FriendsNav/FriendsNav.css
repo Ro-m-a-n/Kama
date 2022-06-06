@@ -1,0 +1,17 @@
+.friendsNav {
+  padding-top: 20px;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.friendNav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.friendNav__name{
+  color:rgb(255, 255, 255)
+}

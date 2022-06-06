@@ -3,7 +3,7 @@
   grid-template-columns: 2fr 10fr;
 }
 .Dialogs__items {
-  padding: 10px;
+  padding: 20px;
 }
 .Dialogs__item a{
   color: black;
@@ -14,8 +14,19 @@
   
 }
 
+.Dialogs__item {
+display:flex;
+align-items: center;
+}
+.Dialogs__item a{
+  padding-left: 10px;
+  }
+  
+
+
+
 .Messages {
-  padding: 10px;
+  padding: 20px;
 }
 .Message {
 }

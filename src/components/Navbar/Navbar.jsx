@@ -1,6 +1,8 @@
-import './Navbar.css'
-import { NavLink } from 'react-router-dom';
-const Navbar = () => {
+import "./Navbar.css";
+import { NavLink } from "react-router-dom";
+import FriendsNav from './FriendsNav/FriendsNav';
+
+const Navbar = (props) => {
   return (
     <nav className="nav">
       {" "}
@@ -9,6 +11,8 @@ const Navbar = () => {
       <NavLink to="/news">News</NavLink>
       <NavLink to="/music">Music</NavLink>
       <NavLink to="/settings">Settings</NavLink>
+      <NavLink to="/friends">Friends</NavLink>
+      <FriendsNav friendsNavData={props.state.friendsNavData}/>
     </nav>
   );
 };
