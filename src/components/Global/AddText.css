@@ -1,0 +1,10 @@
+.addText__wrap {
+  display: flex;
+  align-items: center;
+}
+.addText__add {
+  padding-left: 20px;
+}
+.addText__add button {
+
+}

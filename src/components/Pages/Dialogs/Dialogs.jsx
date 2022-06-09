@@ -1,6 +1,7 @@
 import "./Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import AddText from "./../../Global/AddText";
 
 const Dialogs = (props) => {
   let dialogsElements = props.state.dialogsData.map((el) => (
@@ -12,7 +13,10 @@ const Dialogs = (props) => {
   return (
     <div className="Dialogs">
       <div className="Dialogs__items">{dialogsElements}</div>
-      <div className="Messages">{mesaggesElements}</div>
+      <div className="Messages">
+        {mesaggesElements}
+        <AddText />
+      </div>
     </div>
   );
 };

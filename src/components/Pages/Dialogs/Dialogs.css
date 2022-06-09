@@ -23,13 +23,3 @@ align-items: center;
   }
   
 
-
-
-.Messages {
-  padding: 20px;
-}
-.Message {
-}
-.Message.active {
-  color: rgb(12, 12, 12);
-}
