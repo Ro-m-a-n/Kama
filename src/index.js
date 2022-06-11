@@ -1,25 +1,25 @@
-import state from './redux/State';
+import store from "./redux/State";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { addPost, updateTextArea, subscribe } from "./redux/State";
 import { BrowserRouter } from "react-router-dom";
-
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerenderEntireTree = (state) => {
- 
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} addPost={addPost} updateTextArea={updateTextArea}/>
+        <App
+          state={state}
+          addPost={store.addPost.bind(store)}
+          updateTextArea={store.updateTextArea.bind(store)}
+        />
       </BrowserRouter>
     </React.StrictMode>
   );
-  reportWebVitals(state);
+  reportWebVitals(store.getState());
 };
-rerenderEntireTree(state)
-subscribe (rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
