@@ -44,26 +44,32 @@ let store = {
       ],
     },
   },
-  getState(){
-    return this._state
-  },
-  addPost(addText) {
-    let newPost = {
-      id: 3,
-      text: addText,
-      likes: 0,
-    };
-    this._state.profilePage.postsData.push(newPost);
-    this._callSubscriber(this._state);
-  },
 
-  updateTextArea(newText) {
-    this._state.profilePage.newTextPost = newText;
-    this._callSubscriber(this._state);
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 3,
+        text: this._state.profilePage.newTextPost,
+        likes: 0,
+      };
+      this._state.profilePage.postsData.push(newPost);
+      this._state.profilePage.newTextPost = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-TEXT-AREA") {
+      this._state.profilePage.newTextPost = action.newText;
+      this._callSubscriber(this._state);
+    }
+  },
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
+
+  // addPost(addText) {},
+
+  // updateTextArea(newText) {},
 };
 
 export default store;

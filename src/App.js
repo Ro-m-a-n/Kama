@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Dialogs from "./components/Pages/Dialogs/Dialogs";
 import "./components/Pages/Pages.css";
 import Profile from "./components/Pages/Profile/Profile";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/News";
@@ -19,7 +19,12 @@ function App(props) {
         <Routes>
           <Route
             path="/profile"
-            element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} updateTextArea={props.updateTextArea} />}
+            element={
+              <Profile
+                profilePage={props.state.profilePage}
+                dispatch={props.dispatch}
+              />
+            }
           />
           <Route
             path="/messages/*"
