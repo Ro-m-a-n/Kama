@@ -1,15 +1,19 @@
 import "./AddText.css";
 import React from "react";
+import { UpdateTextAreaActionCreator } from "../../redux/State";
+import { AddTextActionCreator } from "../../redux/State";
+
+
 
 const AddText = (props) => {
   let newTextElement = React.createRef();
 
   let addText = () => {
-       props.dispatch({type: "ADD-POST"});
+       props.dispatch(AddTextActionCreator());
   };
   let onChangeTextArea = () => {
     let text = newTextElement.current.value;
-    props.dispatch({ type: "UPDATE-TEXT-AREA", newText: text });
+    props.dispatch(UpdateTextAreaActionCreator(text));
   };
 
   return (

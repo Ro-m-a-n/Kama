@@ -1,13 +1,13 @@
 import "./Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import AddText from "./../../Global/AddText";
+import AddMessage from './Message/AddMessage/AddMessage';
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogsData.map((el) => (
+  let dialogsElements = props.messagesPage.dialogsData.map((el) => (
     <Dialog name={el.name} id={el.id} />
   ));
-  let mesaggesElements = props.state.messagesData.map((el) => (
+  let mesaggesElements = props.messagesPage.messagesData.map((el) => (
     <Message text={el.text} id={el.id} />
   ));
   return (
@@ -15,7 +15,10 @@ const Dialogs = (props) => {
       <div className="Dialogs__items">{dialogsElements}</div>
       <div className="Messages">
         {mesaggesElements}
-        <AddText />
+        <AddMessage
+          messagesPage={props.messagesPage}
+          dispatch={props.dispatch}
+        />
       </div>
     </div>
   );
