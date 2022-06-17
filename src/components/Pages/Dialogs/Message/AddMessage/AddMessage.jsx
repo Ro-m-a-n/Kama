@@ -4,14 +4,11 @@ import { UpdateMessageAreaActionCreator } from "../../../../../redux/State";
 import { AddMessageActionCreator } from "../../../../../redux/State";
 
 const AddMessage = (props) => {
-  let newMessageElement = React.createRef();
-
   let addMessage = () => {
     props.dispatch(AddMessageActionCreator());
   };
-  let onChangeMessageArea = () => {
-  
-    let text = newMessageElement.current.value;
+  let onChangeMessageArea = (e) => {
+    let text = e.target.value;
     props.dispatch(UpdateMessageAreaActionCreator(text));
   };
 
@@ -19,7 +16,6 @@ const AddMessage = (props) => {
     <div className="addText__wrap">
       <textarea
         onChange={onChangeMessageArea}
-        ref={newMessageElement}
         value={props.messagesPage.newMessageTemp}
       ></textarea>
       <div className="addText__add">
