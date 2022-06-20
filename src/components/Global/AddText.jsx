@@ -1,7 +1,8 @@
 import "./AddText.css";
 import React from "react";
-import { UpdateTextAreaActionCreator } from "../../redux/State";
-import { AddTextActionCreator } from "../../redux/State";
+import { UpdateTextAreaActionCreator } from "../../Redux/profileReducer";
+import { AddTextActionCreator } from "../../Redux/profileReducer";
+
 
 
 

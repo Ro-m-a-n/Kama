@@ -1,7 +1,7 @@
 import "../../../../Global/AddText.css";
 import React from "react";
-import { UpdateMessageAreaActionCreator } from "../../../../../redux/State";
-import { AddMessageActionCreator } from "../../../../../redux/State";
+import { UpdateMessageAreaActionCreator } from "../../../../../Redux/messageReducer";
+import { AddMessageActionCreator } from "../../../../../Redux/messageReducer";
 
 const AddMessage = (props) => {
   let addMessage = () => {

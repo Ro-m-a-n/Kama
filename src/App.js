@@ -11,7 +11,7 @@ import Settings from "./components/Pages/Settings/News";
 import Friends from "./components/Pages/Friends/Friends";
 
 function App(props) {
-  return (
+   return (
     <div className="app-wrapper">
       <Header />
       <Navbar state={props.state.sideBar} />
