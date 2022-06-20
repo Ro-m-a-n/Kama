@@ -11,7 +11,7 @@ import Settings from "./components/Pages/Settings/News";
 import Friends from "./components/Pages/Friends/Friends";
 
 function App(props) {
-   return (
+  return (
     <div className="app-wrapper">
       <Header />
       <Navbar state={props.state.sideBar} />
@@ -21,6 +21,7 @@ function App(props) {
             path="/profile"
             element={
               <Profile
+                store={props.store}
                 profilePage={props.state.profilePage}
                 dispatch={props.dispatch}
               />

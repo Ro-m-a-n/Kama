@@ -3,18 +3,20 @@ import React from "react";
 import { UpdateTextAreaActionCreator } from "../../Redux/profileReducer";
 import { AddTextActionCreator } from "../../Redux/profileReducer";
 
-
-
-
 const AddText = (props) => {
   let newTextElement = React.createRef();
 
   let addText = () => {
-       props.dispatch(AddTextActionCreator());
+    props.addText();
+
+    //  props.dispatch(AddTextActionCreator());
   };
   let onChangeTextArea = () => {
     let text = newTextElement.current.value;
-    props.dispatch(UpdateTextAreaActionCreator(text));
+    props.onChangeTextArea(text);
+
+    
+    // props.dispatch(UpdateTextAreaActionCreator(text));
   };
 
   return (
