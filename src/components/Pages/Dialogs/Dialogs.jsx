@@ -1,13 +1,13 @@
 import "./Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import AddMessage from './Message/AddMessage/AddMessage';
+import AddMessageContainer from "./Message/AddMessage/AddMessageContainer";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.messagesPage.dialogsData.map((el) => (
+  let dialogsElements = props.dialogsData.map((el) => (
     <Dialog name={el.name} id={el.id} />
   ));
-  let mesaggesElements = props.messagesPage.messagesData.map((el) => (
+  let mesaggesElements = props.messagesData.map((el) => (
     <Message text={el.text} id={el.id} />
   ));
   return (
@@ -15,10 +15,7 @@ const Dialogs = (props) => {
       <div className="Dialogs__items">{dialogsElements}</div>
       <div className="Messages">
         {mesaggesElements}
-        <AddMessage
-          messagesPage={props.messagesPage}
-          dispatch={props.dispatch}
-        />
+        <AddMessageContainer store={props.store} />
       </div>
     </div>
   );
