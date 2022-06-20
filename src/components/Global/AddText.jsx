@@ -1,7 +1,6 @@
 import "./AddText.css";
 import React from "react";
-import { UpdateTextAreaActionCreator } from "../../Redux/profileReducer";
-import { AddTextActionCreator } from "../../Redux/profileReducer";
+
 
 const AddText = (props) => {
   let newTextElement = React.createRef();

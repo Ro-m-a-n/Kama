@@ -4,7 +4,8 @@ import React from "react";
 import AddTextContainer from "./../../../Global/AddTextContainer";
 
 const MyPosts = (props) => {
-  let postsElements = props.profilePage.postsData.map((el) => (
+  
+  let postsElements = props.postsData.map((el) => (
     <Post text={el.text} likes={el.likes} id={el.id} />
   ));
 
