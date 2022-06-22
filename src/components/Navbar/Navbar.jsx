@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import FriendsNav from './FriendsNav/FriendsNav';
+import FriendsNavContainer from './FriendsNav/FriendsNavContainer';
 
 const Navbar = (props) => {
   return (
@@ -12,7 +12,7 @@ const Navbar = (props) => {
       <NavLink to="/music">Music</NavLink>
       <NavLink to="/settings">Settings</NavLink>
       <NavLink to="/friends">Friends</NavLink>
-      <FriendsNav friendsNavData={props.state.friendsNavData}/>
+      <FriendsNavContainer/>
     </nav>
   );
 };

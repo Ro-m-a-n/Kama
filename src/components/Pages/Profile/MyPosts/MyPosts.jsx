@@ -12,7 +12,7 @@ const MyPosts = (props) => {
   return (
     <div className="AddPost">
       <h3>Add post</h3>
-      <AddTextContainer store={props.store} />
+      <AddTextContainer/>
       <div className="MyPosts">
         My posts
         {postsElements}
