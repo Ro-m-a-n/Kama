@@ -21,32 +21,30 @@ let initialState = {
     },
     {
       id: 6,
-      text: "sdfksdjfhksdjhfkjsdhfksdhfkhsdkfjhsdkjfhksdjh fksdjh fksjdhf ksdjhfkjh sdkfhdks hfksj hdfkjh sdkjfhskjdhfk sjhdfkjh sdkfjh skfdhk sjdhfk jhsdkfjhsdkjfhksj fhskdjh",
+      text: "immutable",
     },
     { id: 7, text: "sdfjndskf kskd fkdsjfk sf" },
     { id: 8, text: "Hi there" },
   ],
-}
+};
 let messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE:
-      let stateCopy = {...state}
-      let newMessage = {
-        id: 9,
-        text: stateCopy.newMessageTemp,
+      return {
+        ...state,
+        newMessageTemp: "",
+        messagesData: [
+          ...state.messagesData,
+          { id: 9, text: state.newMessageTemp },
+        ],
       };
-      stateCopy.messagesData=[...state.messagesData]
-      stateCopy.messagesData.push(newMessage);
-      stateCopy.newMessageTemp = "";
-      return stateCopy;
-    case UPDATE_TEXT_AREA_MESSAGE:{
-      let stateCopy = {...state}
-      stateCopy.newMessageTemp = action.newTextMessage;
-      return stateCopy;}
+    case UPDATE_TEXT_AREA_MESSAGE:
+      return { ...state, newMessageTemp: action.newTextMessage };
     default:
       return state;
   }
 };
+
 export const AddMessageActionCreator = () => ({ type: ADD_MESSAGE });
 export const UpdateMessageAreaActionCreator = (text) => ({
   type: UPDATE_TEXT_AREA_MESSAGE,
