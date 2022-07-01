@@ -28,12 +28,12 @@ let profileReducer = (state = initialState, action) => {
   }
 };
 
-export const AddTextActionCreator = () => {
+export const addText = () => {
   return {
     type: ADD_POST,
   };
 };
-export const UpdateTextAreaActionCreator = (text) => {
+export const updateTextArea = (text) => {
   return {
     type: UPDATE_TEXT_AREA,
     newText: text,

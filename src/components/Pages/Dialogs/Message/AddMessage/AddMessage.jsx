@@ -3,12 +3,10 @@ import React from "react";
 
 
 const AddMessage = (props) => {
-  let addMessage = () => {
-    props.AddMessageAction()
-     };
+ 
   let onChangeMessageArea = (e) => {
     let text = e.target.value;
-    props.UpdateMessageArea(text);
+    props.updateMessage(text);
     
   };
 
@@ -19,7 +17,7 @@ const AddMessage = (props) => {
         value={props.newMessageTemp}
       ></textarea>
       <div className="addText__add">
-        <button onClick={addMessage}>Add</button>
+        <button onClick={()=>{props.addMessage()}}>Add</button>
       </div>
     </div>
   );

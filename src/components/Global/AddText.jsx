@@ -8,14 +8,12 @@ const AddText = (props) => {
   let addText = () => {
     props.addText();
 
-    //  props.dispatch(AddTextActionCreator());
-  };
+     };
   let onChangeTextArea = () => {
     let text = newTextElement.current.value;
-    props.onChangeTextArea(text);
+    props.updateTextArea(text);
 
-    
-    // props.dispatch(UpdateTextAreaActionCreator(text));
+      
   };
 
   return (

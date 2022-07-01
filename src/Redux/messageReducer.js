@@ -39,15 +39,15 @@ let messageReducer = (state = initialState, action) => {
         ],
       };
     case UPDATE_TEXT_AREA_MESSAGE:
-      return { ...state, newMessageTemp: action.newTextMessage };
+      return { ...state, newMessageTemp: action.text };
     default:
       return state;
   }
 };
 
-export const AddMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export const UpdateMessageAreaActionCreator = (text) => ({
+export const addMessage = () => ({ type: ADD_MESSAGE });
+export const updateMessage = (text) => ({
   type: UPDATE_TEXT_AREA_MESSAGE,
-  newTextMessage: text,
+  text,
 });
 export default messageReducer;
