@@ -2,7 +2,7 @@ import "./Users.css";
 import userPhoto from "../../../assets/images/userAvatarDefault.png";
 
 let Users = (props) => {
-   let pageQuantity = Math.ceil(props.usersQuantity / props.pageSize);
+    let pageQuantity = Math.ceil(props.usersQuantity / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pageQuantity; i++) {
     pages.push(i);

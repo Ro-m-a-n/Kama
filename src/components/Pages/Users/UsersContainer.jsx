@@ -3,37 +3,39 @@ import * as axios from "axios";
 import Users from "./Users";
 import { connect } from "react-redux";
 import {
-  followAC,
-  unFollowAC,
+  follow,
+  unFollow,
   setUsers,
-  setCurrentPageAC,
-  usersQuantityAC,
-  isFetchingAC,
+  setCurrentPage,
+  setUsersQuantity,
+  changeFetching,
 } from "./../../../Redux/usersReducer";
 import Preloader from "../../Global/Preloader/Preloader";
 
 class UsersAPI extends React.Component {
+ 
   componentDidMount() {
-    this.props.isFetchingAC(true);
+    debugger;
+    this.props.changeFetching(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
       )
       .then((response) => {
-        this.props.isFetchingAC(false);
+        this.props.changeFetching(false);
         this.props.setUsers(response.data.items);
-        this.props.usersQuantityAC(response.data.totalCount);
+        this.props.setUsersQuantity(response.data.totalCount);
       });
   }
   onPageChanged = (p) => {
-    this.props.isFetchingAC(true);
-    this.props.setCurrentPageAC(p);
+    this.props.changeFetching(true);
+    this.props.setCurrentPage(p);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`
       )
       .then((response) => {
-        this.props.isFetchingAC(false);
+        this.props.changeFetching(false);
         this.props.setUsers(response.data.items);
       });
   };
@@ -66,28 +68,13 @@ let mapStateToProps = (state) => {
     isFetching: state.usersPage.isFetching,
   };
 };
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (id) => {
-      dispatch(followAC(id));
-    },
-    unFollow: (id) => {
-      dispatch(unFollowAC(id));
-    },
-    setUsers: (users) => {
-      dispatch(setUsers(users));
-    },
-    setCurrentPageAC: (p) => {
-      dispatch(setCurrentPageAC(p));
-    },
-    usersQuantityAC: (totalCount) => {
-      dispatch(usersQuantityAC(totalCount));
-    },
-    isFetchingAC: (isFetching) => {
-      dispatch(isFetchingAC(isFetching));
-    },
-  };
-};
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+
+const UsersContainer = connect(mapStateToProps,{follow,
+  unFollow,
+  setUsers,
+  setCurrentPage,
+  setUsersQuantity,
+  changeFetching,})
+  (UsersAPI);
 export default UsersContainer;
