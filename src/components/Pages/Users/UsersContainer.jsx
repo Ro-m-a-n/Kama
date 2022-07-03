@@ -13,9 +13,7 @@ import {
 import Preloader from "../../Global/Preloader/Preloader";
 
 class UsersAPI extends React.Component {
- 
   componentDidMount() {
-    debugger;
     this.props.changeFetching(true);
     axios
       .get(
@@ -43,7 +41,7 @@ class UsersAPI extends React.Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader/> : null}
+        {this.props.isFetching ? <Preloader /> : null}
 
         <Users
           usersQuantity={this.props.usersQuantity}
@@ -69,12 +67,12 @@ let mapStateToProps = (state) => {
   };
 };
 
-
-const UsersContainer = connect(mapStateToProps,{follow,
+const UsersContainer = connect(mapStateToProps, {
+  follow,
   unFollow,
   setUsers,
   setCurrentPage,
   setUsersQuantity,
-  changeFetching,})
-  (UsersAPI);
+  changeFetching,
+})(UsersAPI);
 export default UsersContainer;

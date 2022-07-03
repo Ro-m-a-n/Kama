@@ -1,14 +1,24 @@
-.ProfileInfo__wrapper{
-display: flex;
-padding: 10px;
+.ProfileInfo__wrapper {
+  display: flex;
+  padding: 10px;
+}
+.Profile__description {
+  padding: 10px;
+  width: 100%;
+}
 
+.Ava_links {
+  max-width: 270px;
 }
-.Profile__description{
-    padding-left: 10%;
-   
+.ProfileInfo__wrapper Img {
+  border-radius: 3%;
+  width: 100%;
+  max-height: 250px;
 }
-.Img{
-    
-    width: 30%;
-    height: 30%;
+.Ava_links .SocialNetworks img {
+  max-height: 45px;
+  max-width: 45px;
+}
+.Ava_links .FullName{
+    font-size: 25px;
 }
