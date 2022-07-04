@@ -9,8 +9,8 @@ import {
   setCurrentPage,
   setUsersQuantity,
   changeFetching,
-} from "./../../../Redux/usersReducer";
-import Preloader from "../../Global/Preloader/Preloader";
+} from "./../../../../Redux/usersReducer";
+import Preloader from "../../../Global/Preloader/Preloader";
 
 class UsersAPI extends React.Component {
   componentDidMount() {

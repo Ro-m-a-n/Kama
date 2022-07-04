@@ -1,5 +1,5 @@
 import "./Users.css";
-import userPhoto from "../../../assets/images/userAvatarDefault.png";
+import userPhoto from "../../../../assets/images/userAvatarDefault.png";
 import { NavLink } from 'react-router-dom';
 
 let Users = (props) => {
@@ -28,7 +28,7 @@ let Users = (props) => {
         return (
           <div key={u.id}>
             <span>
-              <NavLink to={'/profile/'+u.id}>
+              <NavLink to={'/users/'+u.id}>
                 <img
                   className="Users__avatar"
                   alt=""

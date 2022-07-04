@@ -8,8 +8,10 @@ import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/News";
 import Friends from "./components/Pages/Friends/Friends";
 import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
-import UsersContainer from './components/Pages/Users/UsersContainer';
+import UsersContainer from './components/Pages/UsersPage/Users/UsersContainer';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
+import CurrentUserContainer from "./components/Pages/UsersPage/CurrentUser/CurrentUserContainer";
+
 
 function App(props) {
   return (
@@ -18,7 +20,7 @@ function App(props) {
       <Navbar />
       <div className="app-wrapper__pages">
         <Routes>
-          <Route path="/profile/:userId" element={<ProfileContainer />} />
+          <Route path="/profile" element={<ProfileContainer />} />
           <Route
             path="/messages/*"
             element={<DialogsContainer/>}
@@ -27,6 +29,7 @@ function App(props) {
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/friends" element={<Friends />} />
+          <Route path="/users/:userId" element={<CurrentUserContainer />} />
           <Route path="/users" element={<UsersContainer />} />
         </Routes>
       </div>
