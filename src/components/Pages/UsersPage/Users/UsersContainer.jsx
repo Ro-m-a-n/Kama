@@ -17,7 +17,9 @@ class UsersAPI extends React.Component {
     this.props.changeFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+        { withCredentials: true,
+          headers: {'API-KEY':'2c9a99e4-c8c3-402a-850e-d11227470f7d'}  }
       )
       .then((response) => {
         this.props.changeFetching(false);
@@ -30,7 +32,9 @@ class UsersAPI extends React.Component {
     this.props.setCurrentPage(p);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`
+        `https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`,
+        { withCredentials: true,
+          headers: {'API-KEY':'2c9a99e4-c8c3-402a-850e-d11227470f7d'}  }
       )
       .then((response) => {
         this.props.changeFetching(false);
