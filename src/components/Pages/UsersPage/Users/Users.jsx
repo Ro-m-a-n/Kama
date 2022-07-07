@@ -1,7 +1,8 @@
 import "./Users.css";
 import userPhoto from "../../../../assets/images/userAvatarDefault.png";
 import { NavLink } from "react-router-dom";
-import * as axios from "axios";
+import { usersAPI } from "../../../../api/api";
+
 
 let Users = (props) => {
   let pageQuantity = Math.ceil(props.usersQuantity / props.pageSize);
@@ -38,38 +39,29 @@ let Users = (props) => {
               </NavLink>
               <div>
                 {u.followed ? (
-                  <button
+                  <button disabled={props.sendedRequest.some(id=>id===u.id)}
                     onClick={() => {
-                      axios
-                        .delete(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                          { withCredentials: true,
-                          headers: {'API-KEY':'2c9a99e4-c8c3-402a-850e-d11227470f7d'} }
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode == 0) {
-                            props.unFollow(u.id);
-                          }
-                        });
+                      props.setSendedRequest(true, u.id);
+                      usersAPI.unfollow(u.id).then((data) => {
+                        if (data.resultCode === 0) {
+                          props.unFollow(u.id);
+                          props.setSendedRequest(false, u.id)
+                        }
+                      });
                     }}
                   >
                     unfollow
                   </button>
                 ) : (
-                  <button
+                  <button disabled={props.sendedRequest.some(id=>id===u.id)}
                     onClick={() => {
-                      axios
-                        .post(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                          {},
-                          { withCredentials: true,
-                            headers: {'API-KEY':'2c9a99e4-c8c3-402a-850e-d11227470f7d'} }
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode == 0) {
-                            props.follow(u.id);
-                          }
-                        });
+                      props.setSendedRequest(true, u.id);
+                      usersAPI.follow(u.id).then((data) => {
+                        if (data.resultCode === 0) {
+                          props.follow(u.id)
+                          props.setSendedRequest(false, u.id);
+                        }
+                      });
                     }}
                   >
                     follow

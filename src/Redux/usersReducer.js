@@ -5,6 +5,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_USERS_QUANTITY = "SET_USERS_QUANTITY";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_CURRENT_USER_INFO = "SET_CURRENT_USER_INFO";
+const TOGGLE_SENDED_REQUEST = 'TOGGLE_SENDED_REQUEST'
 let initialState = {
   users: [],
   pageSize: 4,
@@ -12,6 +13,7 @@ let initialState = {
   currentPage: 1,
   isFetching: false,
   currentUserInfo: null,
+  sendedRequest: [],
 };
 
 let usersReducer = (state = initialState, action) => {
@@ -47,6 +49,13 @@ let usersReducer = (state = initialState, action) => {
       return { ...state, isFetching: action.changeFetching };
     case SET_CURRENT_USER_INFO:
       return { ...state, currentUserInfo: action.userInfo };
+      case TOGGLE_SENDED_REQUEST:
+      return { ...state, 
+        
+        sendedRequest: action.request
+        ?[...state.sendedRequest, action.id]
+        :state.sendedRequest.filter(id=>id!==action.id)
+       };
     default:
       return state;
   }
@@ -69,5 +78,10 @@ export const changeFetching = (changeFetching) => ({
 export const setCurrentUserInfo = (userInfo) => ({
   type: SET_CURRENT_USER_INFO,
   userInfo,
+});
+export const setSendedRequest = (request, id) => ({
+  type: TOGGLE_SENDED_REQUEST,
+  request,
+  id,
 });
 export default usersReducer;
