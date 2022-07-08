@@ -1,7 +1,6 @@
 import "./Users.css";
 import userPhoto from "../../../../assets/images/userAvatarDefault.png";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../../../api/api";
 
 
 let Users = (props) => {
@@ -39,29 +38,19 @@ let Users = (props) => {
               </NavLink>
               <div>
                 {u.followed ? (
-                  <button disabled={props.sendedRequest.some(id=>id===u.id)}
+                  <button
+                    disabled={props.sendedRequest.some((id) => id === u.id)}
                     onClick={() => {
-                      props.setSendedRequest(true, u.id);
-                      usersAPI.unfollow(u.id).then((data) => {
-                        if (data.resultCode === 0) {
-                          props.unFollow(u.id);
-                          props.setSendedRequest(false, u.id)
-                        }
-                      });
+                      props.unfollowTC(u.id);
                     }}
                   >
                     unfollow
                   </button>
                 ) : (
-                  <button disabled={props.sendedRequest.some(id=>id===u.id)}
+                  <button
+                    disabled={props.sendedRequest.some((id) => id === u.id)}
                     onClick={() => {
-                      props.setSendedRequest(true, u.id);
-                      usersAPI.follow(u.id).then((data) => {
-                        if (data.resultCode === 0) {
-                          props.follow(u.id)
-                          props.setSendedRequest(false, u.id);
-                        }
-                      });
+                      props.followTC(u.id);
                     }}
                   >
                     follow

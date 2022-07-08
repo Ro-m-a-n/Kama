@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FOLLOW = "follow";
 const UNFOLLOW = "unFollow";
 const SET_USERS = "setUsers";
@@ -5,7 +7,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_USERS_QUANTITY = "SET_USERS_QUANTITY";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_CURRENT_USER_INFO = "SET_CURRENT_USER_INFO";
-const TOGGLE_SENDED_REQUEST = 'TOGGLE_SENDED_REQUEST'
+const TOGGLE_SENDED_REQUEST = "TOGGLE_SENDED_REQUEST";
 let initialState = {
   users: [],
   pageSize: 4,
@@ -49,13 +51,14 @@ let usersReducer = (state = initialState, action) => {
       return { ...state, isFetching: action.changeFetching };
     case SET_CURRENT_USER_INFO:
       return { ...state, currentUserInfo: action.userInfo };
-      case TOGGLE_SENDED_REQUEST:
-      return { ...state, 
-        
+    case TOGGLE_SENDED_REQUEST:
+      return {
+        ...state,
+
         sendedRequest: action.request
-        ?[...state.sendedRequest, action.id]
-        :state.sendedRequest.filter(id=>id!==action.id)
-       };
+          ? [...state.sendedRequest, action.id]
+          : state.sendedRequest.filter((id) => id !== action.id),
+      };
     default:
       return state;
   }
@@ -84,4 +87,40 @@ export const setSendedRequest = (request, id) => ({
   request,
   id,
 });
+
+export const getUsersTC = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(changeFetching(true));
+    dispatch(setCurrentPage(currentPage));
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(changeFetching(false));
+      dispatch(setUsers(data.items));
+      dispatch(setUsersQuantity(data.totalCount));
+    });
+  };
+};
+
+export const unfollowTC = (id) => {
+  return (dispatch) => {
+    dispatch(setSendedRequest(true, id));
+    usersAPI.unfollow(id).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(unFollow(id));
+        dispatch(setSendedRequest(false, id));
+      }
+    });
+  };
+};
+export const followTC = (id) => {
+  return (dispatch) => {
+    dispatch(setSendedRequest(true, id));
+    usersAPI.follow(id).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(follow(id));
+        dispatch(setSendedRequest(false, id));
+      }
+    });
+  };
+};
+
 export default usersReducer;
