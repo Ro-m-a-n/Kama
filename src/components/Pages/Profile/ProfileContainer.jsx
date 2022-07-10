@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
+import withAuthRedirect from './../UsersPage/Users/UsersContainer';
 
 class ProfileContainer extends React.Component {
    render() {
@@ -10,4 +11,4 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, {})(ProfileContainer);
+export default withAuthRedirect(connect(mapStateToProps, {})(ProfileContainer));

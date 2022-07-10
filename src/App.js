@@ -11,6 +11,7 @@ import UsersContainer from "./components/Pages/UsersPage/Users/UsersContainer";
 import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
 import CurrentUserContainer from "./components/Pages/UsersPage/CurrentUser/CurrentUserContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import LoginPage from './components/Pages/Login/Login';
 
 function App(props) {
   return (
@@ -27,6 +28,7 @@ function App(props) {
           <Route path="/friends" element={<Friends />} />
           <Route path="/users/:userId" element={<CurrentUserContainer />} />
           <Route path="/users" element={<UsersContainer />} />
+          <Route path="/login" element={<LoginPage/>}/>
         </Routes>
       </div>
     </div>

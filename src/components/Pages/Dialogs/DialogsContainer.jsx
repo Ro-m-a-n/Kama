@@ -1,16 +1,17 @@
 import Dialogs from "./Dialogs";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import withAuthRedirect from "./../UsersPage/Users/UsersContainer";
 
 let mapStateToProps = (state) => {
-  return { dialogsData: state.messagesPage.dialogsData,
-     messagesData: state.messagesPage.messagesData };
+  return {
+    dialogsData: state.messagesPage.dialogsData,
+    messagesData: state.messagesPage.messagesData,
+  };
 };
 let mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-const DialogsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dialogs);
-export default DialogsContainer;
+export default withAuthRedirect(
+  connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+);

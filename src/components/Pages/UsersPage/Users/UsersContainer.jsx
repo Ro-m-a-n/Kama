@@ -2,41 +2,27 @@ import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
 import {
-   setCurrentPage,
+  setCurrentPage,
   setSendedRequest,
   getUsersTC,
   followTC,
   unfollowTC,
 } from "./../../../../Redux/usersReducer";
 import Preloader from "../../../Global/Preloader/Preloader";
+import { withAuthRedirect } from './../../../../hok/withAuthRedirect';
+
 
 class UsersAPI extends React.Component {
   componentDidMount() {
     this.props.getUsersTC(this.props.currentPage, this.props.pageSize);
   }
 
-  //   this.props.changeFetching(true);
-  //   usersAPI
-  //     .getUsers(this.props.currentPage, this.props.pageSize)
-  //     .then((data) => {
-  //       this.props.changeFetching(false);
-  //       this.props.setUsers(data.items);
-  //       this.props.setUsersQuantity(data.totalCount);
-  //     });
-
   onPageChanged = (p) => {
     this.props.getUsersTC(p, this.props.pageSize);
   };
 
-  // this.props.changeFetching(true);
-  // this.props.setCurrentPage(p);
-  // usersAPI.getUsers(p, this.props.pageSize).then((response) => {
-  //   this.props.changeFetching(false);
-  //   this.props.setUsers(response.data.items);
-  // });
-
   render() {
-    return (
+       return (
       <>
         {this.props.isFetching ? <Preloader /> : null}
 
@@ -48,6 +34,7 @@ class UsersAPI extends React.Component {
           users={this.props.users}
           followTC={this.props.followTC}
           unfollowTC={this.props.unfollowTC}
+          sendedRequest={this.props.sendedRequest}
         />
       </>
     );
@@ -62,14 +49,15 @@ let mapStateToProps = (state) => {
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
     sendedRequest: state.usersPage.sendedRequest,
+   
   };
 };
 
-const UsersContainer = connect(mapStateToProps, {
+export default withAuthRedirect (connect (mapStateToProps, {
   setCurrentPage,
   setSendedRequest,
   getUsersTC,
   followTC,
   unfollowTC,
-})(UsersAPI);
-export default UsersContainer;
+})(UsersAPI));
+

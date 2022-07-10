@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 
 
 let Users = (props) => {
+  
+
   let pageQuantity = Math.ceil(props.usersQuantity / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pageQuantity; i++) {
@@ -14,8 +16,8 @@ let Users = (props) => {
       <div>
         {pages.map((p) => {
           return (
-            <span
-              className={props.currentPage === p && "selectedPage"}
+            <span key={p}
+              className={props.currentPage === p ? "selectedPage": undefined }
               onClick={() => {
                 props.onPageChanged(p);
               }}

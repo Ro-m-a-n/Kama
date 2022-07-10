@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import { usersAPI, currentUserApi } from "../api/api";
 
 const FOLLOW = "follow";
 const UNFOLLOW = "unFollow";
@@ -122,5 +122,12 @@ export const followTC = (id) => {
     });
   };
 };
-
+export const getCurrentUserTC = (router) => {
+  return (dispatch) => {
+    currentUserApi.getUser(router).then((data) => {
+      dispatch(setCurrentUserInfo(data));
+    });
+  };
+};
 export default usersReducer;
+
