@@ -7,6 +7,7 @@ import {
   getCurrentUserTC,
 } from "../../../../Redux/usersReducer";
 import { withAuthRedirect } from './../../../../hok/withAuthRedirect';
+import { compose } from 'redux';
 
 class CurrentUserContainer extends React.Component {
   componentDidMount() {
@@ -37,8 +38,14 @@ let mapStateToProps = (state) => ({
   currentUserInfo: state.usersPage.currentUserInfo,
  });
 
-export default withAuthRedirect(
-  connect(mapStateToProps, { setCurrentUserInfo, getCurrentUserTC })(
-    withRouter(CurrentUserContainer)
-  )
-);
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, { setCurrentUserInfo, getCurrentUserTC }),
+  withRouter
+)(CurrentUserContainer);
+
+// withAuthRedirect(
+//   connect(mapStateToProps, { setCurrentUserInfo, getCurrentUserTC })(
+//     withRouter(CurrentUserContainer)
+//   )
+// );

@@ -9,8 +9,8 @@ import {
   unfollowTC,
 } from "./../../../../Redux/usersReducer";
 import Preloader from "../../../Global/Preloader/Preloader";
-import { withAuthRedirect } from './../../../../hok/withAuthRedirect';
-
+import { withAuthRedirect } from "./../../../../hok/withAuthRedirect";
+import compose from "lodash/fp/compose";
 
 class UsersAPI extends React.Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class UsersAPI extends React.Component {
   };
 
   render() {
-       return (
+    return (
       <>
         {this.props.isFetching ? <Preloader /> : null}
 
@@ -41,23 +41,22 @@ class UsersAPI extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
-  return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    usersQuantity: state.usersPage.usersQuantity,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    sendedRequest: state.usersPage.sendedRequest,
-   
-  };
-};
+let mapStateToProps = (state) => ({
+  users: state.usersPage.users,
+  pageSize: state.usersPage.pageSize,
+  usersQuantity: state.usersPage.usersQuantity,
+  currentPage: state.usersPage.currentPage,
+  isFetching: state.usersPage.isFetching,
+  sendedRequest: state.usersPage.sendedRequest,
+});
 
-export default withAuthRedirect (connect (mapStateToProps, {
-  setCurrentPage,
-  setSendedRequest,
-  getUsersTC,
-  followTC,
-  unfollowTC,
-})(UsersAPI));
-
+export default compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    setSendedRequest,
+    getUsersTC,
+    followTC,
+    unfollowTC,
+  }),
+  withAuthRedirect
+)(UsersAPI);
