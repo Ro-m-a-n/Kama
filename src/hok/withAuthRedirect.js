@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
+let mstp = (state) => ({
+  isAuth: state.auth.isAuth,
+});
 
-let mstp = (state) =>({
-    isAuth: state.auth.isAuth
-})
 export const withAuthRedirect = (Component) => {
   class RedirectComponent extends React.Component {
     render() {
@@ -14,6 +14,6 @@ export const withAuthRedirect = (Component) => {
     }
   }
 
-  let connectedAuthRedirectComponent= connect(mstp)(RedirectComponent)
+  let connectedAuthRedirectComponent = connect(mstp)(RedirectComponent);
   return connectedAuthRedirectComponent;
 };
