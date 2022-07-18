@@ -1,5 +1,8 @@
+import { currentUserApi } from "../api/api";
+
 const UPDATE_TEXT_AREA = "UPDATE-TEXT-AREA";
 const ADD_POST = "ADD-POST";
+const EDIT_STATUS = "EDIT_STATUS";
 
 let initialState = {
   postsData: [
@@ -7,7 +10,7 @@ let initialState = {
     { id: 2, text: "I finaly understood props", likes: 100 },
   ],
   newTextPost: "hello",
- 
+  status: "enter your status",
 };
 
 let profileReducer = (state = initialState, action) => {
@@ -25,7 +28,12 @@ let profileReducer = (state = initialState, action) => {
     case UPDATE_TEXT_AREA: {
       return { ...state, newTextPost: action.newText };
     }
-   
+    case EDIT_STATUS: {
+      return {
+        ...state,
+        status: action.text,
+      };
+    }
     default:
       return state;
   }
@@ -42,6 +50,26 @@ export const updateTextArea = (text) => {
     newText: text,
   };
 };
+export const editStatusAC = (text) => {
+  return { type: EDIT_STATUS, text };
+};
 
+export const getStatusTC = (userId) => {
+  return dispatch => {
+    currentUserApi.getStatus(userId).then((response) => {
+      dispatch(editStatusAC(response.data));
+    });
+  };
+};
+
+export const updateStatusTC = (status) => { 
+  return  dispatch => {
+    currentUserApi.updateStatus(status).then((response) => {
+            if (response.resultCode === 0) {
+        dispatch(editStatusAC(status));
+      }
+    });
+  };
+};
 
 export default profileReducer;
