@@ -10,7 +10,7 @@ let initialState = {
     { id: 2, text: "I finaly understood props", likes: 100 },
   ],
   newTextPost: "hello",
-  status: "enter your status",
+  status: 'Status',
 };
 
 let profileReducer = (state = initialState, action) => {

@@ -1,8 +1,16 @@
 import React from "react";
 class ProfileStatus extends React.Component {
+  
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.status !== this.props.status){
+      this.setState({
+        status: this.props.status
+      })
+    }
+  }
   state = {
     editMode: false,
-    emptyStatus: "Enter your status",
+
     status: this.props.status,
   };
   activateEditMode = () => {
@@ -19,14 +27,9 @@ class ProfileStatus extends React.Component {
   render() {
     let onChange = (e) => {
       this.setState({
-        status: e.target.value
-      })
-     
+        status: e.target.value,
+      });
     };
-    if (!this.props.status) {
-      this.props.editStatusAC(this.state.emptyStatus);
-      this.deactivateEditMode(this.state.status);
-    }
 
     return (
       <>

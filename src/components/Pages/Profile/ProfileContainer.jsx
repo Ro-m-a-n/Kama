@@ -12,9 +12,10 @@ import { currentUserApi } from "./../../../api/api";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = 1049;
+    let userId = 24761;
     currentUserApi.getStatus(userId).then((response) => {
-      this.props.editStatusAC(response);
+      if (response){this.props.editStatusAC(response);} 
+      
     });
   }
   render() {
