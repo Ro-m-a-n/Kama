@@ -1,10 +1,16 @@
 import "./Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import AddMessageContainer from "./Message/AddMessage/AddMessageContainer";
 import { Navigate } from "react-router-dom";
+import AddMessageReduxForm from './Message/AddMessage/AddMessage';
+
 
 const Dialogs = (props) => {
+
+  const onSubmit = (formData)=>{
+    props.addMessage(formData.message)
+  }
+
   if (!props.isAuth) {return <Navigate to={'/login'}/>}
   let dialogsElements = props.dialogsData.map((el) => (
     <Dialog name={el.name} id={el.id} />
@@ -17,7 +23,7 @@ const Dialogs = (props) => {
       <div className="Dialogs__items">{dialogsElements}</div>
       <div className="Messages">
         {mesaggesElements}
-        <AddMessageContainer store={props.store} />
+        <AddMessageReduxForm onSubmit={onSubmit}/>
       </div>
     </div>
   );

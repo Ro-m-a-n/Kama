@@ -1,7 +1,6 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_TEXT_AREA_MESSAGE = "UPDATE-TEXT-AREA-MESSAGE";
+
 let initialState = {
-  newMessageTemp: "",
   dialogsData: [
     { id: 1, name: "Volodya" },
     { id: 2, name: "Artem" },
@@ -32,22 +31,14 @@ let messageReducer = (state = initialState, action) => {
     case ADD_MESSAGE:
       return {
         ...state,
-        newMessageTemp: "",
-        messagesData: [
-          ...state.messagesData,
-          { id: 9, text: state.newMessageTemp },
-        ],
+        messagesData: [...state.messagesData, { id: 9, text: action.message }],
       };
-    case UPDATE_TEXT_AREA_MESSAGE:
-      return { ...state, newMessageTemp: action.text };
+
     default:
       return state;
   }
 };
 
-export const addMessage = () => ({ type: ADD_MESSAGE });
-export const updateMessage = (text) => ({
-  type: UPDATE_TEXT_AREA_MESSAGE,
-  text,
-});
+export const addMessage = (message) => ({ type: ADD_MESSAGE, message });
+
 export default messageReducer;

@@ -1,25 +1,23 @@
 import "../../../../Global/AddText.css";
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 
 
-const AddMessage = (props) => {
- 
-  let onChangeMessageArea = (e) => {
-    let text = e.target.value;
-    props.updateMessage(text);
-    
-  };
 
-  return (
-    <div className="addText__wrap">
-      <textarea
-        onChange={onChangeMessageArea}
-        value={props.newMessageTemp}
-      ></textarea>
-      <div className="addText__add">
-        <button onClick={()=>{props.addMessage()}}>Add</button>
-      </div>
-    </div>
+
+
+export const AddMessageForm = (props)=>{
+  return ( 
+<form onSubmit={props.handleSubmit} className="addText__wrap">
+<Field name='message' component={'textarea'}placeholder="Enter your message"/>
+<div className="addText__add"><button>Add</button></div>
+
+</form>
   );
-};
-export default AddMessage;
+}
+let AddMessageReduxForm = reduxForm({
+  form: "DialogAddMessage"
+})(AddMessageForm)
+
+
+export default AddMessageReduxForm;

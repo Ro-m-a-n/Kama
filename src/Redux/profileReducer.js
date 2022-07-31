@@ -1,6 +1,5 @@
 import { currentUserApi } from "../api/api";
 
-const UPDATE_TEXT_AREA = "UPDATE-TEXT-AREA";
 const ADD_POST = "ADD-POST";
 const EDIT_STATUS = "EDIT_STATUS";
 
@@ -9,8 +8,7 @@ let initialState = {
     { id: 1, text: "True way of Samurai", likes: 5 },
     { id: 2, text: "I finaly understood props", likes: 100 },
   ],
-  newTextPost: "hello",
-  status: 'Status',
+  status: "Status",
 };
 
 let profileReducer = (state = initialState, action) => {
@@ -18,15 +16,8 @@ let profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       return {
         ...state,
-        postsData: [
-          ...state.postsData,
-          { id: 3, text: state.newTextPost, likes: 0 },
-        ],
-        newTextPost: "",
+        postsData: [...state.postsData, { id: 3, text: action.text, likes: 0 }],
       };
-    }
-    case UPDATE_TEXT_AREA: {
-      return { ...state, newTextPost: action.newText };
     }
     case EDIT_STATUS: {
       return {
@@ -39,15 +30,10 @@ let profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addText = () => {
+export const addText = (text) => {
   return {
     type: ADD_POST,
-  };
-};
-export const updateTextArea = (text) => {
-  return {
-    type: UPDATE_TEXT_AREA,
-    newText: text,
+    text,
   };
 };
 export const editStatusAC = (text) => {
@@ -55,17 +41,17 @@ export const editStatusAC = (text) => {
 };
 
 export const getStatusTC = (userId) => {
-  return dispatch => {
+  return (dispatch) => {
     currentUserApi.getStatus(userId).then((response) => {
       dispatch(editStatusAC(response.data));
     });
   };
 };
 
-export const updateStatusTC = (status) => { 
-  return  dispatch => {
+export const updateStatusTC = (status) => {
+  return (dispatch) => {
     currentUserApi.updateStatus(status).then((response) => {
-            if (response.resultCode === 0) {
+      if (response.resultCode === 0) {
         dispatch(editStatusAC(status));
       }
     });
