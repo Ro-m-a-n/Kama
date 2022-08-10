@@ -9,7 +9,7 @@ import { Field, reduxForm } from "redux-form";
 export const AddMessageForm = (props)=>{
   return ( 
 <form onSubmit={props.handleSubmit} className="addText__wrap">
-<Field name='message' component={'textarea'}placeholder="Enter your message"/>
+<Field name='message' component={'textarea'} placeholder="Enter your message"/>
 <div className="addText__add"><button>Add</button></div>
 
 </form>
