@@ -1,14 +1,20 @@
 import { Field, reduxForm } from "redux-form";
 import { connect } from 'react-redux';
+import { maxLengthTC, Required } from './../../../utilites/validators/Validators';
+import { Input } from "../../Global/FormsControl/FormsControl";
+
+
+
+let maxLength =  maxLengthTC(20);
 
 const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field component={"input"} name={"login"} placeholder="login" />
+        <Field component={Input}  name={"login"} placeholder="login" validate={[Required, maxLength]}/>
       </div>
       <div>
-        <Field component={"input"} name={"password"} placeholder="password" />
+        <Field component={Input}  name={"password"} placeholder="password" validate={[Required, maxLength]}/>
       </div>
       <div>
         <Field component={"input"} name={"remember me"} type={"checkbox"} />{" "}
@@ -39,4 +45,4 @@ let LoginPage = (props) => {
 
 
 
-export default connect ({}, {})(LoginPage) ;
+export default LoginPage ;
