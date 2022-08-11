@@ -18,6 +18,6 @@ export const Textarea = (props) => {
 };export const Input = (props) => {
     const { input, meta, children, ...restProps } = props
    return (
-     <FormsControl {...props}><input {...input} {...restProps}></input></FormsControl>
+     <FormsControl {...props}><input {...input} {...restProps}></input> </FormsControl>
    );
  };
