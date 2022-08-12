@@ -11,7 +11,7 @@ let maxLength =  maxLengthTC(100);
 export const AddMessageForm = (props)=>{
   return ( 
 <form onSubmit={props.handleSubmit} className="addText__wrap">
-<Field name='message' component={Textarea} placeholder="Enter your message" validate={[Required, maxLength]}/>
+<Field name='message' component={Textarea} placeholder="Enter your message" validate={[ maxLength]}/>
 <div className="addText__add"><button>Add</button></div>
 
 </form>
