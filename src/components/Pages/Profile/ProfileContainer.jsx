@@ -13,7 +13,7 @@ import { currentUserApi } from "./../../../api/api";
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = 24761;
-    currentUserApi.getStatus(userId).then((response) => {
+    currentUserApi.getStatus(this.props.authorizedUserId).then((response) => {
       if (response){this.props.editStatusAC(response);} 
       
     });
@@ -25,7 +25,8 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
   status: state.profilePage.status,
-  status: state.profilePage.status,
+  authorizedUserId: state.auth.id,
+  isAuth: state.auth.isAuth,
 });
 
 export default compose(

@@ -1,3 +1,4 @@
+import "./Login.css"
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import {
@@ -6,9 +7,8 @@ import {
 } from "./../../../utilites/validators/Validators";
 import { Input } from "../../Global/FormsControl/FormsControl";
 import { loginTC } from "./../../../Redux/authReducer";
-import { Redirect } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
 
+import { Navigate } from "react-router-dom";
 
 let maxLength = maxLengthTC(30);
 
@@ -36,6 +36,8 @@ const LoginForm = (props) => {
         <Field component={"input"} name={"rememberMe"} type={"checkbox"} />{" "}
         remember me
       </div>
+      {props.error && <div className="form_summary__error"> {props.error}</div>}
+      
       <div>
         <button> login</button>
       </div>
@@ -47,14 +49,13 @@ const LoginReduxForm = reduxForm({
   form: "login",
 })(LoginForm);
 
-
 let LoginPage = (props) => {
   const onSubmit = (formData) => {
     props.loginTC(formData.email, formData.password, formData.rememberMe);
   };
 
-  if (props.isAuth){
-    return <Navigate to="/profile" />
+  if (props.isAuth) {
+    return <Navigate to="/profile" />;
   }
   return (
     <div>
@@ -63,7 +64,7 @@ let LoginPage = (props) => {
     </div>
   );
 };
-const mstp = (state)=>({
-  isAuth: state.auth.isAuth
-})
+const mstp = (state) => ({
+  isAuth: state.auth.isAuth,
+});
 export default connect(mstp, { loginTC })(LoginPage);
