@@ -11,6 +11,8 @@ import {
 import Preloader from "../../../Global/Preloader/Preloader";
 import { withAuthRedirect } from "./../../../../hok/withAuthRedirect";
 import compose from "lodash/fp/compose";
+import { getCurrentPage, getIsFetching, getPageSize, getSendedRequest, getUsers } from "../../../../Redux/selectors";
+import { getUsersQuantity } from './../../../../Redux/selectors';
 
 class UsersAPI extends React.Component {
   componentDidMount() {
@@ -41,13 +43,20 @@ class UsersAPI extends React.Component {
   }
 }
 
+// users: state.usersPage.users,
+// pageSize: state.usersPage.pageSize,
+// usersQuantity: state.usersPage.usersQuantity,
+// currentPage: state.usersPage.currentPage,
+// isFetching: state.usersPage.isFetching,
+// sendedRequest: state.usersPage.sendedRequest,
+
 let mapStateToProps = (state) => ({
-  users: state.usersPage.users,
-  pageSize: state.usersPage.pageSize,
-  usersQuantity: state.usersPage.usersQuantity,
-  currentPage: state.usersPage.currentPage,
-  isFetching: state.usersPage.isFetching,
-  sendedRequest: state.usersPage.sendedRequest,
+  users: getUsers(state),
+  pageSize: getPageSize(state),
+  usersQuantity: getUsersQuantity(state),
+  currentPage: getCurrentPage(state),
+  isFetching: getIsFetching(state),
+  sendedRequest: getSendedRequest(state),
 });
 
 export default compose(
