@@ -6,6 +6,7 @@ import { AddMessageForm } from "./../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
 
 const MyPosts = (props) => {
+  console.log("render")
   let postsElements = props.postsData.map((el) => (
     <Post text={el.text} likes={el.likes} id={el.id} />
   ));
