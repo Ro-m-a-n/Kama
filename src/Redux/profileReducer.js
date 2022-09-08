@@ -11,7 +11,7 @@ let initialState = {
   status: "Status",
 };
 
-let profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
       return {
@@ -58,4 +58,4 @@ export const updateStatusTC = (status) => {
   };
 };
 
-export default profileReducer;
+export default profileReducer

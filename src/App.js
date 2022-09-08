@@ -32,6 +32,7 @@ class App extends React.Component {
         <Navbar />
         <div className="app-wrapper__pages">
           <Routes>
+          <Route path="/" element={<ProfileContainer />} />
             <Route path="/profile" element={<ProfileContainer />} />
             <Route path="/messages/*" element={<DialogsContainer />} />
             <Route path="/news" element={<News />} />
