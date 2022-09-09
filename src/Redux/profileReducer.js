@@ -41,10 +41,9 @@ export const editStatusAC = (text) => {
 };
 
 export const getStatusTC = (userId) => {
-  return (dispatch) => {
-    currentUserApi.getStatus(userId).then((response) => {
-      dispatch(editStatusAC(response.data));
-    });
+  return async (dispatch) => {
+    const response = await currentUserApi.getStatus(userId);
+    dispatch(editStatusAC(response.data));
   };
 };
 
@@ -58,4 +57,4 @@ export const updateStatusTC = (status) => {
   };
 };
 
-export default profileReducer
+export default profileReducer;

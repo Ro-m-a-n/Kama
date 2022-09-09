@@ -1,30 +1,12 @@
 import "./Users.css";
 import userPhoto from "../../../../assets/images/userAvatarDefault.png";
 import { NavLink } from "react-router-dom";
+import Pagination from "../../../Global/Pagination/Pagination";
 
 let Users = (props) => {
-  let pageQuantity = Math.ceil(props.usersQuantity / props.pageSize);
-  let pages = [];
-  for (let i = 1; i <= pageQuantity; i++) {
-    pages.push(i);
-  }
   return (
     <div>
-      <div>
-        {pages.map((p) => {
-          return (
-            <span
-              key={p}
-              className={props.currentPage === p ? "selectedPage" : undefined}
-              onClick={() => {
-                props.onPageChanged(p);
-              }}
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
+      <Pagination usersQuantity={props.usersQuantity} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged} />
       {props.users.map((u) => {
         return (
           <div key={u.id}>
