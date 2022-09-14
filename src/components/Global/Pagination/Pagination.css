@@ -1,0 +1,15 @@
+.pagination{
+  padding: 20px;
+}
+
+.pagination .selectedPage{
+  color:rgb(0, 0, 0);
+  padding: 2px;
+}
+.pagination .pageNumber{
+   color:rgb(37, 37, 37);
+   padding: 2px;
+}
+.pagination .button{
+  padding: 4px;
+  }
