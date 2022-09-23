@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import "./components/Pages/Pages.css";
 import { Route, Routes } from "react-router-dom";
@@ -7,7 +7,6 @@ import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/News";
 import Friends from "./components/Pages/Friends/Friends";
-import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Pages/UsersPage/Users/UsersContainer";
 import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
 import CurrentUserContainer from "./components/Pages/UsersPage/CurrentUser/CurrentUserContainer";
@@ -18,21 +17,26 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import Preloader from "./components/Global/Preloader/Preloader";
 
+const DialogsContainer = React.lazy(() =>
+  import("./components/Pages/Dialogs/DialogsContainer")
+);
+
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeAppTC();
   }
   render() {
-    if(!this.props.initialized){
-      return <Preloader></Preloader>
+    if (!this.props.initialized) {
+      return <Preloader></Preloader>;
     }
     return (
       <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper__pages">
+        <Suspense fallback={<div><Preloader /></div>}>
           <Routes>
-          <Route path="/" element={<ProfileContainer />} />
+            <Route path="/" element={<ProfileContainer />} />
             <Route path="/profile" element={<ProfileContainer />} />
             <Route path="/messages/*" element={<DialogsContainer />} />
             <Route path="/news" element={<News />} />
@@ -43,12 +47,13 @@ class App extends React.Component {
             <Route path="/users" element={<UsersContainer />} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
+          </Suspense>
         </div>
       </div>
     );
   }
 }
-const mstp = (state) =>({
-  initialized: state.app.initialized
-})
+const mstp = (state) => ({
+  initialized: state.app.initialized,
+});
 export default compose(connect(mstp, { initializeAppTC }))(App);
