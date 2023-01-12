@@ -1,7 +1,8 @@
 import { currentUserApi } from "../api/api";
-
+import defaultPhoto from "../assets/images/socialNet/instagram.png";
 const ADD_POST = "ADD-POST";
 const EDIT_STATUS = "EDIT_STATUS";
+const SAVE_PHOTO = "SAVE_PHOTO";
 
 let initialState = {
   postsData: [
@@ -9,14 +10,20 @@ let initialState = {
     { id: 2, text: "I finaly understood props", likes: 100 },
   ],
   status: "Status",
+  photo: defaultPhoto,
 };
-
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
       return {
         ...state,
         postsData: [...state.postsData, { id: 3, text: action.text, likes: 0 }],
+      };
+    }
+    case SAVE_PHOTO: {
+      return {
+        ...state,
+        photo: action.photo,
       };
     }
     case EDIT_STATUS: {
@@ -42,7 +49,7 @@ export const editStatusAC = (text) => {
 
 export const getStatusTC = (userId) => {
   return async (dispatch) => {
-    const response = await currentUserApi.getStatus(userId);
+    let response = await currentUserApi.getStatus(userId);
     dispatch(editStatusAC(response.data));
   };
 };
@@ -54,6 +61,21 @@ export const updateStatusTC = (status) => {
         dispatch(editStatusAC(status));
       }
     });
+  };
+};
+
+export const savePhotoSuccessAC = (photo) => {
+  return { type: SAVE_PHOTO, photo };
+};
+
+export const savePhotoTC = (file) => {
+  return async (dispatch) => {
+    let response = await currentUserApi.savePhoto(file);
+
+    if (response.resultCode === 0) {
+      dispatch(savePhotoSuccessAC(response.data.photos.large));
+
+    }
   };
 };
 

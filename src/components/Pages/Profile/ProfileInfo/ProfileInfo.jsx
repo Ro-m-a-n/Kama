@@ -1,13 +1,21 @@
 import Preloader from "../../../Global/Preloader/Preloader";
 import "./ProfileInfo.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
-import userPhoto from "../../../../assets/images/userAvatarDefault.png";
+
 
 const ProfileInfo = (props) => {
-  return (
+    const onMainPhotoSelected = (e) => {
+    if (e.target) {
+      props.savePhotoTC(e.target.files[0]);
+    }
+  };
+   return (
     <>
       <div>
-        <img src={userPhoto} className="Users__avatar" />
+        <img src={props.photo} className="Users__avatar" />
+      </div>
+      <div>
+        <input type={"file"} onChange={onMainPhotoSelected} />
       </div>
       <ProfileStatus
         status={props.status}

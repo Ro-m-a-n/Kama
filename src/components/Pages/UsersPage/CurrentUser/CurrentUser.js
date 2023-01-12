@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Preloader from "../../../Global/Preloader/Preloader";
 import "./CurrentUser.css";
+import userPhoto from "../../../../assets/images/userAvatarDefault.png";
 import instagram from "../../../../assets/images/socialNet/instagram.png";
 import git from "../../../../assets/images/socialNet/git.png";
 import facebook from "../../../../assets/images/socialNet/facebook.png";
@@ -18,7 +19,8 @@ const CurrentUser = (props) => {
         <img
           className="Img"
           alt=""
-          src={props.currentUserInfo.photos.large}
+          src={
+            props.currentUserInfo.photos.large != null ? props.currentUserInfo.photos.large : userPhoto}
         ></img>
 
         <div className="SocialNetworks">
