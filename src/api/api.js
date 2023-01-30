@@ -62,6 +62,11 @@ export const currentUserApi = {
       return response.data;
     });
   },
+  getMyProfile(myId) {
+        return instance.get(`profile/${myId}`).then((response) => {
+      return response.data;
+    });
+  },
   savePhoto(photoFile) {
     let formData = new FormData();
     formData.append('image', photoFile)

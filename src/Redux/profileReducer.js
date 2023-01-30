@@ -3,6 +3,7 @@ import defaultPhoto from "../assets/images/socialNet/instagram.png";
 const ADD_POST = "ADD-POST";
 const EDIT_STATUS = "EDIT_STATUS";
 const SAVE_PHOTO = "SAVE_PHOTO";
+const SET_MY_PROFILE_INFO = "SET_MY_PROFILE_INFO";
 
 let initialState = {
   postsData: [
@@ -11,6 +12,7 @@ let initialState = {
   ],
   status: "Status",
   photo: defaultPhoto,
+  myProfileInfo: { contacts:"Hi"  },
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -32,6 +34,8 @@ const profileReducer = (state = initialState, action) => {
         status: action.text,
       };
     }
+    case SET_MY_PROFILE_INFO:
+      return { ...state, myProfileInfo: action.data };
     default:
       return state;
   }
@@ -45,6 +49,9 @@ export const addText = (text) => {
 };
 export const editStatusAC = (text) => {
   return { type: EDIT_STATUS, text };
+};
+export const setMyProfileInfoAC = (data) => {
+  return { type: SET_MY_PROFILE_INFO, data };
 };
 
 export const getStatusTC = (userId) => {
@@ -74,8 +81,15 @@ export const savePhotoTC = (file) => {
 
     if (response.resultCode === 0) {
       dispatch(savePhotoSuccessAC(response.data.photos.large));
-
     }
+  };
+};
+
+export const getMyProfileTC = (myId) => {
+  return (dispatch) => {
+    currentUserApi.getMyProfile(myId).then((data) => {
+      dispatch(setMyProfileInfoAC(data));
+    });
   };
 };
 

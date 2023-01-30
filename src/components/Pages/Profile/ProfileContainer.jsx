@@ -8,6 +8,7 @@ import {
   getStatusTC,
   updateStatusTC,
   savePhotoTC,
+  getMyProfileTC,
 } from "./../../../Redux/profileReducer";
 import { currentUserApi } from "./../../../api/api";
 class ProfileContainer extends React.Component {
@@ -17,6 +18,7 @@ class ProfileContainer extends React.Component {
         this.props.editStatusAC(response);
       }
     });
+    this.props.getMyProfileTC(24761)
   }
   render() {
     return <Profile {...this.props} />;
@@ -27,6 +29,8 @@ let mapStateToProps = (state) => ({
   authorizedUserId: state.auth.id,
   isAuth: state.auth.isAuth,
   photo: state.profilePage.photo,
+  profile: state.profilePage.myProfileInfo,
+
 });
 
 export default compose(
@@ -35,6 +39,7 @@ export default compose(
     getStatusTC,
     updateStatusTC,
     savePhotoTC,
+    getMyProfileTC
   }),
   withAuthRedirect
 )(ProfileContainer);
