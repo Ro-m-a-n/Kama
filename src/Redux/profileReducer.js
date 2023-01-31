@@ -4,6 +4,7 @@ const ADD_POST = "ADD-POST";
 const EDIT_STATUS = "EDIT_STATUS";
 const SAVE_PHOTO = "SAVE_PHOTO";
 const SET_MY_PROFILE_INFO = "SET_MY_PROFILE_INFO";
+const SET_PROFILE_DESCRIPTION = "SET_PROFILE_DESCRIPTION";
 
 let initialState = {
   postsData: [
@@ -12,7 +13,12 @@ let initialState = {
   ],
   status: "Status",
   photo: defaultPhoto,
-  myProfileInfo: { contacts:"Hi"  },
+  myProfileInfo: { 
+    fullName: '1',
+    lookingForAJob: true,
+    lookingForAJobDescription: '1',
+    aboutMe: "1",
+    contacts: "Hi" },
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -36,6 +42,7 @@ const profileReducer = (state = initialState, action) => {
     }
     case SET_MY_PROFILE_INFO:
       return { ...state, myProfileInfo: action.data };
+
     default:
       return state;
   }
@@ -52,6 +59,9 @@ export const editStatusAC = (text) => {
 };
 export const setMyProfileInfoAC = (data) => {
   return { type: SET_MY_PROFILE_INFO, data };
+};
+export const setProfileDescriptionAC = (data) => {
+  return { type: SET_PROFILE_DESCRIPTION, data };
 };
 
 export const getStatusTC = (userId) => {
@@ -90,6 +100,13 @@ export const getMyProfileTC = (myId) => {
     currentUserApi.getMyProfile(myId).then((data) => {
       dispatch(setMyProfileInfoAC(data));
     });
+  };
+};
+
+export const saveProfileDescriptionTC = (profile) => {
+  return (dispatch) => {
+    currentUserApi.saveProfile(profile).then(
+     );
   };
 };
 

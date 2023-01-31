@@ -9,6 +9,7 @@ import {
   updateStatusTC,
   savePhotoTC,
   getMyProfileTC,
+  saveProfileDescriptionTC,
 } from "./../../../Redux/profileReducer";
 import { currentUserApi } from "./../../../api/api";
 class ProfileContainer extends React.Component {
@@ -30,6 +31,7 @@ let mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   photo: state.profilePage.photo,
   profile: state.profilePage.myProfileInfo,
+ 
 
 });
 
@@ -39,7 +41,8 @@ export default compose(
     getStatusTC,
     updateStatusTC,
     savePhotoTC,
-    getMyProfileTC
+    getMyProfileTC,
+    saveProfileDescriptionTC,
   }),
   withAuthRedirect
 )(ProfileContainer);

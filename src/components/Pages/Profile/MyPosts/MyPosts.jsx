@@ -8,7 +8,7 @@ import { reduxForm } from "redux-form";
 const MyPosts = (props) => {
  
   let postsElements = props.postsData.map((el) => (
-    <Post text={el.text} likes={el.likes} id={el.id} />
+    <Post key={el.id} text={el.text} likes={el.likes} id={el.id} />
   ));
   const onSubmit = (formData) => {
     props.addText(formData.message);

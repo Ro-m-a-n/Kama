@@ -1,12 +1,22 @@
 import Preloader from "../../../Global/Preloader/Preloader";
+import React, { useState } from "react";
 import "./ProfileInfo.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileDescriptionReduxForm from "./ProfileDescription/ProfileDescriptionEditMode";
 
 const ProfileInfo = (props) => {
+  let [editMode, setEditMode] = useState(false);
+  const switchToEditMode = () => {
+    return setEditMode(true);
+  };
+
   const onMainPhotoSelected = (e) => {
     if (e.target) {
       props.savePhotoTC(e.target.files[0]);
     }
+  };
+  const onSubmit = (formData) => {
+    props.saveProfileDescriptionTC(formData);
   };
   return (
     <>
@@ -16,21 +26,41 @@ const ProfileInfo = (props) => {
       <div>
         <input type={"file"} onChange={onMainPhotoSelected} />
       </div>
+
+      {editMode ? (
+        <ProfileDescriptionReduxForm onSubmit={onSubmit} />
+      ) : (
+        <ProfileDescription {...props} switchToEditMode={switchToEditMode} />
+      )}
+
+      <ProfileStatus
+        status={props.status}
+        editStatusAC={props.editStatusAC}
+        updateStatusTC={props.updateStatusTC}
+      />
+    </>
+  );
+};
+
+const ProfileDescription = (props) => {
+    return (
+    <>
       <div>
         <div>
-          <b>Full name :</b> {props.fullName}
+          {<button onClick={props.switchToEditMode}> Edit profile</button>}
         </div>
         <div>
-          <b>Looking for a job :</b> {props.lookingForAJob ? "yes" : "no"}
+          <b>Full name :</b> {props.profile.fullName}
+        </div>
+        <div>
+          <b>Looking for a job :</b> {props.profile.lookingForAJob ? "yes" : "no"}
         </div>
         {props.lookingForAJob && (
           <div>
-            <b>My professional skills:</b> {props.lookingForAJobDescription}
+            <b>My professional skills:</b> {props.profile.lookingForAJobDescription}
           </div>
         )}
-        <div>
-          <b>About me :</b> {props.aboutMe}
-        </div>
+       
         <div>
           <b>Contacts :</b>
 
@@ -45,12 +75,6 @@ const ProfileInfo = (props) => {
           })}
         </div>
       </div>
-
-      <ProfileStatus
-        status={props.status}
-        editStatusAC={props.editStatusAC}
-        updateStatusTC={props.updateStatusTC}
-      />
     </>
   );
 };
