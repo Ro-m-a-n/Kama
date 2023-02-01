@@ -14,6 +14,11 @@ const ProfileDescriptionEditMode = (props) => {
         <button>save</button>
       </div>
       <div>
+        {props.error && (
+          <div> {props.error}</div>
+        )}
+      </div>
+      <div>
         <Field
           component={Input}
           name={"fullName"}
@@ -22,11 +27,7 @@ const ProfileDescriptionEditMode = (props) => {
         />
       </div>
       <div>
-        <Field
-          component={"input"}
-          name={"lookingForAJob"}
-          type={"checkbox"}
-        />
+        <Field component={"input"} name={"lookingForAJob"} type={"checkbox"} />
         Looking for a job?
       </div>
 
@@ -46,20 +47,24 @@ const ProfileDescriptionEditMode = (props) => {
           validate={[Required, maxLength]}
         />
       </div>
-      
-      {/* <div>
-        <b>Contacts :</b>
 
-        {Object.keys(props.profile.contacts).map((key) => {
+      <div>
+        <b>Contacts :</b>
+        {Object.keys(props.initialValues.contacts).map((key) => {
           return (
-            <Contact
+            <div>
+              <b> {key}: </b>
+              <Field
               key={key}
-              contactTitle={key}
-              contactValue={props.profile.contacts[key]}
-            />
+                component={Input}
+                name={"contacts." + key}
+                placeholder={key}
+                validate={[maxLength]}
+              />
+            </div>
           );
         })}
-      </div> */}
+      </div>
     </form>
   );
 };
