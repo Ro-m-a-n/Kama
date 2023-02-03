@@ -1,4 +1,4 @@
-import { authAPI } from "../api/api";
+import { authAPI, securityApi } from "../api/api";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = "SET_USER_DATA";
@@ -8,6 +8,7 @@ let initialState = {
   email: null,
   login: null,
   isAuth: false,
+  captchaUrl: null, // if null then captcha is not required
 };
 
 let authReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ let authReducer = (state = initialState, action) => {
         ...state,
         ...action.data,
       };
+    case "setCaptchaUrl":
+      return {
+        ...state,
+        captchaUrl: action.url,
+      };
 
     default:
       return state;
@@ -25,6 +31,10 @@ let authReducer = (state = initialState, action) => {
 export const setAuthUserData = (id, email, login, isAuth) => ({
   type: SET_USER_DATA,
   data: { id, email, login, isAuth },
+});
+export const setCaptchaUrl = (url) => ({
+  type: "setCaptchaUrl",
+  url,
 });
 
 export const isLoginedTC = () => (dispatch) => {
@@ -36,12 +46,15 @@ export const isLoginedTC = () => (dispatch) => {
   });
 };
 
-export const loginTC = (email, password, rememberMe) => {
+export const loginTC = (email, password, rememberMe, captcha) => {
   return (dispatch) => {
-    authAPI.login(email, password, rememberMe).then((data) => {
+    authAPI.login(email, password, rememberMe, captcha).then((data) => {
       if (data.resultCode === 0) {
         dispatch(isLoginedTC());
       } else {
+        if (data.resultCode === 10) {
+          dispatch(getCaptchaTC());
+        }
         let message =
           data.messages.length > 0 ? data.messages[0] : "some error";
         dispatch(stopSubmit("login", { _error: message }));
@@ -56,6 +69,13 @@ export const logoutTC = () => {
       if (data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
       }
+    });
+  };
+};
+export const getCaptchaTC = () => {
+  return (dispatch) => {
+    securityApi.getCaptchaUrl().then((response) => {
+      dispatch(setCaptchaUrl(response.url));
     });
   };
 };

@@ -16,8 +16,9 @@ const ProfileInfo = (props) => {
     }
   };
   const onSubmit = (formData) => {
-    props.saveProfileDescriptionTC(formData);
-    // setEditMode(false)
+    props.saveProfileDescriptionTC(formData).then(() => {
+      setEditMode(false);
+    });
   };
   return (
     <>
@@ -29,7 +30,10 @@ const ProfileInfo = (props) => {
       </div>
 
       {editMode ? (
-        <ProfileDescriptionReduxForm onSubmit={onSubmit} initialValues={props.profile} />
+        <ProfileDescriptionReduxForm
+          onSubmit={onSubmit}
+          initialValues={props.profile}
+        />
       ) : (
         <ProfileDescription {...props} switchToEditMode={switchToEditMode} />
       )}
@@ -44,7 +48,7 @@ const ProfileInfo = (props) => {
 };
 
 const ProfileDescription = (props) => {
-    return (
+  return (
     <>
       <div>
         <div>
@@ -54,14 +58,16 @@ const ProfileDescription = (props) => {
           <b>Full name :</b> {props.profile.fullName}
         </div>
         <div>
-          <b>Looking for a job :</b> {props.profile.lookingForAJob ? "yes" : "no"}
+          <b>Looking for a job :</b>{" "}
+          {props.profile.lookingForAJob ? "yes" : "no"}
         </div>
         {props.profile.lookingForAJob && (
           <div>
-            <b>My professional skills:</b> {props.profile.lookingForAJobDescription}
+            <b>My professional skills:</b>{" "}
+            {props.profile.lookingForAJobDescription}
           </div>
         )}
-       
+
         <div>
           <b>Contacts :</b>
 

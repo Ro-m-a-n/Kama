@@ -1,4 +1,4 @@
-import "./Login.css"
+import "./Login.css";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import {
@@ -37,7 +37,17 @@ const LoginForm = (props) => {
         remember me
       </div>
       {props.error && <div className="form_summary__error"> {props.error}</div>}
-      
+      {props.captchaUrl && <img src={props.captchaUrl}></img>}
+      {props.captchaUrl && (
+        <div>
+          <Field
+            component={Input}
+            name={"captcha"}
+            placeholder="enter captcha"
+            validate={[Required]}
+          />
+        </div>
+      )}
       <div>
         <button> login</button>
       </div>
@@ -51,7 +61,7 @@ const LoginReduxForm = reduxForm({
 
 let LoginPage = (props) => {
   const onSubmit = (formData) => {
-    props.loginTC(formData.email, formData.password, formData.rememberMe);
+    props.loginTC(formData.email, formData.password, formData.rememberMe, formData.captcha);
   };
 
   if (props.isAuth) {
@@ -60,11 +70,12 @@ let LoginPage = (props) => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>
   );
 };
 const mstp = (state) => ({
   isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl,
 });
 export default connect(mstp, { loginTC })(LoginPage);

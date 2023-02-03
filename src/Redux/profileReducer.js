@@ -113,7 +113,7 @@ export const saveProfileDescriptionTC = (profile) => {
     }
     else {
      dispatch(stopSubmit("Profile_description", { _error: response.messages[0] }));
-     
+     return Promise.reject(response.messages[0])
     }
   };
 };
