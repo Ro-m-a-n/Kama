@@ -1,6 +1,6 @@
 import { currentUserApi } from "../api/api";
 import defaultPhoto from "../assets/images/socialNet/instagram.png";
-import { stopSubmit } from 'redux-form';
+import { stopSubmit } from "redux-form";
 const ADD_POST = "ADD-POST";
 const EDIT_STATUS = "EDIT_STATUS";
 const SAVE_PHOTO = "SAVE_PHOTO";
@@ -14,12 +14,13 @@ let initialState = {
   ],
   status: "Status",
   photo: defaultPhoto,
-  myProfileInfo: { 
-    fullName: '',
+  myProfileInfo: {
+    fullName: "",
     lookingForAJob: true,
-    lookingForAJobDescription: '',
+    lookingForAJobDescription: "",
     aboutMe: "",
-    contacts: "1" },
+    contacts: "1",
+  },
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -74,11 +75,13 @@ export const getStatusTC = (userId) => {
 
 export const updateStatusTC = (status) => {
   return (dispatch) => {
-    currentUserApi.updateStatus(status).then((response) => {
-      if (response.resultCode === 0) {
-        dispatch(editStatusAC(status));
-      }
-    });
+    try {
+      currentUserApi.updateStatus(status).then((response) => {
+        if (response.resultCode === 0) {
+          dispatch(editStatusAC(status));
+        }
+      });
+    } catch (error) { }// dispatch some
   };
 };
 
@@ -106,14 +109,15 @@ export const getMyProfileTC = (myId) => {
 
 export const saveProfileDescriptionTC = (profile) => {
   return async (dispatch, getState) => {
-    const userId = getState().auth.id
-    let response=  await currentUserApi.saveProfile(profile)
-   if (response.resultCode === 0){
-     dispatch(getMyProfileTC(userId))
-    }
-    else {
-     dispatch(stopSubmit("Profile_description", { _error: response.messages[0] }));
-     return Promise.reject(response.messages[0])
+    const userId = getState().auth.id;
+    let response = await currentUserApi.saveProfile(profile);
+    if (response.resultCode === 0) {
+      dispatch(getMyProfileTC(userId));
+    } else {
+      dispatch(
+        stopSubmit("Profile_description", { _error: response.messages[0] })
+      );
+      return Promise.reject(response.messages[0]);
     }
   };
 };

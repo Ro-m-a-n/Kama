@@ -19,7 +19,7 @@ class ProfileContainer extends React.Component {
         this.props.editStatusAC(response);
       }
     });
-    this.props.getMyProfileTC(24761)
+    this.props.getMyProfileTC(this.props.userId)
   }
   render() {
     return <Profile {...this.props} />;
@@ -31,6 +31,7 @@ let mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   photo: state.profilePage.photo,
   profile: state.profilePage.myProfileInfo,
+  userId: state.auth.id
  
 
 });
