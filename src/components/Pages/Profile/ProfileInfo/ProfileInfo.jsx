@@ -1,8 +1,9 @@
-import Preloader from "../../../Global/Preloader/Preloader";
+
 import React, { useState } from "react";
 import "./ProfileInfo.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileDescriptionReduxForm from "./ProfileDescription/ProfileDescriptionEditMode";
+import ProfileDescription from "./ProfileDescription/ProfileDescription";
 
 const ProfileInfo = (props) => {
   let [editMode, setEditMode] = useState(false);
@@ -47,51 +48,5 @@ const ProfileInfo = (props) => {
   );
 };
 
-const ProfileDescription = (props) => {
-  return (
-    <>
-      <div>
-        <div>
-          {<button onClick={props.switchToEditMode}> Edit profile</button>}
-        </div>
-        <div>
-          <b>Full name :</b> {props.profile.fullName}
-        </div>
-        <div>
-          <b>Looking for a job :</b>{" "}
-          {props.profile.lookingForAJob ? "yes" : "no"}
-        </div>
-        {props.profile.lookingForAJob && (
-          <div>
-            <b>My professional skills:</b>{" "}
-            {props.profile.lookingForAJobDescription}
-          </div>
-        )}
 
-        <div>
-          <b>Contacts :</b>
-
-          {Object.keys(props.profile.contacts).map((key) => {
-            return (
-              <Contact
-                key={key}
-                contactTitle={key}
-                contactValue={props.profile.contacts[key]}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </>
-  );
-};
-
-const Contact = ({ contactTitle, contactValue }) => {
-  return (
-    <div>
-      {" "}
-      <b>{contactTitle}:</b> {contactValue}
-    </div>
-  );
-};
 export default ProfileInfo;
