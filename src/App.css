@@ -1,10 +1,10 @@
 .app-wrapper {
   display: grid;
   grid-template-areas:
-    "h h"
+    "h c"
     "n c";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 300px 1fr;
   grid-gap: 1px;
 }
 .Avatar {

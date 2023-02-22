@@ -131,4 +131,3 @@ export const getCurrentUserTC = (router) => {
 };
 
 export default usersReducer;
-

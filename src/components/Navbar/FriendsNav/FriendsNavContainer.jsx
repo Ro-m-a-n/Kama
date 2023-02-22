@@ -3,7 +3,7 @@ import FriendsNav from './FriendsNav';
 
 let mapStateToProps = (state) => {
   return {
-    friendsNavData: state.sideBar.friendsNavData,
+    users: state.usersPage.users,
   };
 };
 let mapDispatchToProps = (dispatch) => {
