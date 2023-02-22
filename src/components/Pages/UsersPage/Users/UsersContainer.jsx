@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
 import {
@@ -11,44 +11,41 @@ import {
 import Preloader from "../../../Global/Preloader/Preloader";
 import { withAuthRedirect } from "./../../../../hok/withAuthRedirect";
 import compose from "lodash/fp/compose";
-import { getCurrentPage, getIsFetching, getPageSize, getSendedRequest, getUsers } from "../../../../Redux/selectors";
-import { getUsersQuantity } from './../../../../Redux/selectors';
+import {
+  getCurrentPage,
+  getIsFetching,
+  getPageSize,
+  getSendedRequest,
+  getUsers,
+} from "../../../../Redux/selectors";
+import { getUsersQuantity } from "./../../../../Redux/selectors";
 
-class UsersAPI extends React.Component {
-  componentDidMount() {
-    this.props.getUsersTC(this.props.currentPage, this.props.pageSize);
-  }
+const UsersAPI = (props) => {
+  useEffect(() => {
+    props.getUsersTC(props.currentPage, props.pageSize);
+  }, []);
 
-  onPageChanged = (p) => {
-    this.props.getUsersTC(p, this.props.pageSize);
+  const onPageChanged = (p) => {
+    props.getUsersTC(p, props.pageSize);
   };
 
-  render() {
-    return (
-      <>
-        {this.props.isFetching ? <Preloader /> : null}
+  return (
+    <>
+      {props.isFetching ? <Preloader /> : null}
 
-        <Users
-          usersQuantity={this.props.usersQuantity}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
-          onPageChanged={this.onPageChanged.bind(this)}
-          users={this.props.users}
-          followTC={this.props.followTC}
-          unfollowTC={this.props.unfollowTC}
-          sendedRequest={this.props.sendedRequest}
-        />
-      </>
-    );
-  }
-}
-
-// users: state.usersPage.users,
-// pageSize: state.usersPage.pageSize,
-// usersQuantity: state.usersPage.usersQuantity,
-// currentPage: state.usersPage.currentPage,
-// isFetching: state.usersPage.isFetching,
-// sendedRequest: state.usersPage.sendedRequest,
+      <Users
+        usersQuantity={props.usersQuantity}
+        pageSize={props.pageSize}
+        currentPage={props.currentPage}
+        onPageChanged={onPageChanged}
+        users={props.users}
+        followTC={props.followTC}
+        unfollowTC={props.unfollowTC}
+        sendedRequest={props.sendedRequest}
+      />
+    </>
+  );
+};
 
 let mapStateToProps = (state) => ({
   users: getUsers(state),
