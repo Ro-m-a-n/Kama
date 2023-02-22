@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import "./components/Pages/Pages.css";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -21,29 +21,30 @@ const DialogsContainer = React.lazy(() =>
   import("./components/Pages/Dialogs/DialogsContainer")
 );
 
-class App extends React.Component {
-  catchAllUnhandledErrors = (promiseRejectionEvent)=>{
-    alert('some error occured')
+const App = (props) => {
+  const catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert("some error occured");
+  };
+  useEffect(() => {
+    props.initializeAppTC();
+    window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
+    return () => {
+      window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
+    };
+  }, []);
+
+  if (!props.initialized) {
+    return <Preloader />;
   }
-  componentDidMount() {
-    this.props.initializeAppTC();
-    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
-  }
-  componentWillUnmount(){
-    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
-  }
-  render() {
-    if (!this.props.initialized) {
-      return <Preloader></Preloader>;
-    }
-    return (
-      <div className="app-wrapper">
-        <HeaderContainer />
-        <Navbar />
-        <div className="app-wrapper__pages">
-        <Suspense fallback={<div><Preloader /></div>}>
+
+  return (
+    <div className="app-wrapper">
+      <HeaderContainer />
+      <Navbar />
+      <div className="app-wrapper__pages">
+        <Suspense fallback={<Preloader />}>
           <Routes>
-          <Route path="/" element={<Navigate to="/profile" />} />
+            <Route path="/" element={<Navigate to="/profile" />} />
             <Route path="/profile" element={<ProfileContainer />} />
             <Route path="/messages/*" element={<DialogsContainer />} />
             <Route path="/news" element={<News />} />
@@ -55,12 +56,12 @@ class App extends React.Component {
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<div>404 Not found</div>} />
           </Routes>
-          </Suspense>
-        </div>
+        </Suspense>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
 const mstp = (state) => ({
   initialized: state.app.initialized,
 });

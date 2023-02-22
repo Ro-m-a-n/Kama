@@ -26,14 +26,15 @@ const ProfileDescription = (props) => {
         <div>
           <span>
             <b>Contacts :</b>{" "}
-            {moreContacts ? <button onClick={() => setMoreContacts(!moreContacts)}>
-              {" "}
-              hide contacts{" "}
-            </button> :  <button onClick={() => setMoreContacts(!moreContacts)}>
-              {" "}
-              view more...{" "}
-            </button>}
-           
+            {moreContacts ? (
+              <button onClick={() => setMoreContacts(!moreContacts)}>
+                {"hide contacts"}
+              </button>
+            ) : (
+              <button onClick={() => setMoreContacts(!moreContacts)}>
+                {"view more..."}
+              </button>
+            )}
           </span>
           {moreContacts &&
             Object.keys(props.profile.contacts).map((key) => {
