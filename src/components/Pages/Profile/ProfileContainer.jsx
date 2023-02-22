@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -12,28 +12,26 @@ import {
   saveProfileDescriptionTC,
 } from "./../../../Redux/profileReducer";
 import { currentUserApi } from "./../../../api/api";
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    currentUserApi.getStatus(this.props.authorizedUserId).then((response) => {
+const ProfileContainer = (props) => {
+  useEffect(() => {
+    currentUserApi.getStatus(props.authorizedUserId).then((response) => {
       if (response) {
-        this.props.editStatusAC(response);
+        props.editStatusAC(response);
       }
     });
-    this.props.getMyProfileTC(this.props.userId)
-  }
-  render() {
-    return <Profile {...this.props} />;
-  }
-}
+    props.getMyProfileTC(props.userId);
+  }, []);
+
+  return <Profile {...props} />;
+};
+
 let mapStateToProps = (state) => ({
   status: state.profilePage.status,
   authorizedUserId: state.auth.id,
   isAuth: state.auth.isAuth,
   photo: state.profilePage.photo,
   profile: state.profilePage.myProfileInfo,
-  userId: state.auth.id
- 
-
+  userId: state.auth.id,
 });
 
 export default compose(
