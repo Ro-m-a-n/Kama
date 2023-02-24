@@ -32,9 +32,14 @@ const LoginForm = (props) => {
           validate={[Required, maxLength]}
         />
       </div>
-      <div>
-        <Field component={"input"} name={"rememberMe"} type={"checkbox"} />{" "}
-        remember me
+      <div className="rememberMe">
+        <Field
+          component={"input"}
+          name={"rememberMe"}
+          type={"checkbox"}
+          label="Check me!"
+        />
+        <label>Remember me</label>
       </div>
       {props.error && <div className="form_summary__error"> {props.error}</div>}
       {props.captchaUrl && <img src={props.captchaUrl}></img>}
@@ -48,7 +53,7 @@ const LoginForm = (props) => {
           />
         </div>
       )}
-      <div>
+      <div className="loginButton">
         <button> login</button>
       </div>
     </form>
@@ -61,14 +66,19 @@ const LoginReduxForm = reduxForm({
 
 let LoginPage = (props) => {
   const onSubmit = (formData) => {
-    props.loginTC(formData.email, formData.password, formData.rememberMe, formData.captcha);
+    props.loginTC(
+      formData.email,
+      formData.password,
+      formData.rememberMe,
+      formData.captcha
+    );
   };
 
   if (props.isAuth) {
     return <Navigate to="/profile" />;
   }
   return (
-    <div>
+    <div className="wrapper">
       <h1>Login</h1>
       <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>

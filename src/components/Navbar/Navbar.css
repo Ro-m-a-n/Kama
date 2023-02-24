@@ -1,18 +1,15 @@
-.nav{
-  
+.nav {
   grid-area: n;
   background-color: rgb(39, 38, 37);
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
   padding: 20px;
-
 }
 .nav a {
-  color:white;
+  color: white;
   text-decoration: none;
 }
-.nav a.active{
-  color:rgb(177, 177, 175)
+.nav a.active {
+  color: rgb(177, 177, 175);
 }

@@ -1,20 +1,18 @@
-.header{
+.header {
   grid-area: h;
   width: 100%;
   background-color: antiquewhite;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-
-  }
-  .header .Login{
-    float: right;
-    padding: 18px;
-  }
-  .menu_icon {
-cursor: pointer;
-margin-left: 10%;
-height: 35px;
-width: 35px;
-
+}
+.header .Login {
+  float: right;
+  padding: 18px;
+}
+.menu_icon {
+  cursor: pointer;
+  margin-left: 10%;
+  height: 35px;
+  width: 35px;
 }
