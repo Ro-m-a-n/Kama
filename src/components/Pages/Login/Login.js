@@ -78,7 +78,7 @@ let LoginPage = (props) => {
     return <Navigate to="/profile" />;
   }
   return (
-    <div className="wrapper">
+    <div className="wrapperLogin">
       <h1>Login</h1>
       <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>

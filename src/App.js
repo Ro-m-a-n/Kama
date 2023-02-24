@@ -38,27 +38,33 @@ const App = (props) => {
   }
 
   return (
-    <div className="app-wrapper">
-      <HeaderContainer />
-      <Navbar />
-      <div className="app-wrapper__pages">
-        <Suspense fallback={<Preloader />}>
-          <Routes>
-            <Route path="/" element={<Navigate to="/profile" />} />
-            <Route path="/profile" element={<ProfileContainer />} />
-            <Route path="/messages/*" element={<DialogsContainer />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/friends" element={<Friends />} />
-            <Route path="/users/:userId" element={<CurrentUserContainer />} />
-            <Route path="/users" element={<UsersContainer />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<div>404 Not found</div>} />
-          </Routes>
-        </Suspense>
+    <>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+
+      <div className="app-wrapper">
+        <HeaderContainer />
+        <Navbar />
+        <div className="app-wrapper__pages">
+          <Suspense fallback={<Preloader />}>
+            <Routes>
+              <Route path="/" element={<Navigate to="/profile" />} />
+              <Route path="/profile" element={<ProfileContainer />} />
+              <Route path="/messages/*" element={<DialogsContainer />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/music" element={<Music />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/friends" element={<Friends />} />
+              <Route path="/users/:userId" element={<CurrentUserContainer />} />
+              <Route path="/users" element={<UsersContainer />} />
+
+              <Route path="*" element={<div>404 Not found</div>} />
+            </Routes>
+          </Suspense>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
