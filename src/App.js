@@ -36,14 +36,13 @@ const App = (props) => {
   if (!props.initialized) {
     return <Preloader />;
   }
-
+ 
+  if(!props.isAuth){
+    return <LoginPage/>
+  }
   return (
     <>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-
-      <div className="app-wrapper">
+        <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper__pages">
@@ -58,7 +57,7 @@ const App = (props) => {
               <Route path="/friends" element={<Friends />} />
               <Route path="/users/:userId" element={<CurrentUserContainer />} />
               <Route path="/users" element={<UsersContainer />} />
-
+              <Route path="/login" element={<LoginPage />} />
               <Route path="*" element={<div>404 Not found</div>} />
             </Routes>
           </Suspense>
@@ -70,5 +69,6 @@ const App = (props) => {
 
 const mstp = (state) => ({
   initialized: state.app.initialized,
+  isAuth: state.auth.isAuth
 });
 export default compose(connect(mstp, { initializeAppTC }))(App);

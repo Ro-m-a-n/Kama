@@ -7,11 +7,8 @@ import {
 } from "./../../../utilites/validators/Validators";
 import { Input } from "../../Global/FormsControl/FormsControl";
 import { loginTC } from "./../../../Redux/authReducer";
-
 import { Navigate } from "react-router-dom";
-
 let maxLength = maxLengthTC(30);
-
 const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
@@ -79,8 +76,10 @@ let LoginPage = (props) => {
   }
   return (
     <div className="wrapperLogin">
-      <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
+      <div className="nonSharpBackground">
+        <h1>Login</h1>
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
+      </div>
     </div>
   );
 };

@@ -1,27 +1,37 @@
-
 .wrapperLogin.form_summary__error {
   padding: 5px;
   color: rgb(255, 0, 0);
 }
+
 .wrapperLogin {
+  background-image: url("../../../assets/images/back/shutterstock_437713483-scaled.jpg");
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nonSharpBackground {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 340px;
+  height: 350px;
+  background-color: #fdfdfdd3;
+  border-radius: 8%;
 }
 .loginButton {
   display: flex;
   justify-content: center;
 }
-.wrapperLogin.rememberMe {
+.rememberMe {
   height: 40px;
   display: flex;
   align-items: center;
 }
 .wrapperLogin label {
   padding-left: 10px;
-  padding-bottom: 13px;
+  padding-bottom: 15px;
 }
 .wrapperLogin input[type="checkbox"] {
   appearance: none; /* hide default checkbox appearance */
@@ -74,28 +84,27 @@
 }
 /* styles for button */
 .wrapperLogin button {
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    color: #000000;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  /* styles for button when hovered */
-  .wrapperLogin button:hover {
-    background-color: #0074D9;
-    border-color: #0074D9;
-    color: #fff;
-  }
-  
-  /* styles for button when disabled */
-  .wrapperLogin button:disabled {
-    background-color: #ccc;
-    border-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-  }
-  
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* styles for button when hovered */
+.wrapperLogin button:hover {
+  background-color: #0074d9;
+  border-color: #0074d9;
+  color: #fff;
+}
+
+/* styles for button when disabled */
+.wrapperLogin button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
