@@ -9,6 +9,7 @@ import { Input } from "../../Global/FormsControl/FormsControl";
 import { loginTC } from "./../../../Redux/authReducer";
 import { Navigate } from "react-router-dom";
 let maxLength = maxLengthTC(30);
+
 const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>

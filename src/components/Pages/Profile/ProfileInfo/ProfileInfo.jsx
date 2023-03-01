@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./ProfileInfo.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
@@ -22,13 +21,27 @@ const ProfileInfo = (props) => {
     });
   };
   return (
-    <>
-      <div>
-        <img src={props.photo} className="Users__avatar" />
+    <div className="profileInfoWrapper">
+      <div className="Users__avatar">
+        <img src={props.photo} />
+
+        <div className="uploadFile_wrap">
+          <label for="file-input" className="upload_avatar__label">
+            Upload File
+          </label>
+          <input
+            type={"file"}
+            id="file-input"
+            className="upload_avatar"
+            onChange={onMainPhotoSelected}
+          />
+        </div>
       </div>
-      <div>
-        <input type={"file"} onChange={onMainPhotoSelected} />
-      </div>
+      <ProfileStatus
+        status={props.status}
+        editStatusAC={props.editStatusAC}
+        updateStatusTC={props.updateStatusTC}
+      />
 
       {editMode ? (
         <ProfileDescriptionReduxForm
@@ -39,14 +52,9 @@ const ProfileInfo = (props) => {
         <ProfileDescription {...props} switchToEditMode={switchToEditMode} />
       )}
 
-      <ProfileStatus
-        status={props.status}
-        editStatusAC={props.editStatusAC}
-        updateStatusTC={props.updateStatusTC}
-      />
-    </>
+      
+    </div>
   );
 };
-
 
 export default ProfileInfo;

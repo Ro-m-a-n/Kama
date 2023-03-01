@@ -75,7 +75,7 @@
 }
 
 .wrapperLogin input:focus {
-  border-color: #0074d9;
+  border-color: #003809;
   outline: none;
 }
 
@@ -96,8 +96,8 @@
 
 /* styles for button when hovered */
 .wrapperLogin button:hover {
-  background-color: #0074d9;
-  border-color: #0074d9;
+  background-color:#003809;
+  border-color: #003809;
   color: #fff;
 }
 

@@ -9,8 +9,10 @@ const SET_PROFILE_DESCRIPTION = "SET_PROFILE_DESCRIPTION";
 
 let initialState = {
   postsData: [
-    { id: 1, text: "True way of Samurai", likes: 5 },
-    { id: 2, text: "I finaly understood props", likes: 100 },
+    { id: 1, text: "True way of Samurai", likes: 65 },
+    { id: 2, text: "I finaly understood props", likes: 25 },
+    { id: 3, text: "if the weather is good, i go to sleep", likes: 12 },
+    { id: 4, text: "lorem ipsum smth ", likes: 14 },
   ],
   status: "Status",
   photo: defaultPhoto,

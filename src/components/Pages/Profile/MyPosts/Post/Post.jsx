@@ -1,17 +1,14 @@
 import "./Post.css";
+import {HiOutlineHeart} from 'react-icons/hi'
 const Post = (props) => {
   return (
-    <div className="Post">
-      <div>
-        <img
-          alt=""
-          src="https://yt3.ggpht.com/ytc/AKedOLS1AZhEVoT69mDznUiqA5tTkS4D47iqYSE7eYpNCg=s68-c-k-c0x00ffffff-no-rj"
-        ></img>
-      </div>
-      <div>{props.text}</div>
-      <div>
-        <span>{props.likes} Likes</span>
-      </div>
+    <div className="post">
+      <div className="post_author" > {`${props.profile.fullName}:` || "Me:"  }</div>
+      <div className="post_text">{props.text}</div>
+
+      <span className="post_likes">
+        <div>{props.likes} <HiOutlineHeart className="post_like__icon"/> </div>
+      </span>
     </div>
   );
 };

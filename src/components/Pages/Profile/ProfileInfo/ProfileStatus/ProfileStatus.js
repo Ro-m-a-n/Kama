@@ -16,11 +16,11 @@ const ProfileStatus = (props) => {
     setStatus(e.target.value);
   };
   return (
-    <div>
+    <div className="profile_status">
       {!editMode && (
         <div>
           <b>Status : </b>
-          <span onDoubleClick={activateEditMode}>{props.status || ":)"}</span>
+          <span className="profile_status__text" onClick={activateEditMode}>{props.status || ":)"}</span>
         </div>
       )}
       {editMode && (

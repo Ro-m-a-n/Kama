@@ -1,6 +1,67 @@
-.MyPosts {
-  margin-top: 10px;
+.myPostWrapper {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.AddPost{
-    padding: 10px;
+.myPostWrapper .MyPosts {
+}
+.AddPost {
+}
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  width: 50vh;
+  border: 3px rgba(22, 68, 3, 0.404) solid;
+  background-color: rgba(255, 255, 255, 0.904);
+  border-radius: 15px;
+}
+.post_likes {
+  margin: 5px 5px 0 5px;
+  background-color: rgba(20, 92, 17, 0.144);
+  border-radius: 15px;
+}
+.post_likes div {
+  margin-left: 10px;
+}
+.post_author {
+  font-weight: 700;
+}
+.post_like__icon {
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+  outline: none;
+}
+.post_like__icon:hover {
+  color: rgb(255, 0, 0);
+  transform: scale(1.2);
+}
+.addText__wrap {
+  width: 53vh;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.addText__wrap button {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 21px 10px;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  bottom: 2px;
+}
+.addText__wrap button:hover {
+  background-color:#003809;
+  border-color: #003809;
+  color: #fff;
 }

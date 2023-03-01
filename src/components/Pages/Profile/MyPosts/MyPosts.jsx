@@ -6,9 +6,15 @@ import { AddMessageForm } from "./../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
 
 const MyPosts = (props) => {
- 
   let postsElements = props.postsData.map((el) => (
-    <Post key={el.id} text={el.text} likes={el.likes} id={el.id} />
+    <Post
+      photo={props.photo}
+      key={el.id}
+      text={el.text}
+      likes={el.likes}
+      id={el.id}
+      profile={props.profile}
+    />
   ));
   const onSubmit = (formData) => {
     props.addText(formData.message);
@@ -18,34 +24,15 @@ const MyPosts = (props) => {
   })(AddMessageForm);
 
   return (
-    <div>
+    <div className="myPostWrapper">
       <div className="AddPost">
-        <h3>Add Post</h3>
+        <h3>My posts</h3>
       </div>
+
+      <div className="MyPosts">{postsElements}</div>
+
       <AddPostReduxForm onSubmit={onSubmit} />
-      <div className="MyPosts">My posts
-      {postsElements}
-      </div>
     </div>
   );
 };
 export default MyPosts;
-
-// const MyPosts = (props) => {
-
-//   let postsElements = props.postsData.map((el) => (
-//     <Post text={el.text} likes={el.likes} id={el.id} />
-//   ));
-
-//   return (
-//     <div className="AddPost">
-//       <h3>Add post</h3>
-//       <AddTextContainer/>
-//       <div className="MyPosts">
-//         My posts
-//         {postsElements}
-//       </div>
-//     </div>
-//   );
-// };
-// export default MyPosts;
