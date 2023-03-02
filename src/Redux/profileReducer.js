@@ -6,6 +6,7 @@ const EDIT_STATUS = "EDIT_STATUS";
 const SAVE_PHOTO = "SAVE_PHOTO";
 const SET_MY_PROFILE_INFO = "SET_MY_PROFILE_INFO";
 const SET_PROFILE_DESCRIPTION = "SET_PROFILE_DESCRIPTION";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
   postsData: [
@@ -20,7 +21,7 @@ let initialState = {
     fullName: "",
     lookingForAJob: true,
     lookingForAJobDescription: "",
-    aboutMe: "",
+    aboutMe: "hey you",
     contacts: "1",
   },
 };
@@ -29,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       return {
         ...state,
-        postsData: [...state.postsData, { id: 3, text: action.text, likes: 0 }],
+        postsData: [...state.postsData, { id: action.postId, text: action.text, likes: 0 }],
       };
     }
     case SAVE_PHOTO: {
@@ -44,18 +45,28 @@ const profileReducer = (state = initialState, action) => {
         status: action.text,
       };
     }
-    case SET_MY_PROFILE_INFO:
+    case SET_MY_PROFILE_INFO: {
       return { ...state, myProfileInfo: action.data };
+    }
+
+    case DELETE_POST: {
+      let newPostsData = state.postsData.filter((key) => {
+        if (key.id !== action.id) {
+          return key;
+        }
+      });
+      return { ...state, postsData: newPostsData };
+    }
 
     default:
       return state;
   }
 };
 
-export const addText = (text) => {
+export const addText = (text, postId) => {
   return {
     type: ADD_POST,
-    text,
+    text, postId
   };
 };
 export const editStatusAC = (text) => {
@@ -66,6 +77,9 @@ export const setMyProfileInfoAC = (data) => {
 };
 export const setProfileDescriptionAC = (data) => {
   return { type: SET_PROFILE_DESCRIPTION, data };
+};
+export const deletePostAC = (id) => {
+  return { type: DELETE_POST, id };
 };
 
 export const getStatusTC = (userId) => {
@@ -83,7 +97,7 @@ export const updateStatusTC = (status) => {
           dispatch(editStatusAC(status));
         }
       });
-    } catch (error) { }// dispatch some
+    } catch (error) {} // dispatch some
   };
 };
 

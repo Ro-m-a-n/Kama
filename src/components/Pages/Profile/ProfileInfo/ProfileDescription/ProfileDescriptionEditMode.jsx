@@ -13,11 +13,7 @@ const ProfileDescriptionEditMode = (props) => {
       <div>
         <button>save</button>
       </div>
-      <div>
-        {props.error && (
-          <div> {props.error}</div>
-        )}
-      </div>
+      <div>{props.error && <div> {props.error}</div>}</div>
       <div>
         <Field
           component={Input}
@@ -52,10 +48,10 @@ const ProfileDescriptionEditMode = (props) => {
         <b>Contacts :</b>
         {Object.keys(props.initialValues.contacts).map((key) => {
           return (
-            <div>
+            <div key={key}>
               <b> {key}: </b>
               <Field
-              key={key}
+                key={key}
                 component={Input}
                 name={"contacts." + key}
                 placeholder={key}

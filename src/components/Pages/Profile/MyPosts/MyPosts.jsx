@@ -4,8 +4,10 @@ import React from "react";
 
 import { AddMessageForm } from "./../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
+import { useState } from "react";
 
 const MyPosts = (props) => {
+  const [postId, setPostId]=useState(5)
   let postsElements = props.postsData.map((el) => (
     <Post
       photo={props.photo}
@@ -14,10 +16,12 @@ const MyPosts = (props) => {
       likes={el.likes}
       id={el.id}
       profile={props.profile}
+      deletePostAC={props.deletePostAC}
     />
   ));
   const onSubmit = (formData) => {
-    props.addText(formData.message);
+    setPostId(postId+1)
+    props.addText(formData.message, postId);
   };
   let AddPostReduxForm = reduxForm({
     form: "AddPostReduxForm",

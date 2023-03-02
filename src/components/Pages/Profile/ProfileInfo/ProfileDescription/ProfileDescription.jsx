@@ -7,21 +7,21 @@ const ProfileDescription = (props) => {
     <div className="profile_description">
       <CiEdit className="profile_editIcon" onClick={props.switchToEditMode} />
       <div>
-        <b>Full name :</b> {props.profile.fullName}
+        <b>Full name: </b> {props.profile.fullName}
       </div>
       <div>
-        <b>Looking for a job :</b> {props.profile.lookingForAJob ? "yes" : "no"}
+        <b>Looking for a job: </b> {props.profile.lookingForAJob ? "yes" : "no"}
       </div>
       {props.profile.lookingForAJob && (
         <div>
-          <b>My professional skills:</b>{" "}
+          <b>My professional skills: </b>{" "}
           {props.profile.lookingForAJobDescription}
         </div>
       )}
-
+      <div><b>About me: </b>{props.profile.aboutMe}</div>
       <div>
         <span className="profile_contacts__buttons">
-          <b>Contacts :</b>{" "}
+          <b>Contacts: </b>{" "}
           {moreContacts ? (
             <button onClick={() => setMoreContacts(!moreContacts)}>
               {"hide contacts"}

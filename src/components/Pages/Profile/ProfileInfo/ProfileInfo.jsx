@@ -26,7 +26,7 @@ const ProfileInfo = (props) => {
         <img src={props.photo} />
 
         <div className="uploadFile_wrap">
-          <label for="file-input" className="upload_avatar__label">
+          <label htmlFor="file-input" className="upload_avatar__label">
             Upload File
           </label>
           <input
@@ -51,8 +51,6 @@ const ProfileInfo = (props) => {
       ) : (
         <ProfileDescription {...props} switchToEditMode={switchToEditMode} />
       )}
-
-      
     </div>
   );
 };
