@@ -4,10 +4,7 @@
   flex-direction: column;
   align-items: center;
 }
-.myPostWrapper .MyPosts {
-}
-.AddPost {
-}
+
 .post {
   position: relative;
   display: flex;
@@ -40,6 +37,19 @@
   color: rgb(255, 0, 0);
   transform: scale(1.2);
 }
+
+.post_icon__liked {
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+  outline: none;
+  color: rgb(255, 0, 0);
+  fill: red;
+}
+.post_icon__liked:hover {
+  transform: scale(1.2);
+}
+
 .addText__wrap {
   width: 53vh;
 

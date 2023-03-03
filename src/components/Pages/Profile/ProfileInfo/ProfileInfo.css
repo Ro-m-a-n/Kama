@@ -4,7 +4,6 @@
 
   align-items: center;
   width: 45%;
- 
 }
 .Users__avatar {
   width: 200px;
@@ -65,12 +64,61 @@
   border-radius: 15px;
   position: relative;
 }
+.profile_description__editMode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 50vh;
+  border: 3px rgba(22, 68, 3, 0.404) solid;
+  background-color: rgba(255, 255, 255, 0.904);
+  border-radius: 15px;
+  position: relative;
+}
+.profile_description__editMode input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 40vh;
+  border: 3px rgba(22, 68, 3, 0.404) solid;
+  background-color: rgba(255, 255, 255, 0.904);
+  border-radius: 15px;
+}
+.checkbox_Profile {
+  display: flex;
+  align-items: center;
+}
+.profile_description__editMode button {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+
+  background-color: #003809;
+}
+.profile_description__editMode button:hover {
+  scale: 1.1;
+}
+.checkbox_Profile input {
+  appearance: none; /* hide default checkbox appearance */
+  border-radius: 40%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  outline: none; /* remove outline on focus */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
 .profile_status {
   display: flex;
   flex-direction: column;
   padding: 10px;
   margin-bottom: 10px;
-
   width: 50vh;
   border: 3px rgba(22, 68, 3, 0.404) solid;
   background-color: rgba(255, 255, 255, 0.904);

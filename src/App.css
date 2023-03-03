@@ -8,6 +8,13 @@
   grid-template-columns: 300px 1fr;
   grid-gap: 1px;
 }
+.app_wrapper__pages{
+  grid-area: c;
+  background-image: url("./assets/images/back/forestClipArt.jpg");
+  background-size: 1000px;
+  background-repeat:round;
+ 
+}
 .Avatar {
   height: 80px;
   width: 80px;
@@ -27,4 +34,36 @@ textarea{
 textarea:focus {
   border-color: #4fb85f9d;
   outline: none;
+}
+
+
+input[type="checkbox"] {
+  appearance: none; /* hide default checkbox appearance */
+  border-radius: 40%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  outline: none; /* remove outline on focus */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:before {
+  content: ""; /* add empty content */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+input[type="checkbox"]:checked:before {
+  background-color: #000;
+}
+input[type="checkbox"]:hover {
+  transform: scale(1.3);
 }

@@ -17,6 +17,8 @@ const MyPosts = (props) => {
       id={el.id}
       profile={props.profile}
       deletePostAC={props.deletePostAC}
+      likeThisPostAC={props.likeThisPostAC}
+      unlikeThisPostAC={props.unlikeThisPostAC}
     />
   ));
   const onSubmit = (formData) => {

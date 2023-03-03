@@ -6,15 +6,19 @@ import {
   Required,
 } from "./../../../../../utilites/validators/Validators";
 
-let maxLength = maxLengthTC(30);
+let maxLength = maxLengthTC(40);
 const ProfileDescriptionEditMode = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form
+      onSubmit={props.handleSubmit}
+      className="profile_description__editMode"
+    >
       <div>
         <button>save</button>
       </div>
       <div>{props.error && <div> {props.error}</div>}</div>
       <div>
+        <b> Name: </b>
         <Field
           component={Input}
           name={"fullName"}
@@ -22,12 +26,13 @@ const ProfileDescriptionEditMode = (props) => {
           validate={[Required, maxLength]}
         />
       </div>
-      <div>
+      <div className="checkbox_Profile">
         <Field component={"input"} name={"lookingForAJob"} type={"checkbox"} />
-        Looking for a job?
+        {"Looking for a job?"}
       </div>
 
       <div>
+        <b> My professional skills: </b>
         <Field
           component={Textarea}
           name={"lookingForAJobDescription"}
@@ -36,6 +41,7 @@ const ProfileDescriptionEditMode = (props) => {
         />
       </div>
       <div>
+        <b> About me:</b>
         <Field
           component={Textarea}
           name={"aboutMe"}

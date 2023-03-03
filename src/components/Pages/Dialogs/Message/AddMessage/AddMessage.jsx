@@ -1,10 +1,7 @@
 import "../../../../Global/AddText.css";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import {
-  Required,
-  maxLengthTC,
-} from "./../../../../../utilites/validators/Validators";
+import { maxLengthTC } from "./../../../../../utilites/validators/Validators";
 import { Textarea } from "../../../../Global/FormsControl/FormsControl";
 
 let maxLength = maxLengthTC(100);

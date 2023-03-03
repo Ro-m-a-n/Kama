@@ -45,7 +45,7 @@ const App = (props) => {
         <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
-        <div className="app-wrapper__pages">
+        <div className="app_wrapper__pages">
           <Suspense fallback={<Preloader />}>
             <Routes>
               <Route path="/" element={<Navigate to="/profile" />} />
