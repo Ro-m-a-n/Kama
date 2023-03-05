@@ -65,14 +65,15 @@
   background-color: #a2a16c;
   margin-bottom:2px ;
 }
-.nav {
-}
+
 .nav_grid__wrap a {
   color: rgb(255, 255, 255);
   text-decoration: none;
-  display: flex;
-  align-self: center;
 }
-.nav a.active {
-  color: rgb(177, 177, 175);
+.nav_grid__wrap a.active {
+  color: rgb(247, 247, 103);
+}
+.Login{
+  color: white;
+  cursor: pointer;
 }

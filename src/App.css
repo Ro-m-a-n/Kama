@@ -1,10 +1,9 @@
 .app-wrapper {
   height: 100vh;
   display: grid;
-  grid-template-areas:
-    "h c"
-    "n c";
-  grid-template-rows: 60px 1fr;
+  grid-template-areas: "n c";
+
+  
   grid-template-columns: 300px 1fr;
 }
 .app_wrapper__pages {
@@ -64,7 +63,7 @@ input[type="checkbox"]:checked:before {
 input[type="checkbox"]:hover {
   transform: scale(1.3);
 }
-.flex_center{
+.flex_center {
   display: flex;
   align-items: center;
   justify-content: center;

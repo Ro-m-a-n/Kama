@@ -1,16 +1,12 @@
 import { NavLink } from "react-router-dom";
-import "./Header.css";
-import {RxHamburgerMenu} from 'react-icons/rx'
-
 
 const Header = (props) => {
   return (
     <header className="header">
-      {" "}
-      <RxHamburgerMenu  className="menu_icon"/>
+           
       <div className="Login">
         {props.isAuth ? (
-          <button onClick={props.logoutTC}>Log out</button>
+          <div onClick={props.logoutTC}>Log out</div>
         ) : (
           <NavLink to={"/login"}>Login</NavLink>
         )}

@@ -36,14 +36,13 @@ const App = (props) => {
   if (!props.initialized) {
     return <Preloader />;
   }
- 
-  if(!props.isAuth){
-    return <LoginPage/>
+
+  if (!props.isAuth) {
+    return <LoginPage />;
   }
   return (
     <>
-        <div className="app-wrapper">
-        <HeaderContainer />
+      <div className="app-wrapper">
         <Navbar />
         <div className="app_wrapper__pages">
           <Suspense fallback={<Preloader />}>
@@ -69,6 +68,6 @@ const App = (props) => {
 
 const mstp = (state) => ({
   initialized: state.app.initialized,
-  isAuth: state.auth.isAuth
+  isAuth: state.auth.isAuth,
 });
 export default compose(connect(mstp, { initializeAppTC }))(App);
