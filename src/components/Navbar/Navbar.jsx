@@ -9,7 +9,7 @@ const Navbar = (props) => {
     <div className="nav_wrap">
       <AnimatedSquare />
 
-      <nav className="nav">
+      {/* <nav className="nav">
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/messages">Messages</NavLink>
         <NavLink to="/news">News</NavLink>
@@ -18,7 +18,7 @@ const Navbar = (props) => {
         <NavLink to="/users">Users</NavLink>
         <NavLink to="/friends">Friends</NavLink>
         <FriendsNavContainer />
-      </nav>
+      </nav> */}
     </div>
   );
 };

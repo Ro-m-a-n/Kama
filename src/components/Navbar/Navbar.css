@@ -15,6 +15,7 @@
 
   background-color: black;
 }
+
 .grid_area__a {
   grid-area: a;
   background-color: #162d28;
@@ -62,18 +63,15 @@
 .grid_area__i {
   grid-area: i;
   background-color: #a2a16c;
+  margin-bottom:2px ;
 }
 .nav {
-  /* grid-area: n;
-  background-color: rgb(39, 38, 37);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px; */
 }
-.nav a {
-  color: white;
+.nav_grid__wrap a {
+  color: rgb(255, 255, 255);
   text-decoration: none;
+  display: flex;
+  align-self: center;
 }
 .nav a.active {
   color: rgb(177, 177, 175);

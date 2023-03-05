@@ -1,21 +1,25 @@
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 const AnimatedSquare = () => {
   return (
-    <div className="nav_grid__wrap">
+    <nav className="nav_grid__wrap">
       <motion.div
-        className="grid_area__a"
+        className="grid_area__a flex_center"
         whileHover={{ scale: 1.1, backgroundColor: "#1f3847" }}
         whileTap={{ scale: 0.9, backgroundColor: "#709dc5" }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
+      >
+        <NavLink to="/profile">Profile</NavLink>
+      </motion.div>
+
       <motion.div
-        className="grid_area__e"
+        className="grid_area__e "
         whileHover={{ scale: 1.1, backgroundColor: "#686fa5" }}
         whileTap={{ scale: 0.9, backgroundColor: "#789fca" }}
-        transition={{ duration: 0.5}}
+        transition={{ duration: 0.5 }}
       ></motion.div>
       <motion.div
-        className="grid_area__b"
+        className="grid_area__b "
         whileHover={{ scale: 1.1, backgroundColor: "#565d91" }}
         whileTap={{ scale: 0.9, backgroundColor: "#80a1cd" }}
         transition={{ duration: 0.5 }}
@@ -27,23 +31,30 @@ const AnimatedSquare = () => {
         transition={{ duration: 0.5 }}
       ></motion.div>
       <motion.div
-        className="grid_area__f"
+        className="grid_area__f flex_center"
         whileHover={{ scale: 1.1, backgroundColor: "#38436b" }}
         whileTap={{ scale: 0.9, backgroundColor: "#90a3d1" }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
+      >
+        <NavLink to="/news">News</NavLink>
+      </motion.div>
       <motion.div
-        className="grid_area__g"
+        className="grid_area__g flex_center"
         whileHover={{ scale: 1.1, backgroundColor: "#2b3b5b" }}
         whileTap={{ scale: 0.9, backgroundColor: "#98a5d3" }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
+      >
+        <NavLink to="/messages">Messages</NavLink>
+      </motion.div>
       <motion.div
-        className="grid_area__k"
+        className="grid_area__k flex_center"
         whileHover={{ scale: 1.1, backgroundColor: "#22374e" }}
         whileTap={{ scale: 0.9, backgroundColor: "#a0a7d6" }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
+      >
+        {" "}
+        <NavLink to="/users">Users</NavLink>
+      </motion.div>
       <motion.div
         className="grid_area__l"
         whileHover={{ scale: 1.1, backgroundColor: "#1f3847" }}
@@ -69,12 +80,15 @@ const AnimatedSquare = () => {
         transition={{ duration: 0.5 }}
       ></motion.div>
       <motion.div
-        className="grid_area__i"
-        whileHover={{ scale: 1.1, backgroundColor: "#396667" }}
+        className="grid_area__i flex_center"
+        whileHover={{ scale: 1.04, backgroundColor: "#396667" }}
         whileTap={{ scale: 0.9, backgroundColor: "#dbac9e" }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
-    </div>
+      >
+        {" "}
+        <NavLink to="/settings">Settings</NavLink>
+      </motion.div>
+    </nav>
   );
 };
 export default AnimatedSquare;
