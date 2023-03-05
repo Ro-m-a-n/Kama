@@ -6,14 +6,13 @@
     "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 300px 1fr;
-  grid-gap: 1px;
 }
-.app_wrapper__pages{
+.app_wrapper__pages {
   grid-area: c;
-  background-image: url("./assets/images/back/forestClipArt.jpg");
+  /* background-image: url("./assets/images/back/forestClipArt.jpg"); */
   background-size: 1000px;
-  background-repeat:round;
- 
+  background-repeat: round;
+  background-color: #ccc;
 }
 .Avatar {
   height: 80px;
@@ -21,7 +20,7 @@
   border-radius: 50%;
   padding: 5px;
 }
-textarea{
+textarea {
   width: 250px;
   height: 55px;
   border: 2px solid #ccc;
@@ -29,13 +28,11 @@ textarea{
   background-color: #fff;
   font-size: 16px;
   color: #000000;
-  
 }
 textarea:focus {
   border-color: #4fb85f9d;
   outline: none;
 }
-
 
 input[type="checkbox"] {
   appearance: none; /* hide default checkbox appearance */

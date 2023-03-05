@@ -1,11 +1,75 @@
-.nav {
+.nav_grid__wrap {
   grid-area: n;
+  height: 100%;
+
+  display: grid;
+  grid-template-areas:
+    "a a b"
+    "d e b"
+    "d e f"
+    "d g g"
+    "k k l"
+    "t r l"
+    "t r z"
+    "i i i";
+
+  background-color: black;
+}
+.grid_area__a {
+  grid-area: a;
+  background-color: #162d28;
+}
+.grid_area__b {
+  grid-area: b;
+  background-color: #24433b;
+}
+.grid_area__d {
+  grid-area: d;
+  background-color: #31584e;
+}
+.grid_area__e {
+  grid-area: e;
+  background-color: #406d61;
+}
+.grid_area__g {
+  grid-area: g;
+  background-color: #4e8272;
+}
+.grid_area__f {
+  grid-area: f;
+  background-color: #5e9580;
+}
+.grid_area__k {
+  grid-area: k;
+  background-color: #6ea68c;
+}
+.grid_area__l {
+  grid-area: l;
+  background-color: #7fb391;
+}
+.grid_area__t {
+  grid-area: t;
+  background-color: #90bb8f;
+}
+.grid_area__r {
+  grid-area: r;
+  background-color: #9eba86;
+}
+.grid_area__z {
+  grid-area: z;
+  background-color: #a5b17b;
+}
+.grid_area__i {
+  grid-area: i;
+  background-color: #a2a16c;
+}
+.nav {
+  /* grid-area: n;
   background-color: rgb(39, 38, 37);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  
+  padding: 20px; */
 }
 .nav a {
   color: white;
