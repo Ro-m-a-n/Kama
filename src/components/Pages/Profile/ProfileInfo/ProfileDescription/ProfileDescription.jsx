@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 const ProfileDescription = (props) => {
-  const [moreContacts, setMoreContacts] = useState(false);
+  const [moreContacts, setMoreContacts] = useState(true);
 
   return (
     <div className="profile_description">
