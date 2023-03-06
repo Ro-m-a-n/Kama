@@ -2,7 +2,7 @@ import "./App.css";
 import "./components/Global/global.css";
 import React, { Suspense, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import "./components/Pages/Pages.css";
+
 import { Route, Routes, Navigate } from "react-router-dom";
 import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
@@ -11,7 +11,7 @@ import Friends from "./components/Pages/Friends/Friends";
 import UsersContainer from "./components/Pages/UsersPage/Users/UsersContainer";
 import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
 import CurrentUserContainer from "./components/Pages/UsersPage/CurrentUser/CurrentUserContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
+
 import LoginPage from "./components/Pages/Login/Login";
 import { initializeAppTC } from "./Redux/appReducer";
 import { connect } from "react-redux";

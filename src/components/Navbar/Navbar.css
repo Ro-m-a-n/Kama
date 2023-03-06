@@ -1,7 +1,8 @@
 .nav_grid__wrap {
   grid-area: n;
   height: 100%;
-
+position: fixed;
+width: 40vh;
   display: grid;
   grid-template-areas:
     "a a b"

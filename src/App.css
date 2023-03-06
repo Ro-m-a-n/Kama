@@ -2,9 +2,7 @@
   height: 100vh;
   display: grid;
   grid-template-areas: "n c";
-
-  
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 40vh 1fr;
 }
 .app_wrapper__pages {
   grid-area: c;
