@@ -1,4 +1,5 @@
 import "./App.css";
+import "./components/Global/global.css";
 import React, { Suspense, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import "./components/Pages/Pages.css";
