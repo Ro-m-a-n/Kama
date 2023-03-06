@@ -8,7 +8,7 @@ let maxLength = maxLengthTC(100);
 
 export const AddMessageForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit} className="addText__wrap">
+    <form onSubmit={props.handleSubmit} className="addText_wrap">
       <Field
         name="message"
         component={Textarea}

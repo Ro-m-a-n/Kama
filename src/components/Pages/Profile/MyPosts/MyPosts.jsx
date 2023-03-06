@@ -7,7 +7,7 @@ import { reduxForm } from "redux-form";
 import { useState } from "react";
 
 const MyPosts = (props) => {
-  const [postId, setPostId]=useState(5)
+  const [postId, setPostId] = useState(5);
   let postsElements = props.postsData.map((el) => (
     <Post
       photo={props.photo}
@@ -22,7 +22,7 @@ const MyPosts = (props) => {
     />
   ));
   const onSubmit = (formData) => {
-    setPostId(postId+1)
+    setPostId(postId + 1);
     props.addText(formData.message, postId);
   };
   let AddPostReduxForm = reduxForm({
@@ -30,14 +30,16 @@ const MyPosts = (props) => {
   })(AddMessageForm);
 
   return (
-    <div className="myPostWrapper">
-      <div className="AddPost">
-        <h3>My posts</h3>
+    <div className="myPost_wrap">
+      <div className="myPosts">
+        <div className="AddPost">
+          <h3>My posts</h3>
+        </div>
+
+        <div className="MyPosts">{postsElements}</div>
+        <AddPostReduxForm onSubmit={onSubmit} />
       </div>
-
-      <div className="MyPosts">{postsElements}</div>
-
-      <AddPostReduxForm onSubmit={onSubmit} />
+      <div className="addPost_BG"></div>
     </div>
   );
 };
