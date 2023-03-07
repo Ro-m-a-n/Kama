@@ -7,7 +7,7 @@ import { reduxForm } from "redux-form";
 import { useState } from "react";
 
 const MyPosts = (props) => {
-  const [postId, setPostId] = useState(5);
+  const [postId, setPostId] = useState(7);
   let postsElements = props.postsData.map((el) => (
     <Post
       photo={props.photo}

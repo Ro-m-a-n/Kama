@@ -8,14 +8,16 @@ const SET_MY_PROFILE_INFO = "SET_MY_PROFILE_INFO";
 const SET_PROFILE_DESCRIPTION = "SET_PROFILE_DESCRIPTION";
 const DELETE_POST = "DELETE_POST";
 const LIKE_THIS_POST = "LIKE_THIS_POST";
-const UNLIKE_THIS_POST="UNLIKE_THIS_POST"
+const UNLIKE_THIS_POST = "UNLIKE_THIS_POST";
 
 let initialState = {
   postsData: [
     { id: 1, text: "True way of Samurai", likes: 65 },
-    { id: 2, text: "I finaly understood props", likes: 25 },
+    { id: 2, text: "to be or not to be this is the question", likes: 25 },
     { id: 3, text: "if the weather is good, i go to sleep", likes: 12 },
     { id: 4, text: "lorem ipsum smth ", likes: 14 },
+    { id: 5, text: "True way of Samurai", likes: 5 },
+    { id: 6, text: "to be or not to be this is the question", likes: 5 },
   ],
   status: "Status",
   photo: defaultPhoto,
@@ -55,11 +57,7 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case DELETE_POST: {
-      let newPostsData = state.postsData.filter((key) => {
-        if (key.id !== action.id) {
-          return key;
-        }
-      });
+      let newPostsData = state.postsData.filter((key) => key.id !== action.id);
       return { ...state, postsData: newPostsData };
     }
     case LIKE_THIS_POST: {
@@ -73,8 +71,6 @@ const profileReducer = (state = initialState, action) => {
       return { ...state, postsData: newPostsData };
     }
 
-
-
     case UNLIKE_THIS_POST: {
       let newPostsData = state.postsData.filter((key) => {
         if (key.id == action.id) {
@@ -85,10 +81,6 @@ const profileReducer = (state = initialState, action) => {
 
       return { ...state, postsData: newPostsData };
     }
-
-
-
-
 
     default:
       return state;

@@ -1,6 +1,7 @@
 import "./Message.css";
 
 const Message = (props) => {
+  
   return (
     <div className="Message__wrap">
       <img

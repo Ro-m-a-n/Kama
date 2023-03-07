@@ -1,6 +1,24 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
 
 let initialState = {
+  dialogs: [
+    {
+      dialogId: 1,
+      name: "name 1",
+      message: [
+        { messageId: 1, text: "message 1" },
+        { messageId: 2, text: "message 2" },
+      ],
+    },
+    {
+      dialogId: 2,
+      name: "name 2",
+      message: [
+        { messageId: 1, text: "message 3" },
+        { messageId: 2, text: "message 4" },
+      ],
+    },
+  ],
   dialogsData: [
     { id: 1, name: "Volodya" },
     { id: 2, name: "Artem" },
@@ -16,22 +34,36 @@ let initialState = {
     { id: 4, text: "To consider" },
     {
       id: 5,
-      text: " Loreskdlkjfsld lksjdl kjslkjdlfjdlfjsljdf slkd hh  hkh k hk hk hk h kh kh kh j;lk; l lhl gy tf f kg k gk gkjflsdkjflsdfjsldkfjsldkfjlsdkf lskdjflsdkjflsdkjflsdjkf lskdjflsdkjflsdkjflsdk sldkfjsldkfjlsdkjf sldkfjsldkfjsldkf",
+      text: "img elements must have an alt prop, either with meaningful text, or an empty string for decorative images",
     },
     {
       id: 6,
       text: "immutable",
     },
-    { id: 7, text: "sdfjndskf kskd fkdsjfk sf" },
+    {
+      id: 7,
+      text: "Array.prototype.filter() expects a value to be returned at the end of arrow function",
+    },
     { id: 8, text: "Hi there" },
   ],
 };
 let messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE:
+      let newDialogs = state.dialogs.map((el) => {
+        if (el.dialogId == action.dialogId) {
+          el.message.push({
+            messageId: action.messageId,
+            text: action.message,
+          })
+          return el
+        }
+        return el
+       debugger
+      });
       return {
         ...state,
-        messagesData: [...state.messagesData, { id: 9, text: action.message }],
+        dialogs: newDialogs,
       };
 
     default:
@@ -39,6 +71,11 @@ let messageReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (message) => ({ type: ADD_MESSAGE, message });
+export const addMessage = (message, dialogId, messageId) => ({
+  type: ADD_MESSAGE,
+  message,
+  dialogId,
+  messageId,
+});
 
 export default messageReducer;

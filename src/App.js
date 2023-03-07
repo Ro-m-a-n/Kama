@@ -50,7 +50,8 @@ const App = (props) => {
             <Routes>
               <Route path="/" element={<Navigate to="/profile" />} />
               <Route path="/profile" element={<ProfileContainer />} />
-              <Route path="/messages/*" element={<DialogsContainer />} />
+              <Route path="/messages" element={<DialogsContainer />} />
+              <Route path="/messages/:dialogId/*" element={<DialogsContainer />} />
               <Route path="/news" element={<News />} />
               <Route path="/music" element={<Music />} />
               <Route path="/settings" element={<Settings />} />
