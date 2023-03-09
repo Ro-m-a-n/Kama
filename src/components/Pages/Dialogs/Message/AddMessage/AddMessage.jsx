@@ -4,11 +4,13 @@ import { Field } from "redux-form";
 import { maxLengthTC } from "./../../../../../utilites/validators/Validators";
 import { Textarea } from "../../../../Global/FormsControl/FormsControl";
 
+
 let maxLength = maxLengthTC(100);
 
 export const AddMessageForm = (props) => {
+  
   return (
-    <form onSubmit={props.handleSubmit} className="addText_wrap">
+    <form onSubmit={props.handleSubmit(props.onSubmit)} className="addText_wrap">
       <Field
         name="message"
         component={Textarea}

@@ -2,15 +2,18 @@ import "./Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import { useState } from "react";
-import { reduxForm } from "redux-form";
+import { reduxForm, reset } from "redux-form";
 import { AddMessageForm } from "./Message/AddMessage/AddMessage";
 import React from "react";
+import { connect } from "react-redux";
 
 const Dialogs = (props) => {
   let currentRoute = props.routeParams.params.dialogId || 1;
   const [currentMessageId, setCurrentMessageId] = useState(2);
   const onSubmit = (formData) => {
     props.addMessage(formData.message, currentRoute, currentMessageId);
+    props.dispatch(reset("DialogAddMessage"));
+    debugger;
   };
 
   let dialogsElements = props.dialogs.map((el) => (
@@ -43,4 +46,4 @@ let AddMessageReduxForm = reduxForm({
   form: "DialogAddMessage",
 })(AddMessageForm);
 
-export default Dialogs;
+export default connect()(Dialogs);
