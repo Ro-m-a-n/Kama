@@ -1,7 +1,6 @@
 import "./MyPosts.css";
 import Post from "./Post/Post";
 import React from "react";
-
 import { AddMessageForm } from "./../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
 import { useState } from "react";

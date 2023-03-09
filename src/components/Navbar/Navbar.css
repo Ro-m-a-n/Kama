@@ -1,8 +1,8 @@
 .nav_grid__wrap {
   grid-area: n;
   height: 100%;
-position: fixed;
-width: 40vh;
+  position: fixed;
+  width: 40vh;
   display: grid;
   grid-template-areas:
     "a a b"
@@ -21,6 +21,7 @@ width: 40vh;
   grid-area: a;
   background-color: #162d28;
 }
+
 .grid_area__b {
   grid-area: b;
   background-color: #24433b;
@@ -64,17 +65,19 @@ width: 40vh;
 .grid_area__i {
   grid-area: i;
   background-color: #a2a16c;
-  margin-bottom:2px ;
+  margin-bottom: 2px;
 }
 
 .nav_grid__wrap a {
   color: rgb(255, 255, 255);
   text-decoration: none;
+ 
+
 }
 .nav_grid__wrap a.active {
   color: rgb(247, 247, 103);
 }
-.Login{
+.Login {
   color: white;
   cursor: pointer;
 }

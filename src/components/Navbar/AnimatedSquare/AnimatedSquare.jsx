@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import HeaderContainer from './../../Header/HeaderContainer';
+import HeaderContainer from "./../../Header/HeaderContainer";
 const AnimatedSquare = () => {
   return (
     <nav className="nav_grid__wrap">
@@ -79,15 +79,16 @@ const AnimatedSquare = () => {
         whileHover={{ scale: 1.1, backgroundColor: "#2e5559" }}
         whileTap={{ scale: 0.9, backgroundColor: "#e5c1d0" }}
         transition={{ duration: 0.5 }}
-      ><NavLink to="/settings">Settings</NavLink></motion.div>
+      >
+        <NavLink to="/settings">Settings</NavLink>
+      </motion.div>
       <motion.div
         className="grid_area__i flex_center"
         whileHover={{ scale: 1.02, backgroundColor: "#396667" }}
         whileTap={{ scale: 0.9, backgroundColor: "#dbac9e" }}
         transition={{ duration: 0.5 }}
       >
-       <HeaderContainer />
-        
+        <HeaderContainer />
       </motion.div>
     </nav>
   );

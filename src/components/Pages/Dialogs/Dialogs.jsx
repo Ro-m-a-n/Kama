@@ -2,11 +2,13 @@ import "./Dialogs.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import { useState } from "react";
-import AddMessageReduxForm from "./Message/AddMessage/AddMessage";
+import { reduxForm } from "redux-form";
+import { AddMessageForm } from "./Message/AddMessage/AddMessage";
+import React from "react";
 
 const Dialogs = (props) => {
   let currentRoute = props.routeParams.params.dialogId || 1;
-const [currentMessageId, setCurrentMessageId] = useState(3)
+  const [currentMessageId, setCurrentMessageId] = useState(2);
   const onSubmit = (formData) => {
     props.addMessage(formData.message, currentRoute, currentMessageId);
   };
@@ -20,7 +22,9 @@ const [currentMessageId, setCurrentMessageId] = useState(3)
   );
 
   let messageElements = currentDialogData[0].message.map((message) => {
-    if(message.messageId>currentMessageId){setCurrentMessageId(currentMessageId+1)}
+    if (message.messageId === currentMessageId) {
+      setCurrentMessageId(currentMessageId + 1);
+    }
     return <Message text={message.text} key={message.messageId} />;
   });
 
@@ -34,4 +38,9 @@ const [currentMessageId, setCurrentMessageId] = useState(3)
     </div>
   );
 };
+
+let AddMessageReduxForm = reduxForm({
+  form: "DialogAddMessage",
+})(AddMessageForm);
+
 export default Dialogs;

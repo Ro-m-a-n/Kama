@@ -1,6 +1,6 @@
 import "../../../../Global/AddText.css";
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 import { maxLengthTC } from "./../../../../../utilites/validators/Validators";
 import { Textarea } from "../../../../Global/FormsControl/FormsControl";
 
@@ -19,8 +19,5 @@ export const AddMessageForm = (props) => {
     </form>
   );
 };
-let AddMessageReduxForm = reduxForm({
-  form: "DialogAddMessage",
-})(AddMessageForm);
 
-export default AddMessageReduxForm;
+export default AddMessageForm;
