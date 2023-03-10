@@ -1,15 +1,14 @@
-.myPost_wrap{
+.myPost_wrap {
   width: 45%;
 }
 
 .myPosts {
-  /* width: 45%; */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #9abba0;
   height: 82vh;
-  margin-top:2vh;
+  margin-top: 2vh;
   overflow-y: scroll;
 }
 .myPosts::-webkit-scrollbar {
@@ -65,45 +64,18 @@
 .post_icon__liked:hover {
   transform: scale(1.2);
 }
-.addPost_BG{
+.addPost_BG {
   border-top: 2px darkgrey solid;
   background-color: #9abba0;
   height: 14vh;
   width: 100%;
-  
 }
-.addText_wrap {
-  position: fixed;
-  bottom: 3vh;
+.addText_container {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  height: 12vh;
 }
-.addText_wrap textarea {
-  
-  width: 40vh;
-  margin-right: 2vh;
-}
-.addText_wrap button {
-  margin-left: 2vh;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  color: #000000;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 21px 10px;
-  transition: all 0.5s ease-in-out;
-  position: relative;
-  bottom: 2px;
-}
-.addText_wrap button:hover {
-  background-color: #003809;
-  border-color: #003809;
-  color: #fff;
-}
+
 .post_icon__delete {
   position: absolute;
   top: 10px;

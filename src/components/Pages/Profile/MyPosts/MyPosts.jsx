@@ -31,14 +31,16 @@ const MyPosts = (props) => {
   return (
     <div className="myPost_wrap">
       <div className="myPosts">
-        <div className="AddPost">
-          <h3>My posts</h3>
-        </div>
+        <h3>My posts</h3>
 
         <div className="MyPosts">{postsElements}</div>
+      </div>
+
+      <div className="addPost_BG"></div>
+      <div className="addText_container">
+        {" "}
         <AddPostReduxForm onSubmit={onSubmit} />
       </div>
-      <div className="addPost_BG"></div>
     </div>
   );
 };

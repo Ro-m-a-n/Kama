@@ -39,6 +39,7 @@ let messageReducer = (state = initialState, action) => {
         dialogs: newDialogs,
       };
     }
+
     
     
     case DELETE_MESSAGE: {

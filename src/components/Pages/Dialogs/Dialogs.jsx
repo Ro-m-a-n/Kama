@@ -13,7 +13,6 @@ const Dialogs = (props) => {
   const onSubmit = (formData) => {
     props.addMessage(formData.message, currentRoute, currentMessageId);
     props.dispatch(reset("DialogAddMessage"));
-    
   };
 
   let dialogsElements = props.dialogs.map((el) => (
@@ -23,7 +22,7 @@ const Dialogs = (props) => {
   let currentDialogData = props.dialogs.filter(
     (el) => el.dialogId == currentRoute
   );
-  console.log(props.dialogs)
+ 
 
   let messageElements = currentDialogData[0].message.map((message) => {
     if (message.messageId === currentMessageId) {
@@ -43,9 +42,13 @@ const Dialogs = (props) => {
   return (
     <div className="Dialogs">
       <div className="Dialogs__items">{dialogsElements}</div>
-      <div className="Messages">
-        {messageElements}
-        <AddMessageReduxForm onSubmit={onSubmit} />
+      <div className="messages_wrap">
+        <div className="messages">
+          {messageElements}
+
+          <AddMessageReduxForm onSubmit={onSubmit} full_widht="full_widht"/>
+        </div>
+        <div className="addPost_BG"></div>
       </div>
     </div>
   );
