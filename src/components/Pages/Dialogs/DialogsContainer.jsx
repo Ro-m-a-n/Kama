@@ -2,7 +2,7 @@ import Dialogs from "./Dialogs.jsx";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "./../../../hok/withAuthRedirect";
-import { addMessage } from "./../../../Redux/messageReducer";
+import { addMessage, deleteMessageAC } from "./../../../Redux/messageReducer";
 import withRouter from './../../../hok/withRouter';
 
 const DialogsContainer = (props) => {
@@ -17,7 +17,7 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { addMessage }),
+  connect(mapStateToProps, { addMessage, deleteMessageAC }),
   withAuthRedirect,
   withRouter
 )(DialogsContainer);

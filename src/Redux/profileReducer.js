@@ -57,11 +57,11 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case DELETE_POST: {
-      let newPostsData = state.postsData.filter((key) => key.id !== action.id);
+      let newPostsData = state.postsData.filter(key => key.id !== action.id);
       return { ...state, postsData: newPostsData };
     }
     case LIKE_THIS_POST: {
-      let newPostsData = state.postsData.filter((key) => {
+      let newPostsData = state.postsData.filter(key => {
         if (key.id == action.id) {
           key.likes++;
         }
@@ -72,7 +72,7 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case UNLIKE_THIS_POST: {
-      let newPostsData = state.postsData.filter((key) => {
+      let newPostsData = state.postsData.filter(key => {
         if (key.id == action.id) {
           key.likes--;
         }

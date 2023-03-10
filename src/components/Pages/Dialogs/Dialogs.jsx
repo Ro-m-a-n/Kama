@@ -13,7 +13,7 @@ const Dialogs = (props) => {
   const onSubmit = (formData) => {
     props.addMessage(formData.message, currentRoute, currentMessageId);
     props.dispatch(reset("DialogAddMessage"));
-    debugger;
+    
   };
 
   let dialogsElements = props.dialogs.map((el) => (
@@ -23,12 +23,21 @@ const Dialogs = (props) => {
   let currentDialogData = props.dialogs.filter(
     (el) => el.dialogId == currentRoute
   );
+  console.log(props.dialogs)
 
   let messageElements = currentDialogData[0].message.map((message) => {
     if (message.messageId === currentMessageId) {
       setCurrentMessageId(currentMessageId + 1);
     }
-    return <Message text={message.text} key={message.messageId} />;
+    return (
+      <Message
+        text={message.text}
+        key={message.messageId}
+        dialogId={currentRoute}
+        messageId={message.messageId}
+        deleteMessageAC={props.deleteMessageAC}
+      />
+    );
   });
 
   return (
