@@ -5,18 +5,36 @@ let initialState = {
   dialogs: [
     {
       dialogId: 1,
-      name: "name 1",
+      name: "Django",
       message: [
-        { messageId: 1, text: "message 1" },
-        { messageId: 2, text: "message 2" },
+        { messageId: 1, text: "Finaly, i am free" },
+        { messageId: 2, text: "I'm sorry. I couldn't resist" },
+        { messageId: 3, text: "I'm curious what makes you so curious." },
+       
       ],
     },
     {
       dialogId: 2,
-      name: "name 2",
+      name: "Thanos",
       message: [
-        { messageId: 1, text: "message 3" },
-        { messageId: 2, text: "message 4" },
+        { messageId: 1, text: "I am inevitable." },
+        { messageId: 2, text: "The universe is finite, its resources finite. If life is left unchecked, life will cease to exist." },
+        { messageId: 3, text: "Dread it. Run from it. Destiny still arrives." },
+        { messageId: 4, text: "The hardest choices require the strongest wills." },
+        { messageId: 5, text: "I finally rest, and watch the sun rise on a grateful universe." },
+        { messageId: 6, text: "I know what it's like to lose. To feel so desperately that you're right, yet to fail nonetheless." },
+      ],
+    },
+    {
+      dialogId: 3,
+      name: "Harry Potter",
+      message: [
+        { messageId: 1, text: "I solemnly swear that I am up to no good." },
+        { messageId: 2, text: "I am the Chosen One." },
+        { messageId: 3, text: "I can speak to snakes. I found out when we've been to the zoo. They find me, they whisper." },
+        { messageId: 4, text: "Expecto Patronum!" },
+        { messageId: 5, text: "Mischief managed." },
+        { messageId: 6, text: "I must not tell lies." },
       ],
     },
   ],
