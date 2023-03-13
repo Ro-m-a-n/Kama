@@ -32,14 +32,10 @@ const MyPosts = (props) => {
     <div className="myPost_wrap">
       <div className="myPosts">
         <h3>My posts</h3>
-
-        <div className="MyPosts">{postsElements}</div>
+        {postsElements}
       </div>
-
-      <div className="addPost_BG"></div>
-      <div className="addText_container">
-        {" "}
-        <AddPostReduxForm onSubmit={onSubmit} />
+      <div className="addPost">
+        <AddPostReduxForm onSubmit={onSubmit} full_widht={'widht'}/>
       </div>
     </div>
   );

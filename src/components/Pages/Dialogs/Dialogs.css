@@ -6,7 +6,7 @@
   grid-template-columns: 2fr 5fr;
   grid-template-rows: 84vh 12vh;
   padding: 2vh;
-  background-color: bisque;
+  grid-column-gap: 2vh
 }
 .Dialogs__items {
   grid-area: qw;
@@ -31,8 +31,8 @@
   align-items: center;
 }
 
-
 .messages {
+  padding: 10px;
   grid-area: as;
   display: flex;
   flex-direction: column;
@@ -50,24 +50,18 @@
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-.addMessage_BG {
+.addMessage {
   grid-area: zx;
-  border-top: 2px darkgrey solid;
+  border-top: 3px darkgrey solid;
   background-color: #9abba0;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.addMessage .widht textarea{
+  width: 100vh;
 }
 .horisontal {
   flex-direction: row;
 }
 
-.Message__wrap img.Avatar {
-  height: 50px;
-  width: 50px;
-}
-.Message__wrap {
-  display: flex;
-}
-.full_widht textarea {
-  width: 88vh;
-}

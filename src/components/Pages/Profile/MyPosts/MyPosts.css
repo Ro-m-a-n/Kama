@@ -1,5 +1,7 @@
 .myPost_wrap {
-  width: 45%;
+  display: grid;
+  grid-template-rows: 84vh 12vh;
+ 
 }
 
 .myPosts {
@@ -7,8 +9,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #9abba0;
-  height: 82vh;
-  margin-top: 2vh;
+
   overflow-y: scroll;
   padding: 10px;
 }
@@ -43,6 +44,15 @@
 .post_author {
   font-weight: 700;
 }
+
+.post_icon__delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.post_icon__delete:hover {
+  scale: 1.2;
+}
 .post_icon__like {
   position: relative;
   top: 2px;
@@ -65,24 +75,13 @@
 .post_icon__liked:hover {
   transform: scale(1.2);
 }
-.addPost_BG {
-  border-top: 2px darkgrey solid;
-  background-color: #9abba0;
-  height: 11vh;
-  width: 100%;
-  
-}
-.addText_container {
-  width: 100%;
+.addPost {
   display: flex;
+  align-items: center;
   justify-content: center;
+  border-top: 3px darkgrey solid;
+  background-color: #9abba0;
 }
-
-.post_icon__delete {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.post_icon__delete:hover {
-  scale: 1.2;
+.addPost .widht textarea{
+  width: 60vh;
 }

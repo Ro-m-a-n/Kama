@@ -42,11 +42,9 @@ const Dialogs = (props) => {
   return (
     <div className="Dialogs">
       <div className="Dialogs__items">{dialogsElements}</div>
-
       <div className="messages">{messageElements}</div>
-
-      <div className="addMessage_BG">
-        <AddMessageReduxForm onSubmit={onSubmit} full_widht="full_widht" />
+      <div className="addMessage">
+        <AddMessageReduxForm onSubmit={onSubmit} full_widht="widht" />
       </div>
     </div>
   );

@@ -24,7 +24,6 @@ const ProfileInfo = (props) => {
     <div className="profileInfoWrapper">
       <div className="Users__avatar">
         <img src={props.photo} />
-
         <div className="uploadFile_wrap">
           <label htmlFor="file-input" className="upload_avatar__label">
             Upload File
