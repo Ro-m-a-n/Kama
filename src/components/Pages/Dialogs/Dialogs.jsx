@@ -22,7 +22,6 @@ const Dialogs = (props) => {
   let currentDialogData = props.dialogs.filter(
     (el) => el.dialogId == currentRoute
   );
- 
 
   let messageElements = currentDialogData[0].message.map((message) => {
     if (message.messageId === currentMessageId) {
@@ -35,6 +34,7 @@ const Dialogs = (props) => {
         dialogId={currentRoute}
         messageId={message.messageId}
         deleteMessageAC={props.deleteMessageAC}
+        photo={props.photo}
       />
     );
   });
@@ -42,13 +42,11 @@ const Dialogs = (props) => {
   return (
     <div className="Dialogs">
       <div className="Dialogs__items">{dialogsElements}</div>
-      <div className="messages_wrap">
-        <div className="messages">
-          {messageElements}
 
-          <AddMessageReduxForm onSubmit={onSubmit} full_widht="full_widht"/>
-        </div>
-        <div className="addPost_BG"></div>
+      <div className="messages">{messageElements}</div>
+
+      <div className="addMessage_BG">
+        <AddMessageReduxForm onSubmit={onSubmit} full_widht="full_widht" />
       </div>
     </div>
   );

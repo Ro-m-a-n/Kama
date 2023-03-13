@@ -1,11 +1,10 @@
 .addText_wrap {
-  position: fixed;
-  bottom: 3vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 12vh;
+   display: flex;
+   
+  
+
+ 
+ 
 }
 .addText__add {
   padding-left: 20px;

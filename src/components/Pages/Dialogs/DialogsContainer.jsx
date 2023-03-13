@@ -12,7 +12,7 @@ const DialogsContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     dialogs: state.messagesPage.dialogs,
-    
+    photo: state.profilePage.photo,
   };
 };
 

@@ -6,3 +6,8 @@ export const maxLengthTC = (Length) => (value) => {
   if (value && value.length > Length) return `Max length is ${Length} symbols`;
   return undefined;
 };
+
+export const notEmpty = (value) => {
+  if (!value) return true;
+  return undefined;
+};

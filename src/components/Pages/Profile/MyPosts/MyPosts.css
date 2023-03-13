@@ -10,6 +10,7 @@
   height: 82vh;
   margin-top: 2vh;
   overflow-y: scroll;
+  padding: 10px;
 }
 .myPosts::-webkit-scrollbar {
   width: 3px;
@@ -67,8 +68,9 @@
 .addPost_BG {
   border-top: 2px darkgrey solid;
   background-color: #9abba0;
-  height: 14vh;
+  height: 11vh;
   width: 100%;
+  
 }
 .addText_container {
   width: 100%;

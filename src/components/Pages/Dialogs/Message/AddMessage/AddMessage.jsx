@@ -1,11 +1,11 @@
 import "../../../../Global/AddText.css";
 import React from "react";
 import { Field } from "redux-form";
-import { maxLengthTC } from "./../../../../../utilites/validators/Validators";
+import { maxLengthTC, notEmpty } from "./../../../../../utilites/validators/Validators";
 import { Textarea } from "../../../../Global/FormsControl/FormsControl";
 
 
-let maxLength = maxLengthTC(100);
+let maxLength = maxLengthTC(150);
 
 export const AddMessageForm = (props) => {
   
@@ -15,7 +15,7 @@ export const AddMessageForm = (props) => {
         name="message"
         component={Textarea}
         placeholder="Enter your message"
-        validate={[maxLength]}
+        validate={[maxLength, notEmpty]}
       />
       <button className="addText__add">Add</button>
     </form>
