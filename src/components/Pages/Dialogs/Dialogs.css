@@ -59,9 +59,12 @@
   justify-content: center;
 }
 .addMessage .widht textarea{
-  width: 100vh;
+  width: 95vh;
 }
 .horisontal {
   flex-direction: row;
 }
 
+.rightSide{
+  align-self: flex-end;
+}

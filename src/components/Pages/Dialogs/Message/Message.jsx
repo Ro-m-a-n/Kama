@@ -3,7 +3,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 const Message = (props) => {
   
   return (
-    <div className="post horisontal">
+    <div className={`post horisontal ${props.messagesSide} `}>
       <img
         className="Avatar"
         alt=""

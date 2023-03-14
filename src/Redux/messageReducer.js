@@ -1,3 +1,6 @@
+import drSchultz from "../assets/images/dialogs/django.jpg";
+import thanos from "../assets/images/dialogs/thanos.jpg";
+import harry from "../assets/images/dialogs/harry.jpg";
 const ADD_MESSAGE = "ADD-MESSAGE";
 const DELETE_MESSAGE = "DELETE_MESSAGE";
 
@@ -5,36 +8,69 @@ let initialState = {
   dialogs: [
     {
       dialogId: 1,
-      name: "Django",
+      name: "dr Schultz",
+      dialogAvatar: drSchultz,
       message: [
-        { messageId: 1, text: "Finaly, i am free" },
-        { messageId: 2, text: "I'm sorry. I couldn't resist" },
-        { messageId: 3, text: "I'm curious what makes you so curious." },
-       
+        { messageId: 1, isMe: true, text: "I'm sorry. I couldn't resist" },
+        {
+          messageId: 2,
+          isMe: false,
+          text: "I'm curious what makes you so curious.",
+        },
       ],
     },
     {
       dialogId: 2,
       name: "Thanos",
+      dialogAvatar: thanos,
       message: [
-        { messageId: 1, text: "I am inevitable." },
-        { messageId: 2, text: "The universe is finite, its resources finite. If life is left unchecked, life will cease to exist." },
-        { messageId: 3, text: "Dread it. Run from it. Destiny still arrives." },
-        { messageId: 4, text: "The hardest choices require the strongest wills." },
-        { messageId: 5, text: "I finally rest, and watch the sun rise on a grateful universe." },
-        { messageId: 6, text: "I know what it's like to lose. To feel so desperately that you're right, yet to fail nonetheless." },
+        { messageId: 1, isMe: false, text: "I am inevitable." },
+        {
+          messageId: 2,
+          isMe: true,
+          text: "The universe is finite, its resources finite. If life is left unchecked, life will cease to exist.",
+        },
+        {
+          messageId: 3,
+          isMe: false,
+          text: "Dread it. Run from it. Destiny still arrives.",
+        },
+        {
+          messageId: 4,
+          isMe: false,
+          text: "The hardest choices require the strongest wills.",
+        },
+        {
+          messageId: 5,
+          isMe: true,
+          text: "I finally rest, and watch the sun rise on a grateful universe.",
+        },
+        {
+          messageId: 6,
+          isMe: false,
+          text: "I know what it's like to lose. To feel so desperately that you're right, yet to fail nonetheless.",
+        },
       ],
     },
     {
       dialogId: 3,
       name: "Harry Potter",
+      dialogAvatar: harry,
       message: [
-        { messageId: 1, text: "I solemnly swear that I am up to no good." },
-        { messageId: 2, text: "I am the Chosen One." },
-        { messageId: 3, text: "I can speak to snakes. I found out when we've been to the zoo. They find me, they whisper." },
-        { messageId: 4, text: "Expecto Patronum!" },
-        { messageId: 5, text: "Mischief managed." },
-        { messageId: 6, text: "I must not tell lies." },
+        {
+          messageId: 1,
+          isMe: false,
+          text: "I solemnly swear that I am up to no good.",
+        },
+        { messageId: 2, isMe: true, text: "I am the Chosen One." },
+        {
+          messageId: 3,
+          isMe: false,
+          text: "I can speak to snakes. I found out when we've been to the zoo. They find me, they whisper.",
+        },
+        { messageId: 4, isMe: false, text: "Expecto Patronum!" },
+        { messageId: 5, isMe: false, text: "Mischief managed." },
+        { messageId: 6, isMe: false, text: "I must not tell lies." },
       ],
     },
   ],
@@ -46,6 +82,7 @@ let messageReducer = (state = initialState, action) => {
         if (el.dialogId == action.dialogId) {
           el.message.push({
             messageId: action.messageId,
+            isMe: action.isMe,
             text: action.message,
           });
           return el;
@@ -58,8 +95,6 @@ let messageReducer = (state = initialState, action) => {
       };
     }
 
-    
-    
     case DELETE_MESSAGE: {
       let newDialogs = state.dialogs.map((el) => {
         if (el.dialogId == action.dialogId) {
@@ -78,11 +113,12 @@ let messageReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (message, dialogId, messageId) => ({
+export const addMessage = (message, dialogId, messageId, isMe) => ({
   type: ADD_MESSAGE,
   message,
   dialogId,
   messageId,
+  isMe,
 });
 
 export const deleteMessageAC = (dialogId, messageId) => ({

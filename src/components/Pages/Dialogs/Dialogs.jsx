@@ -11,22 +11,39 @@ const Dialogs = (props) => {
   let currentRoute = props.routeParams.params.dialogId || 1;
   const [currentMessageId, setCurrentMessageId] = useState(2);
   const onSubmit = (formData) => {
-    props.addMessage(formData.message, currentRoute, currentMessageId);
+    props.addMessage(formData.message, currentRoute, currentMessageId, true);
     props.dispatch(reset("DialogAddMessage"));
   };
 
   let dialogsElements = props.dialogs.map((el) => (
-    <Dialog name={el.name} id={el.dialogId} key={el.dialogId} />
+    <Dialog
+      name={el.name}
+      id={el.dialogId}
+      key={el.dialogId}
+      dialogAvatar={el.dialogAvatar}
+    />
   ));
 
   let currentDialogData = props.dialogs.filter(
     (el) => el.dialogId == currentRoute
   );
 
+ 
+  
+  
+  
   let messageElements = currentDialogData[0].message.map((message) => {
     if (message.messageId === currentMessageId) {
       setCurrentMessageId(currentMessageId + 1);
     }
+
+    let currentDialogAvatar = ()=> {if(message.isMe){return props.photo}
+      return currentDialogData[0].dialogAvatar;
+  }
+  
+let currentDialogSide = ()=> {if(message.isMe){return}
+return "rightSide"
+}
     return (
       <Message
         text={message.text}
@@ -34,7 +51,8 @@ const Dialogs = (props) => {
         dialogId={currentRoute}
         messageId={message.messageId}
         deleteMessageAC={props.deleteMessageAC}
-        photo={props.photo}
+        photo={currentDialogAvatar()}
+        messagesSide={currentDialogSide()}
       />
     );
   });
