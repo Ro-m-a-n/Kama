@@ -36,6 +36,7 @@
 }
 .news_post__image img {
   max-height: 70vh;
+  width: 70vh;
 }
 .news_header__avatar img {
   height: 40px;
@@ -52,7 +53,7 @@
   margin: 0 20px;
 }
 .news_post__likes {
-    padding-left: 10px;
+  padding-left: 10px;
   margin: 7px 7px 7px 7px;
   background-color: rgba(20, 92, 17, 0.144);
   border-radius: 15px;

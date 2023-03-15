@@ -1,48 +1,70 @@
-import drSchultz from "../assets/images/dialogs/django.jpg";
-const LIKE_THIS_NEWS ="LIKE_THIS_NEWS"
-const UNLIKE_THIS_NEWS ="UNLIKE_THIS_NEWS"
+import medicine from "../assets/images/news/medicine.png";
+import environment from "../assets/images/news/environment.jpeg";
+import economy from "../assets/images/news/economy.jpg";
+import tech from "../assets/images/news/tech.jpg";
+import news from "../assets/images/news/news.png";
+
+const LIKE_THIS_NEWS = "LIKE_THIS_NEWS";
+const UNLIKE_THIS_NEWS = "UNLIKE_THIS_NEWS";
 let initialState = {
-  news:[ {
-    id: 1,
-    resource: "dr Schultz",
-    resourceAvatar: drSchultz,
-    image: drSchultz,
-    text: "hello, it`s me",
-    likes: 7,
-  },
-  {
-    id: 2,
-    resource: "eeeee",
-    resourceAvatar: drSchultz,
-    image: drSchultz,
-    text: "he",
-    likes: 5,
-  },
-]
+  news: [
+    {
+      id: 1,
+      resource: "Helthy",
+      resourceAvatar: news,
+      image: medicine,
+      text: "Breakthrough in medical research: A team of researchers has made a significant discovery in the field of medical science, paving the way for new treatments and therapies for a range of diseases. The study, which involved years of dedicated research and collaboration across multiple disciplines, has the potential to revolutionize the field and improve the lives of millions of people around the world. Scientists are now working to build on these findings and continue pushing the boundaries of what we know about the human body and its complex systems.",
+      likes: 7,
+    },
+    {
+      id: 2,
+      resource: "eeeee",
+      resourceAvatar: news,
+      image: environment,
+      text: "Environmental crisis: As the effects of climate change become increasingly evident, many individuals and organizations are calling for immediate action to address the environmental crisis. From reducing carbon emissions to investing in renewable energy and protecting wildlife habitats, there are a variety of approaches being taken to mitigate the impact of human activity on the planet. While progress has been made in some areas, there is still much work to be done to ensure a sustainable future for all.",
+      likes: 5,
+    },
+    {
+      id: 3,
+      resource: "eeeee",
+      resourceAvatar: news,
+      image: economy,
+      text: "Global economy sees sharp increase in job growth, with unemployment rates falling to pre-pandemic levels.",
+      likes: 10,
+    },
+    {
+      id: 4,
+      resource: "eeeee",
+      resourceAvatar: news,
+      image: tech,
+      text: "Emerging technology: From artificial intelligence and machine learning to biotechnology and quantum computing, emerging technologies are transforming the way we live and work in ways that were once unimaginable. While these developments hold immense potential for solving some of the world's most pressing challenges, they also raise complex ethical and societal questions that require careful consideration. As scientists and policymakers work to navigate this rapidly changing landscape, there is much debate and discussion around how best to harness the power of technology for the greater good.",
+      likes: 20,
+    },
+  ],
 };
 let newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LIKE_THIS_NEWS: {
-        let updatedNews = state.news.filter(key => {
-          if (key.id == action.id) {
-            key.likes++;
-          }
-          return key;
-        });
-  
-        return { ...state, ness: updatedNews };
-      }
-  
-      case UNLIKE_THIS_NEWS: {
-        let updatedNews = state.news.filter(key => {
-          if (key.id == action.id) {
-            key.likes--;
-          }
-          return key;
-        });
-  
-        return { ...state, new: updatedNews };
-      }
+      let updatedNews = state.news.filter((key) => {
+        if (key.id == action.id) {
+          key.likes++;
+        }
+        return key;
+      });
+
+      return { ...state, ness: updatedNews };
+    }
+
+    case UNLIKE_THIS_NEWS: {
+      let updatedNews = state.news.filter((key) => {
+        if (key.id == action.id) {
+          key.likes--;
+        }
+        return key;
+      });
+
+      return { ...state, new: updatedNews };
+    }
     default:
       return state;
   }

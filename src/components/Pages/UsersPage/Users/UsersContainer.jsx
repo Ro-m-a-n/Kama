@@ -8,7 +8,7 @@ import {
   followTC,
   unfollowTC,
 } from "./../../../../Redux/usersReducer";
-import Preloader from "../../../Global/Preloader/Preloader";
+
 import { withAuthRedirect } from "./../../../../hok/withAuthRedirect";
 import compose from "lodash/fp/compose";
 import {
@@ -30,20 +30,17 @@ const UsersAPI = (props) => {
   };
 
   return (
-    <>
-      {props.isFetching ? <Preloader /> : null}
-
-      <Users
-        usersQuantity={props.usersQuantity}
-        pageSize={props.pageSize}
-        currentPage={props.currentPage}
-        onPageChanged={onPageChanged}
-        users={props.users}
-        followTC={props.followTC}
-        unfollowTC={props.unfollowTC}
-        sendedRequest={props.sendedRequest}
-      />
-    </>
+    <Users
+      usersQuantity={props.usersQuantity}
+      pageSize={props.pageSize}
+      currentPage={props.currentPage}
+      onPageChanged={onPageChanged}
+      users={props.users}
+      followTC={props.followTC}
+      unfollowTC={props.unfollowTC}
+      sendedRequest={props.sendedRequest}
+      isFetching={props.isFetching}
+    />
   );
 };
 

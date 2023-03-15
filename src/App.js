@@ -35,7 +35,8 @@ const App = (props) => {
   }, []);
 
   if (!props.initialized) {
-    return <Preloader />;
+    return  <div className="preloader"><Preloader /></div>
+    ;
   }
 
   if (!props.isAuth) {
