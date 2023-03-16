@@ -10,7 +10,7 @@ let initialState = {
   news: [
     {
       id: 1,
-      resource: "Helthy",
+      resource: "News GRP",
       resourceAvatar: news,
       image: medicine,
       text: "Breakthrough in medical research: A team of researchers has made a significant discovery in the field of medical science, paving the way for new treatments and therapies for a range of diseases. The study, which involved years of dedicated research and collaboration across multiple disciplines, has the potential to revolutionize the field and improve the lives of millions of people around the world. Scientists are now working to build on these findings and continue pushing the boundaries of what we know about the human body and its complex systems.",
@@ -18,7 +18,7 @@ let initialState = {
     },
     {
       id: 2,
-      resource: "eeeee",
+      resource: "News GRP",
       resourceAvatar: news,
       image: environment,
       text: "Environmental crisis: As the effects of climate change become increasingly evident, many individuals and organizations are calling for immediate action to address the environmental crisis. From reducing carbon emissions to investing in renewable energy and protecting wildlife habitats, there are a variety of approaches being taken to mitigate the impact of human activity on the planet. While progress has been made in some areas, there is still much work to be done to ensure a sustainable future for all.",
@@ -26,7 +26,7 @@ let initialState = {
     },
     {
       id: 3,
-      resource: "eeeee",
+      resource: "News GRP",
       resourceAvatar: news,
       image: economy,
       text: "Global economy sees sharp increase in job growth, with unemployment rates falling to pre-pandemic levels.",
@@ -34,7 +34,7 @@ let initialState = {
     },
     {
       id: 4,
-      resource: "eeeee",
+      resource: "News GRP",
       resourceAvatar: news,
       image: tech,
       text: "Emerging technology: From artificial intelligence and machine learning to biotechnology and quantum computing, emerging technologies are transforming the way we live and work in ways that were once unimaginable. While these developments hold immense potential for solving some of the world's most pressing challenges, they also raise complex ethical and societal questions that require careful consideration. As scientists and policymakers work to navigate this rapidly changing landscape, there is much debate and discussion around how best to harness the power of technology for the greater good.",

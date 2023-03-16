@@ -19,15 +19,15 @@ const Pagination = ({
 
   return (
     <div className="pagination">
-      <button className="button" onClick={() => setPortionNumber(1)}>Return to start</button>
-      <button className="button" onClick={portionNumber>1 && (() => setPortionNumber(portionNumber - 1))}>Prev</button>
+      <div className="navigation_button a" onClick={() => setPortionNumber(1)}>❮❮</div>
+      <div className="navigation_button a" onClick={portionNumber>1 ? (() => setPortionNumber(portionNumber - 1)): undefined}>❮</div>
       {pages
         .filter((p) => p >= leftPortionBorder && p <= rightPortionBorder)
         .map((p) => {
           return (
             <span
               key={p}
-              className={currentPage === p ? "selectedPage" : "pageNumber"}
+              className={currentPage === p ? "selectedPage a" : "pageNumber a"}
               onClick={() => {
                 onPageChanged(p);
               }}
@@ -37,10 +37,10 @@ const Pagination = ({
           );
         })}
        
-        <button className="button" onClick={portionQuantity>portionNumber && (() => setPortionNumber(portionNumber + 1))}>
-          Next
-        </button>
-        <button className="button" onClick={() => setPortionNumber(portionQuantity)}>Go to end</button>
+        <div className="navigation_button a" onClick={portionQuantity>portionNumber ? (() => setPortionNumber(portionNumber + 1)):undefined}>
+        ❯
+        </div>
+        <div className="navigation_button a" onClick={() => setPortionNumber(portionQuantity)}>❯❯</div>
       
     </div>
   );

@@ -1,15 +1,27 @@
 .pagination{
   padding: 20px;
+  display: inline-block;
 }
 
-.pagination .selectedPage{
-  color:rgb(0, 0, 0);
-  padding: 2px;
-}
+
 .pagination .pageNumber{
    color:rgb(37, 37, 37);
    padding: 2px;
 }
-.pagination .button{
+.pagination .navigation_button{
   padding: 4px;
+ 
   }
+.pagination .a{
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+.pagination .selectedPage {
+  background-color: #4CAF50;
+  color: white;
+}
+.pagination .a:hover:not(.selectedPage) {background-color: #ddd;}

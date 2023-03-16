@@ -3,6 +3,7 @@ import userPhoto from "../../../../assets/images/userAvatarDefault.png";
 import { NavLink } from "react-router-dom";
 import Pagination from "../../../Global/Pagination/Pagination";
 import Preloader from "./../../../Global/Preloader/Preloader";
+import { motion } from 'framer-motion';
 
 let Users = (props) => {
   return (
@@ -28,7 +29,9 @@ let Users = (props) => {
             return (
               <div key={u.id} className="users_currentUser">
                 <NavLink to={"/users/" + u.id}>
-                  <img
+                  <motion.img
+                  animate={{rotate:360}}
+                  transition={{ duration: 0.8 }}
                     className="Users__avatar"
                     alt=""
                     src={u.photos.small != null ? u.photos.small : userPhoto}
