@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes, Navigate } from "react-router-dom";
 import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
-import Settings from "./components/Pages/Settings/News";
+import Settings from "./components/Pages/Settings/Settings";
 import Friends from "./components/Pages/Friends/Friends";
 import UsersContainer from "./components/Pages/UsersPage/Users/UsersContainer";
 import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
