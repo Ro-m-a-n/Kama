@@ -1,0 +1,43 @@
+.settings_wrap {
+  height: 96vh;
+  margin: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.themes {
+  display: flex;
+
+  justify-content: flex-start;
+}
+.themes_light {
+  height: 20vh;
+  width: 20vh;
+  border: 3px black solid;
+  margin: 3vh;
+}
+.themes_green {
+  height: 20vh;
+  width: 20vh;
+  border: 3px black solid;
+  margin: 3vh;
+}
+.themes_light__up {
+  background-color: #faf9ed;
+  height: 50%;
+}
+.themes_light__down {
+  background-color: #e2dfd7;
+  height: 50%;
+}
+.themes_green__up {
+  background-color: #ccc;
+  height: 50%;
+}
+.themes_green__down {
+  background-color: #9abba0;
+  height: 50%;
+  
+}

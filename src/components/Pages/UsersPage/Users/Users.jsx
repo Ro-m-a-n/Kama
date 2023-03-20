@@ -4,11 +4,11 @@ import { NavLink } from "react-router-dom";
 import Pagination from "../../../Global/Pagination/Pagination";
 import Preloader from "./../../../Global/Preloader/Preloader";
 import { motion } from 'framer-motion';
-
+/**@jsxImportSource theme-ui */
 let Users = (props) => {
   return (
     <div>
-      <div className="users_wrap">
+      <div className="users_wrap" sx={{ bg: "primary" }}>
         <Pagination
           itemsQuantity={props.usersQuantity}
           pageSize={props.pageSize}

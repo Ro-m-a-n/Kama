@@ -1,7 +1,7 @@
 .news_wrap {
   height: 96vh;
   margin: 2vh;
-  background-color: #9abba0;
+  /* background-color: #9abba0; */
   overflow-y: scroll;
 }
 
