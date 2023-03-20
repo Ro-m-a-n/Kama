@@ -3,6 +3,7 @@ import "./ProfileInfo.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileDescriptionReduxForm from "./ProfileDescription/ProfileDescriptionEditMode";
 import ProfileDescription from "./ProfileDescription/ProfileDescription";
+/**@jsxImportSource theme-ui */
 
 const ProfileInfo = (props) => {
   let [editMode, setEditMode] = useState(false);
@@ -21,7 +22,7 @@ const ProfileInfo = (props) => {
     });
   };
   return (
-    <div className="profileInfoWrapper">
+    <div className="profileInfoWrapper" sx={{ bg: "primary" }}>
       <div className="Users__avatar">
         <img src={props.photo} />
         <div className="uploadFile_wrap">

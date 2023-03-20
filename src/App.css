@@ -6,10 +6,9 @@
 }
 .app_wrapper__pages {
   grid-area: c;
-  /* background-image: url("./assets/images/back/forestClipArt.jpg"); */
   background-size: 1000px;
   background-repeat: round;
-  background-color: #ccc;
+
 }
 .preloader {
   height: 100vh;
@@ -18,7 +17,7 @@
   align-items: center;
   justify-content: center;
 }
-.preloader_gif{
+.preloader_gif {
   height: 40px;
   width: 40px;
 }
