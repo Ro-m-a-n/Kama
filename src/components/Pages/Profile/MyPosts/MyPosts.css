@@ -1,7 +1,7 @@
 .myPost_wrap {
   display: grid;
   grid-template-rows: 84vh 12vh;
- 
+ background-image: url("../../../../assets/images/back/leaves.jpg");
 }
 
 .myPosts {
