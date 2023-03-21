@@ -4,6 +4,7 @@ import React from "react";
 import { AddMessageForm } from "./../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
 import { useState } from "react";
+
 /**@jsxImportSource theme-ui */
 
 const MyPosts = (props) => {
@@ -31,12 +32,12 @@ const MyPosts = (props) => {
 
   return (
     <div className="myPost_wrap">
-      <div className="myPosts" sx={{bg: 'primary'}}>
+      <div className="myPosts" sx={{ bg: "primary" }}>
         <h3>My posts</h3>
         {postsElements}
       </div>
-      <div className="addPost" sx={{bg: 'primary'}}>
-        <AddPostReduxForm onSubmit={onSubmit} full_widht={'widht'}/>
+      <div className="addPost" sx={{ bg: "primary" }}>
+        <AddPostReduxForm onSubmit={onSubmit} full_widht={"widht"} />
       </div>
     </div>
   );

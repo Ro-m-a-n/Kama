@@ -3,6 +3,7 @@ const theme = {
   colors: {
     background: "#ccc;",
     primary: "#9abba0;",
+
     modes: {
       light: {
         background: "#faf9ed;",
