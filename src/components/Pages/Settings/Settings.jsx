@@ -2,6 +2,8 @@ import "./Settings.css";
 import { useColorMode } from "theme-ui";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
+
 /**@jsxImportSource theme-ui */
 const Settings = (props) => {
   const [ColorMode, setColorMode] = useColorMode("green");
@@ -58,6 +60,7 @@ const Settings = (props) => {
           <div className="themes_green__down"></div>
         </motion.div>
       </div>
+     
     </div>
   );
 };

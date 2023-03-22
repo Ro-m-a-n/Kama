@@ -147,3 +147,10 @@
 .profile_editIcon:hover {
   scale: 1.2;
 }
+.profile_status__input input {
+  padding: 10px;
+  width: 100%;
+  border: 3px rgba(22, 68, 3, 0.404) solid;
+  background-color: rgba(255, 255, 255, 0.904);
+  border-radius: 15px;
+}

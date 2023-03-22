@@ -24,7 +24,7 @@ const ProfileStatus = (props) => {
         </div>
       )}
       {editMode && (
-        <div>
+        <div className="profile_status__input">
           <input
             value={status}
             onChange={onStatusChange}
