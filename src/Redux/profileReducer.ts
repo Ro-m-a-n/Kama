@@ -5,7 +5,7 @@ const ADD_POST = "ADD-POST";
 const EDIT_STATUS = "EDIT_STATUS";
 const SAVE_PHOTO = "SAVE_PHOTO";
 const SET_MY_PROFILE_INFO = "SET_MY_PROFILE_INFO";
-const SET_PROFILE_DESCRIPTION = "SET_PROFILE_DESCRIPTION";
+
 const DELETE_POST = "DELETE_POST";
 const LIKE_THIS_POST = "LIKE_THIS_POST";
 const UNLIKE_THIS_POST = "UNLIKE_THIS_POST";
@@ -23,28 +23,49 @@ let initialState = {
   status: "Status" as string | null,
   photo: defaultPhoto as object,
   myProfileInfo: {
-    fullName: null,
+    fullName: "My Name",
     lookingForAJob: true,
     lookingForAJobDescription: null,
     aboutMe: "hey you",
-    contacts: null,
-  } as ProfileInfoType,
+    contacts: {},
+    userId: null,
+    photos: null,
+  } as ProfileInfoType | null,
 };
 export type InitialStateType = typeof initialState;
+
 export type ProfileInfoType = {
   fullName: string | null;
   lookingForAJob: boolean;
-  lookingForAJobDescription?: null | boolean;
+  lookingForAJobDescription: string | null;
   aboutMe: string | null;
-  contacts: object | null;
+  contacts: ContactsType | null;
+  photos: PhotosType | null;
+  userId: number | null;
 };
-
+export type ContactsType = {
+  github: string;
+  vk: string;
+  facebook: string;
+  instagram: string;
+  twitter: string;
+  website: string;
+  youtube: string;
+  mainLink: string;
+};
+export type PhotosType = {
+  small: string | null;
+  large: string | null;
+};
 export type PostType = {
   id: number;
   text: string;
   likes: number;
 };
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (
+  state: InitialStateType = initialState,
+  action: any
+): InitialStateType => {
   switch (action.type) {
     case ADD_POST: {
       return {
@@ -101,43 +122,68 @@ const profileReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export const addText = (text: string, postId: number) => {
+type AddTextType = {
+  type: typeof ADD_POST;
+  text: string;
+  postId: number;
+};
+export const addText = (text: string, postId: number): AddTextType => {
   return {
-    type: typeof ADD_POST,
+    type: ADD_POST,
     text,
     postId,
   };
 };
-export const editStatusAC = (text: string) => {
-  return { type: typeof EDIT_STATUS, text };
+type EditStatusACType = {
+  type: typeof EDIT_STATUS;
+  text: string;
 };
-export const setMyProfileInfoAC = (data: ProfileInfoType) => {
-  return { type: typeof SET_MY_PROFILE_INFO, data };
+export const editStatusAC = (text: string): EditStatusACType => {
+  return { type: EDIT_STATUS, text };
 };
-
-export const deletePostAC = (id: number) => {
-  return { type: typeof DELETE_POST, id };
+type SetMyProfileInfoACType = {
+  type: typeof SET_MY_PROFILE_INFO;
+  data: ProfileInfoType;
 };
-export const likeThisPostAC = (id: number) => {
-  return { type: typeof LIKE_THIS_POST, id };
+export const setMyProfileInfoAC = (
+  data: ProfileInfoType
+): SetMyProfileInfoACType => {
+  debugger;
+  return { type: SET_MY_PROFILE_INFO, data };
 };
-
-export const unlikeThisPostAC = (id: number) => {
-  return { type: typeof UNLIKE_THIS_POST, id };
+type deletePostACType = {
+  type: typeof DELETE_POST;
+  id: number;
+};
+export const deletePostAC = (id: number): deletePostACType => {
+  return { type: DELETE_POST, id };
+};
+type LikeThisPostACType = {
+  type: typeof LIKE_THIS_POST;
+  id: number;
+};
+export const likeThisPostAC = (id: number): LikeThisPostACType => {
+  return { type: LIKE_THIS_POST, id };
+};
+type UnlikeThisPostACType = {
+  type: typeof UNLIKE_THIS_POST;
+  id: number;
+};
+export const unlikeThisPostAC = (id: number): UnlikeThisPostACType => {
+  return { type: UNLIKE_THIS_POST, id };
 };
 
 export const getStatusTC = (userId: number) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     let response = await currentUserApi.getStatus(userId);
     dispatch(editStatusAC(response.data));
   };
 };
 
-export const updateStatusTC = (status) => {
-  return (dispatch) => {
+export const updateStatusTC = (status: string) => {
+  return (dispatch: any) => {
     try {
-      currentUserApi.updateStatus(status).then((response) => {
+      currentUserApi.updateStatus(status).then((response: any) => {
         if (response.resultCode === 0) {
           dispatch(editStatusAC(status));
         }
@@ -146,12 +192,12 @@ export const updateStatusTC = (status) => {
   };
 };
 
-export const savePhotoSuccessAC = (photo) => {
+export const savePhotoSuccessAC = (photo: any) => {
   return { type: SAVE_PHOTO, photo };
 };
 
-export const savePhotoTC = (file) => {
-  return async (dispatch) => {
+export const savePhotoTC = (file: any) => {
+  return async (dispatch: any) => {
     let response = await currentUserApi.savePhoto(file);
 
     if (response.resultCode === 0) {
@@ -160,24 +206,23 @@ export const savePhotoTC = (file) => {
   };
 };
 
-export const getMyProfileTC = (myId) => {
-  return (dispatch) => {
-    currentUserApi.getMyProfile(myId).then((data) => {
+export const getMyProfileTC = (myId: number) => {
+  return (dispatch: any) => {
+    currentUserApi.getMyProfile(myId).then((data: any) => {
       dispatch(setMyProfileInfoAC(data));
     });
   };
 };
 
-export const saveProfileDescriptionTC = (profile) => {
-  return async (dispatch, getState) => {
+export const saveProfileDescriptionTC = (profile: any) => {
+  return async (dispatch: any, getState: any) => {
     const userId = getState().auth.id;
     let response = await currentUserApi.saveProfile(profile);
     if (response.resultCode === 0) {
       dispatch(getMyProfileTC(userId));
     } else {
-      dispatch(
-        stopSubmit("Profile_description", { _error: response.messages[0] })
-      );
+      dispatch();
+      stopSubmit("Profile_description", { _error: response.messages[0] });
       return Promise.reject(response.messages[0]);
     }
   };

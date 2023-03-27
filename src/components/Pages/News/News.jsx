@@ -1,10 +1,9 @@
 import "./News.css";
 import { connect } from "react-redux";
 import NewsPost from "./NewsPost";
-import { unlikeThisNewsAC, likeThisNewsAC } from './../../../Redux/newsReducer';
+import { unlikeThisNewsAC, likeThisNewsAC } from "./../../../Redux/newsReducer";
 /**@jsxImportSource theme-ui */
 const News = (props) => {
-  debugger;
   let newsPost = props.news.map((el) => {
     return (
       <NewsPost
@@ -16,7 +15,11 @@ const News = (props) => {
     );
   });
 
-  return <div className="news_wrap" sx={{ bg: "primary" }}>{newsPost}</div>;
+  return (
+    <div className="news_wrap" sx={{ bg: "primary" }}>
+      {newsPost}
+    </div>
+  );
 };
 
 let mapStateToProps = (state) => {
