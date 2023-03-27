@@ -10,6 +10,7 @@ const DELETE_POST = "DELETE_POST";
 const LIKE_THIS_POST = "LIKE_THIS_POST";
 const UNLIKE_THIS_POST = "UNLIKE_THIS_POST";
 
+export type ProfileinitialState = typeof initialState;
 let initialState = {
   postsData: [
     { id: 1, text: "True way of Samurai", likes: 65 },
@@ -18,16 +19,30 @@ let initialState = {
     { id: 4, text: "lorem ipsum smth ", likes: 14 },
     { id: 5, text: "True way of Samurai", likes: 5 },
     { id: 6, text: "to be or not to be this is the question", likes: 5 },
-  ],
-  status: "Status",
-  photo: defaultPhoto,
+  ] as Array<PostType>,
+  status: "Status" as string | null,
+  photo: defaultPhoto as object,
   myProfileInfo: {
-    fullName: "",
+    fullName: null,
     lookingForAJob: true,
-    lookingForAJobDescription: "",
+    lookingForAJobDescription: null,
     aboutMe: "hey you",
-    contacts: "1",
-  },
+    contacts: null,
+  } as ProfileInfoType,
+};
+export type InitialStateType = typeof initialState;
+export type ProfileInfoType = {
+  fullName: string | null;
+  lookingForAJob: boolean;
+  lookingForAJobDescription?: null | boolean;
+  aboutMe: string | null;
+  contacts: object | null;
+};
+
+export type PostType = {
+  id: number;
+  text: string;
+  likes: number;
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -57,11 +72,11 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case DELETE_POST: {
-      let newPostsData = state.postsData.filter(key => key.id !== action.id);
+      let newPostsData = state.postsData.filter((key) => key.id !== action.id);
       return { ...state, postsData: newPostsData };
     }
     case LIKE_THIS_POST: {
-      let newPostsData = state.postsData.filter(key => {
+      let newPostsData = state.postsData.filter((key) => {
         if (key.id == action.id) {
           key.likes++;
         }
@@ -72,7 +87,7 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case UNLIKE_THIS_POST: {
-      let newPostsData = state.postsData.filter(key => {
+      let newPostsData = state.postsData.filter((key) => {
         if (key.id == action.id) {
           key.likes--;
         }
@@ -87,34 +102,32 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addText = (text, postId) => {
+export const addText = (text: string, postId: number) => {
   return {
-    type: ADD_POST,
+    type: typeof ADD_POST,
     text,
     postId,
   };
 };
-export const editStatusAC = (text) => {
-  return { type: EDIT_STATUS, text };
+export const editStatusAC = (text: string) => {
+  return { type: typeof EDIT_STATUS, text };
 };
-export const setMyProfileInfoAC = (data) => {
-  return { type: SET_MY_PROFILE_INFO, data };
-};
-export const setProfileDescriptionAC = (data) => {
-  return { type: SET_PROFILE_DESCRIPTION, data };
-};
-export const deletePostAC = (id) => {
-  return { type: DELETE_POST, id };
-};
-export const likeThisPostAC = (id) => {
-  return { type: LIKE_THIS_POST, id };
+export const setMyProfileInfoAC = (data: ProfileInfoType) => {
+  return { type: typeof SET_MY_PROFILE_INFO, data };
 };
 
-export const unlikeThisPostAC = (id) => {
-  return { type: UNLIKE_THIS_POST, id };
+export const deletePostAC = (id: number) => {
+  return { type: typeof DELETE_POST, id };
+};
+export const likeThisPostAC = (id: number) => {
+  return { type: typeof LIKE_THIS_POST, id };
 };
 
-export const getStatusTC = (userId) => {
+export const unlikeThisPostAC = (id: number) => {
+  return { type: typeof UNLIKE_THIS_POST, id };
+};
+
+export const getStatusTC = (userId: number) => {
   return async (dispatch) => {
     let response = await currentUserApi.getStatus(userId);
     dispatch(editStatusAC(response.data));
