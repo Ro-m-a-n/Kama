@@ -6,6 +6,16 @@ import news from "../assets/images/news/news.png";
 
 const LIKE_THIS_NEWS = "LIKE_THIS_NEWS";
 const UNLIKE_THIS_NEWS = "UNLIKE_THIS_NEWS";
+
+type initialStateType = typeof initialState;
+type newsType = {
+  id: 1;
+  resource: string;
+  resourceAvatar: object;
+  image: object;
+  text: string;
+  likes: number;
+};
 let initialState = {
   news: [
     {
@@ -40,9 +50,12 @@ let initialState = {
       text: "Emerging technology: From artificial intelligence and machine learning to biotechnology and quantum computing, emerging technologies are transforming the way we live and work in ways that were once unimaginable. While these developments hold immense potential for solving some of the world's most pressing challenges, they also raise complex ethical and societal questions that require careful consideration. As scientists and policymakers work to navigate this rapidly changing landscape, there is much debate and discussion around how best to harness the power of technology for the greater good.",
       likes: 20,
     },
-  ],
+  ] as Array<newsType>,
 };
-let newsReducer = (state = initialState, action) => {
+let newsReducer = (
+  state: initialStateType = initialState,
+  action: any
+): initialStateType => {
   switch (action.type) {
     case LIKE_THIS_NEWS: {
       let updatedNews = state.news.filter((key) => {
@@ -52,7 +65,7 @@ let newsReducer = (state = initialState, action) => {
         return key;
       });
 
-      return { ...state, ness: updatedNews };
+      return { ...state, news: updatedNews };
     }
 
     case UNLIKE_THIS_NEWS: {
@@ -63,17 +76,26 @@ let newsReducer = (state = initialState, action) => {
         return key;
       });
 
-      return { ...state, new: updatedNews };
+      return { ...state, news: updatedNews };
     }
     default:
       return state;
   }
 };
-export const likeThisNewsAC = (id) => {
-  return { type: LIKE_THIS_NEWS, id };
+
+type likeThisNewsACType = {
+  type: typeof LIKE_THIS_NEWS;
+  id: number;
 };
 
-export const unlikeThisNewsAC = (id) => {
+export const likeThisNewsAC = (id: number): likeThisNewsACType => {
+  return { type: LIKE_THIS_NEWS, id };
+};
+type unlikeThisNewsACType = {
+  type: typeof UNLIKE_THIS_NEWS;
+  id: number;
+};
+export const unlikeThisNewsAC = (id: number): unlikeThisNewsACType => {
   return { type: UNLIKE_THIS_NEWS, id };
 };
 export default newsReducer;
