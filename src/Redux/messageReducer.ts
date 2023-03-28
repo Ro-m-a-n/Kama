@@ -4,6 +4,19 @@ import harry from "../assets/images/dialogs/harry.jpg";
 const ADD_MESSAGE = "ADD-MESSAGE";
 const DELETE_MESSAGE = "DELETE_MESSAGE";
 
+type initialStateType = typeof initialState;
+
+type dialogsType = {
+  dialogId: number;
+  name: string;
+  dialogAvatar: Object;
+  message: Array<messageType> 
+};
+type messageType = {
+  messageId: number;
+  isMe: boolean;
+  text: string;
+};
 let initialState = {
   dialogs: [
     {
@@ -17,7 +30,7 @@ let initialState = {
           isMe: false,
           text: "I'm curious what makes you so curious.",
         },
-      ],
+      ] as Array<messageType>,
     },
     {
       dialogId: 2,
@@ -50,7 +63,7 @@ let initialState = {
           isMe: false,
           text: "I know what it's like to lose. To feel so desperately that you're right, yet to fail nonetheless.",
         },
-      ],
+      ] as Array<messageType>,
     },
     {
       dialogId: 3,
@@ -71,11 +84,14 @@ let initialState = {
         { messageId: 4, isMe: false, text: "Expecto Patronum!" },
         { messageId: 5, isMe: false, text: "Mischief managed." },
         { messageId: 6, isMe: false, text: "I must not tell lies." },
-      ],
+      ] as Array<messageType>,
     },
-  ],
+  ] as Array<dialogsType>,
 };
-let messageReducer = (state = initialState, action) => {
+let messageReducer = (
+  state: initialStateType = initialState,
+  action: any
+): initialStateType => {
   switch (action.type) {
     case ADD_MESSAGE: {
       let newDialogs = state.dialogs.map((el) => {
@@ -112,16 +128,34 @@ let messageReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export const addMessage = (message, dialogId, messageId, isMe) => ({
+type addMessageType = {
+  type: typeof ADD_MESSAGE;
+  message: string;
+  dialogId: number;
+  messageId: number;
+  isMe: boolean;
+};
+export const addMessage = (
+  message: string,
+  dialogId: number,
+  messageId: number,
+  isMe: boolean
+): addMessageType => ({
   type: ADD_MESSAGE,
   message,
   dialogId,
   messageId,
   isMe,
 });
-
-export const deleteMessageAC = (dialogId, messageId) => ({
+type deleteMessageACType = {
+  type: typeof DELETE_MESSAGE;
+  dialogId: number;
+  messageId: number;
+};
+export const deleteMessageAC = (
+  dialogId: number,
+  messageId: number
+): deleteMessageACType => ({
   type: DELETE_MESSAGE,
   dialogId,
   messageId,
