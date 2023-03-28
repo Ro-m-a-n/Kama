@@ -4,7 +4,7 @@ const INITIALIZED_SUCCES = "INITIALIZED_SUCCES";
 
 type InitialStateType = typeof initialState;
 let initialState = {
-  initialized: false,
+  initialized: false as boolean,
 };
 
 let appReducer = (state: InitialStateType = initialState, action: any) => {
