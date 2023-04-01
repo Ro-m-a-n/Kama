@@ -85,7 +85,10 @@ let usersReducer = (
 
 export const follow = (id: number) => ({ type: FOLLOW, id });
 export const unFollow = (id: number) => ({ type: UNFOLLOW, id });
-export const setUsers = (users: usersType) => ({ type: SET_USERS, users });
+export const setUsers = (users: Array<usersType>) => ({
+  type: SET_USERS,
+  users,
+});
 export const setCurrentPage = (currentPage: number) => ({
   type: SET_CURRENT_PAGE,
   currentPage,

@@ -21,7 +21,7 @@ let initialState = {
     { id: 6, text: "to be or not to be this is the question", likes: 5 },
   ] as Array<PostType>,
   status: "Status" as string | null,
-  photo: defaultPhoto as object,
+  photo: defaultPhoto as string,
   myProfileInfo: {
     fullName: "My Name",
     lookingForAJob: true,

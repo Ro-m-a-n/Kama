@@ -6,14 +6,15 @@ const DELETE_MESSAGE = "DELETE_MESSAGE";
 
 type initialStateType = typeof initialState;
 
-type dialogsType = {
+export type dialogsType = {
   dialogId: number;
   name: string;
-  dialogAvatar: Object;
-  message: Array<messageType> 
+  dialogAvatar: string;
+  message: Array<messageType>;
 };
 type messageType = {
   messageId: number;
+  dialogAvatar: string;
   isMe: boolean;
   text: string;
 };
@@ -128,7 +129,7 @@ let messageReducer = (
       return state;
   }
 };
-type addMessageType = {
+export type addMessageType = {
   type: typeof ADD_MESSAGE;
   message: string;
   dialogId: number;
@@ -147,7 +148,7 @@ export const addMessage = (
   messageId,
   isMe,
 });
-type deleteMessageACType = {
+export type deleteMessageACType = {
   type: typeof DELETE_MESSAGE;
   dialogId: number;
   messageId: number;

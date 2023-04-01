@@ -4,13 +4,30 @@ import Message from "./Message/Message";
 import { useState } from "react";
 import { reduxForm, reset } from "redux-form";
 import { AddMessageForm } from "./Message/AddMessage/AddMessage";
-import React from "react";
 import { connect } from "react-redux";
+import {
+  deleteMessageACType,
+  dialogsType,
+} from "../../../Redux/messageReducer";
 /**@jsxImportSource theme-ui */
-const Dialogs = (props) => {
+
+type propsType = {
+  dialogs: Array<dialogsType>;
+  photo: object;
+  addMessage: (
+    message: string,
+    dialogId: number,
+    messageId: number,
+    isMe: boolean
+  ) => void;
+  deleteMessageAC: deleteMessageACType;
+  dispatch: any;
+  routeParams: any;
+};
+const Dialogs: React.FC<propsType> = (props) => {
   let currentRoute = props.routeParams.params.dialogId || 1;
   const [currentMessageId, setCurrentMessageId] = useState(2);
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: any) => {
     props.addMessage(formData.message, currentRoute, currentMessageId, true);
     props.dispatch(reset("DialogAddMessage"));
   };
