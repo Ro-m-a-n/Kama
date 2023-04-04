@@ -148,7 +148,6 @@ type SetMyProfileInfoACType = {
 export const setMyProfileInfoAC = (
   data: ProfileInfoType
 ): SetMyProfileInfoACType => {
-  debugger;
   return { type: SET_MY_PROFILE_INFO, data };
 };
 type deletePostACType = {

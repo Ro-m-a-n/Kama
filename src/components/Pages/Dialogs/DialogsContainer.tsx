@@ -1,4 +1,4 @@
-import Dialogs from "./Dialogs.js";
+import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../../hok/withAuthRedirect";
@@ -10,7 +10,8 @@ import {
 import withRouter from "../../../hok/withRouter";
 import { appStateType } from "../../../Redux/reduxStore.js";
 
-const DialogsContainer = (props: any) => {
+type propsType = MSPT & MDPT & OwnPT;
+const DialogsContainer: React.FC<propsType> = (props) => {
   return <Dialogs {...props} />;
 };
 
@@ -22,14 +23,20 @@ let mapStateToProps = (state: appStateType): MSPT => {
 };
 
 type MSPT = {
-  dialogs: Array<dialogsType> | null;
+  dialogs: Array<dialogsType>;
   photo: string;
 };
 type MDPT = {
-  addMessage: () => void;
-  deleteMessageAC: () => void;
+  addMessage: (
+    message: string,
+    dialogId: number,
+    messageId: number,
+    isMe: boolean
+  ) => void;
+
+  deleteMessageAC: (dialogId: number, messageId: number) => void;
 };
-type OwnPT = {};
+type OwnPT = { routeParams: object };
 
 export default compose(
   connect<MSPT, MDPT, OwnPT, appStateType>(mapStateToProps, {

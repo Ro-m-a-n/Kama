@@ -5,9 +5,10 @@ import {
   deletePostAC,
   likeThisPostAC,
   unlikeThisPostAC,
-} from "./../../../../Redux/profileReducer";
+} from "../../../../Redux/profileReducer";
+import { appStateType } from "../../../../Redux/reduxStore";
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state:appStateType) => {
   return {
     postsData: state.profilePage.postsData,
     photo: state.profilePage.photo,

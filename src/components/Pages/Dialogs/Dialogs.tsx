@@ -5,22 +5,19 @@ import { useState } from "react";
 import { reduxForm, reset } from "redux-form";
 import { AddMessageForm } from "./Message/AddMessage/AddMessage";
 import { connect } from "react-redux";
-import {
-  deleteMessageACType,
-  dialogsType,
-} from "../../../Redux/messageReducer";
+import { dialogsType } from "../../../Redux/messageReducer";
 /**@jsxImportSource theme-ui */
 
 type propsType = {
   dialogs: Array<dialogsType>;
-  photo: object;
+  photo: string;
   addMessage: (
     message: string,
     dialogId: number,
     messageId: number,
     isMe: boolean
   ) => void;
-  deleteMessageAC: deleteMessageACType;
+  deleteMessageAC: (dialogId: number, messageId: number) => void;
   dispatch: any;
   routeParams: any;
 };

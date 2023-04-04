@@ -1,13 +1,16 @@
 import "./MyPosts.css";
 import Post from "./Post/Post";
-import React from "react";
-import { AddMessageForm } from "./../../Dialogs/Message/AddMessage/AddMessage";
+import { AddMessageForm } from "../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
 import { useState } from "react";
+import { PostType } from "../../../../Redux/profileReducer";
 
 /**@jsxImportSource theme-ui */
-
-const MyPosts = (props) => {
+type PropsType = {
+  postsData: Array<PostType>;
+  photo: string;
+};
+const MyPosts: React.FC<PropsType> = (props) => {
   const [postId, setPostId] = useState(7);
   let postsElements = props.postsData.map((el) => (
     <Post

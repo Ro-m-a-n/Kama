@@ -12,9 +12,8 @@ export type dialogsType = {
   dialogAvatar: string;
   message: Array<messageType>;
 };
-type messageType = {
+export type messageType = {
   messageId: number;
-  dialogAvatar: string;
   isMe: boolean;
   text: string;
 };
