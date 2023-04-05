@@ -38,7 +38,7 @@ type MDPT = {
 };
 type OwnPT = { routeParams: object };
 
-export default compose(
+export default compose<propsType>(
   connect<MSPT, MDPT, OwnPT, appStateType>(mapStateToProps, {
     addMessage,
     deleteMessageAC,

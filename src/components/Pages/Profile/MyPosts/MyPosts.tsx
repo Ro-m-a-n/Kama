@@ -4,11 +4,17 @@ import { AddMessageForm } from "../../Dialogs/Message/AddMessage/AddMessage";
 import { reduxForm } from "redux-form";
 import { useState } from "react";
 import { PostType } from "../../../../Redux/profileReducer";
+import { ProfileInfoType } from "../../../../Redux/profileReducer";
 
 /**@jsxImportSource theme-ui */
 type PropsType = {
   postsData: Array<PostType>;
   photo: string;
+  profile: ProfileInfoType;
+  deletePostAC: (id: number) => void;
+  likeThisPostAC: (id: number) => void;
+  unlikeThisPostAC: (id: number) => void;
+  addText: (message: string, postId: number) => void;
 };
 const MyPosts: React.FC<PropsType> = (props) => {
   const [postId, setPostId] = useState(7);
@@ -25,7 +31,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
       unlikeThisPostAC={props.unlikeThisPostAC}
     />
   ));
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: any) => {
     setPostId(postId + 1);
     props.addText(formData.message, postId);
   };

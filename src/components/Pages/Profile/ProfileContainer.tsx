@@ -53,7 +53,7 @@ type MDPT = {
   saveProfileDescriptionTC: (profile: any) => void;
 };
 type OwnPT = {};
-export default compose(
+export default compose<propsType>(
   connect<MSPT, MDPT, OwnPT, appStateType>(mapStateToProps, {
     editStatusAC,
     getStatusTC,

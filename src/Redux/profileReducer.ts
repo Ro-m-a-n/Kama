@@ -30,7 +30,7 @@ let initialState = {
     contacts: {},
     userId: null,
     photos: null,
-  } as ProfileInfoType | null,
+  } as ProfileInfoType,
 };
 export type InitialStateType = typeof initialState;
 
@@ -98,7 +98,7 @@ const profileReducer = (
     }
     case LIKE_THIS_POST: {
       let newPostsData = state.postsData.filter((key) => {
-        if (key.id == action.id) {
+        if (key.id === action.id) {
           key.likes++;
         }
         return key;
@@ -109,7 +109,7 @@ const profileReducer = (
 
     case UNLIKE_THIS_POST: {
       let newPostsData = state.postsData.filter((key) => {
-        if (key.id == action.id) {
+        if (key.id === action.id) {
           key.likes--;
         }
         return key;
@@ -122,7 +122,7 @@ const profileReducer = (
       return state;
   }
 };
-type AddTextType = {
+export type AddTextType = {
   type: typeof ADD_POST;
   text: string;
   postId: number;
@@ -134,14 +134,14 @@ export const addText = (text: string, postId: number): AddTextType => {
     postId,
   };
 };
-type EditStatusACType = {
+export type EditStatusACType = {
   type: typeof EDIT_STATUS;
   text: string;
 };
 export const editStatusAC = (text: string): EditStatusACType => {
   return { type: EDIT_STATUS, text };
 };
-type SetMyProfileInfoACType = {
+export type SetMyProfileInfoACType = {
   type: typeof SET_MY_PROFILE_INFO;
   data: ProfileInfoType;
 };
@@ -150,21 +150,21 @@ export const setMyProfileInfoAC = (
 ): SetMyProfileInfoACType => {
   return { type: SET_MY_PROFILE_INFO, data };
 };
-type deletePostACType = {
+export type deletePostACType = {
   type: typeof DELETE_POST;
   id: number;
 };
 export const deletePostAC = (id: number): deletePostACType => {
   return { type: DELETE_POST, id };
 };
-type LikeThisPostACType = {
+export type LikeThisPostACType = {
   type: typeof LIKE_THIS_POST;
   id: number;
 };
 export const likeThisPostAC = (id: number): LikeThisPostACType => {
   return { type: LIKE_THIS_POST, id };
 };
-type UnlikeThisPostACType = {
+export type UnlikeThisPostACType = {
   type: typeof UNLIKE_THIS_POST;
   id: number;
 };
