@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-const ProfileStatus = (props) => {
+
+type propsType = {
+  status: string;
+  editStatusAC: (text: string) => void;
+  updateStatusTC: (status: string) => void;
+};
+
+const ProfileStatus: React.FC<propsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
   useEffect(() => {
@@ -12,7 +19,7 @@ const ProfileStatus = (props) => {
     setEditMode(false);
     props.updateStatusTC(status);
   };
-  const onStatusChange = (e) => {
+  const onStatusChange = (e: any) => {
     setStatus(e.target.value);
   };
   return (
@@ -20,7 +27,9 @@ const ProfileStatus = (props) => {
       {!editMode && (
         <div>
           <b>Status : </b>
-          <span className="profile_status__text" onClick={activateEditMode}>{props.status || ":)"}</span>
+          <span className="profile_status__text" onClick={activateEditMode}>
+            {props.status || ":)"}
+          </span>
         </div>
       )}
       {editMode && (

@@ -10,6 +10,7 @@ import {
   savePhotoTC,
   getMyProfileTC,
   saveProfileDescriptionTC,
+  ProfileInfoType,
 } from "../../../Redux/profileReducer";
 import { currentUserApi } from "../../../api/api";
 import { appStateType } from "../../../Redux/reduxStore";
@@ -41,7 +42,7 @@ type MSPT = {
   authorizedUserId: number;
   isAuth: boolean;
   photo: string;
-  profile: object | null;
+  profile: ProfileInfoType;
   userId: number;
 };
 type MDPT = {

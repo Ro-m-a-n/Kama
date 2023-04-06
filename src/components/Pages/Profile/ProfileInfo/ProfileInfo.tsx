@@ -3,15 +3,22 @@ import "./ProfileInfo.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileDescriptionReduxForm from "./ProfileDescription/ProfileDescriptionEditMode";
 import ProfileDescription from "./ProfileDescription/ProfileDescription";
+import { ProfileInfoType } from "../../../../Redux/profileReducer";
 /**@jsxImportSource theme-ui */
 
-type propsType = {};
+type propsType = {
+  savePhotoTC: (photo: any) => void;
+  saveProfileDescriptionTC: (formData: any) => any;
+  photo: string;
+  status: string;
+  editStatusAC: (status: string) => void;
+  updateStatusTC: (status: string) => void;
+  profile: ProfileInfoType;
+};
 
 const ProfileInfo: React.FC<propsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
-  const switchToEditMode = () => {
-    return setEditMode(true);
-  };
+  const switchToEditMode = () => setEditMode(true);
 
   const onMainPhotoSelected = (e: any) => {
     console.log(e);
@@ -19,7 +26,7 @@ const ProfileInfo: React.FC<propsType> = (props) => {
       props.savePhotoTC(e.target.files[0]);
     }
   };
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: any) => {
     props.saveProfileDescriptionTC(formData).then(() => {
       setEditMode(false);
     });

@@ -9,12 +9,12 @@ import {
   unlikeThisPostAC,
 } from "../../../../Redux/profileReducer";
 import { appStateType } from "../../../../Redux/reduxStore";
-import { compose } from "redux";
+
 type propsType = MSPT & MDPT & OwnPT;
 type MSPT = {
   postsData: Array<PostType>;
   photo: string;
-  profile: ProfileInfoType | undefined;
+  profile: ProfileInfoType;
 };
 
 type MDPT = {
@@ -32,12 +32,11 @@ let mapStateToProps = (state: appStateType): MSPT => {
   };
 };
 
-const MyPostsContainer = compose<propsType>(
-  connect<MSPT, MDPT, OwnPT, appStateType>(mapStateToProps, {
-    addText,
-    deletePostAC,
-    likeThisPostAC,
-    unlikeThisPostAC,
-  })
-)(MyPosts);
-export default MyPostsContainer;
+const MyPostsContainer: React.FC<propsType> = (props) => <MyPosts {...props} />;
+
+export default connect<MSPT, MDPT, OwnPT, appStateType>(mapStateToProps, {
+  addText,
+  deletePostAC,
+  likeThisPostAC,
+  unlikeThisPostAC,
+})(MyPostsContainer);
