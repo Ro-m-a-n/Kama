@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { CiEdit } from "react-icons/ci";
-const ProfileDescription = (props) => {
+import { ProfileInfoType } from "../../../../../Redux/profileReducer";
+
+type propsType = {
+  switchToEditMode: () => void;
+  profile: ProfileInfoType;
+};
+
+const ProfileDescription: React.FC<propsType> = (props) => {
   const [moreContacts, setMoreContacts] = useState(true);
 
   return (
@@ -18,7 +25,10 @@ const ProfileDescription = (props) => {
           {props.profile.lookingForAJobDescription}
         </div>
       )}
-      <div><b>About me: </b>{props.profile.aboutMe}</div>
+      <div>
+        <b>About me: </b>
+        {props.profile.aboutMe}
+      </div>
       <div>
         <span className="profile_contacts__buttons">
           <b>Contacts: </b>{" "}
@@ -33,7 +43,8 @@ const ProfileDescription = (props) => {
           )}
         </span>
         {moreContacts &&
-          Object.keys(props.profile.contacts).map((key) => {
+          props.profile.contacts &&
+          Object.keys(props.profile.contacts).map((key: string) => {
             return (
               <Contact
                 key={key}
@@ -47,7 +58,13 @@ const ProfileDescription = (props) => {
   );
 };
 
-const Contact = ({ contactTitle, contactValue }) => {
+const Contact = ({
+  contactTitle,
+  contactValue,
+}: {
+  contactTitle: string;
+  contactValue: string;
+}) => {
   return (
     <div>
       {" "}

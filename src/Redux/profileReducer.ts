@@ -27,7 +27,16 @@ let initialState = {
     lookingForAJob: true,
     lookingForAJobDescription: null,
     aboutMe: "hey you",
-    contacts: {},
+    contacts: {
+      facebook: "facebook.com",
+      github: "facebook.com",
+      instagram: "facebook.com",
+      mainLink: "facebook.com",
+      twitter: "facebook.com",
+      vk: "vkgovno.com",
+      website: "facebook.com",
+      youtube: "facebook.com",
+    },
     userId: null,
     photos: null,
   } as ProfileInfoType,
@@ -39,19 +48,19 @@ export type ProfileInfoType = {
   lookingForAJob: boolean;
   lookingForAJobDescription: string | null;
   aboutMe: string | null;
-  contacts: ContactsType | null;
+  contacts: ContactsType;
   photos: PhotosType | null;
   userId: number | null;
 };
 export type ContactsType = {
-  github: string;
-  vk: string;
-  facebook: string;
-  instagram: string;
-  twitter: string;
-  website: string;
-  youtube: string;
-  mainLink: string;
+  github: string | null;
+  vk: string | null;
+  facebook: string | null;
+  instagram: string | null;
+  twitter: string | null;
+  website: string | null;
+  youtube: string | null;
+  mainLink: string | null;
 };
 export type PhotosType = {
   small: string | null;
