@@ -4,10 +4,16 @@ import { Input, Textarea } from "../../../../Global/FormsControl/FormsControl";
 import {
   maxLengthTC,
   Required,
-} from "./../../../../../utilites/validators/Validators";
+} from "../../../../../utilites/validators/Validators";
+import { ProfileInfoType } from "../../../../../Redux/profileReducer";
 
+type propsType = {
+  handleSubmit: any;
+  error: string;
+  initialValues: ProfileInfoType;
+};
 let maxLength = maxLengthTC(40);
-const ProfileDescriptionEditMode = (props) => {
+const ProfileDescriptionEditMode: React.FC<propsType> = (props) => {
   return (
     <form
       onSubmit={props.handleSubmit}
@@ -70,7 +76,7 @@ const ProfileDescriptionEditMode = (props) => {
     </form>
   );
 };
-const ProfileDescriptionReduxForm = reduxForm({
+const ProfileDescriptionReduxForm = reduxForm<propsType>({
   form: "Profile_description",
 })(ProfileDescriptionEditMode);
 export default ProfileDescriptionReduxForm;
