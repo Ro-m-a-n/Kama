@@ -44,7 +44,7 @@ const ProfileDescription: React.FC<propsType> = (props) => {
         </span>
         {moreContacts &&
           props.profile.contacts &&
-          Object.keys(props.profile.contacts).map((key: string) => {
+          Object.keys(props.profile.contacts).map((key) => {
             return (
               <Contact
                 key={key}
@@ -62,8 +62,8 @@ const Contact = ({
   contactTitle,
   contactValue,
 }: {
-  contactTitle: string;
-  contactValue: string;
+  contactTitle: any;
+  contactValue: any;
 }) => {
   return (
     <div>

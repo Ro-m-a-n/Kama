@@ -52,16 +52,9 @@ export type ProfileInfoType = {
   photos: PhotosType | null;
   userId: number | null;
 };
-export type ContactsType = {
-  github: string | null;
-  vk: string | null;
-  facebook: string | null;
-  instagram: string | null;
-  twitter: string | null;
-  website: string | null;
-  youtube: string | null;
-  mainLink: string | null;
-};
+export interface ContactsType {
+  [key: string]: string;
+}
 export type PhotosType = {
   small: string | null;
   large: string | null;
