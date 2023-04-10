@@ -6,7 +6,7 @@ import ProfileDescription from "./ProfileDescription/ProfileDescription";
 import { ProfileInfoType } from "../../../../Redux/profileReducer";
 /**@jsxImportSource theme-ui */
 
-type propsType = {
+type PropsType = {
   savePhotoTC: (photo: any) => void;
   saveProfileDescriptionTC: (formData: any) => any;
   photo: string;
@@ -16,7 +16,7 @@ type propsType = {
   profile: ProfileInfoType;
 };
 
-const ProfileInfo: React.FC<propsType> = (props) => {
+const ProfileInfo: React.FC<PropsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
   const switchToEditMode = () => setEditMode(true);
 
@@ -56,7 +56,7 @@ const ProfileInfo: React.FC<propsType> = (props) => {
       {editMode ? (
         <ProfileDescriptionReduxForm
           onSubmit={onSubmit}
-          initialValues={props.profile}
+          initialValues={props.profile.contacts}
         />
       ) : (
         <ProfileDescription {...props} switchToEditMode={switchToEditMode} />

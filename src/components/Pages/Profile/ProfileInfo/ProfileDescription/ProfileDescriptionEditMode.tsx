@@ -1,19 +1,20 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import { Input, Textarea } from "../../../../Global/FormsControl/FormsControl";
 import {
   maxLengthTC,
   Required,
 } from "../../../../../utilites/validators/Validators";
-import { ProfileInfoType } from "../../../../../Redux/profileReducer";
+import { ContactsType } from "../../../../../Redux/profileReducer";
 
 type propsType = {
-  handleSubmit: any;
-  error: string;
-  initialValues: ProfileInfoType;
+  initialValues: ContactsType;
 };
+type formSubmitType = {};
 let maxLength = maxLengthTC(40);
-const ProfileDescriptionEditMode: React.FC<propsType> = (props) => {
+const ProfileDescriptionEditMode: React.FC<
+  InjectedFormProps<formSubmitType & propsType> 
+> = (props) => {
   return (
     <form
       onSubmit={props.handleSubmit}
@@ -58,7 +59,7 @@ const ProfileDescriptionEditMode: React.FC<propsType> = (props) => {
 
       <div>
         <b>Contacts :</b>
-        {Object.keys(props.initialValues.contacts).map((key) => {
+        {Object.keys(props.initialValues).map((key) => {
           return (
             <div key={key}>
               <b> {key}: </b>
@@ -76,7 +77,7 @@ const ProfileDescriptionEditMode: React.FC<propsType> = (props) => {
     </form>
   );
 };
-const ProfileDescriptionReduxForm = reduxForm<propsType>({
+const ProfileDescriptionReduxForm = reduxForm<formSubmitType & propsType>({
   form: "Profile_description",
 })(ProfileDescriptionEditMode);
 export default ProfileDescriptionReduxForm;
