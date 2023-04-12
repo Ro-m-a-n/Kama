@@ -1,16 +1,16 @@
 import "./Login.css";
-import { Field, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import {
-  maxLengthTC,
-  Required,
-} from "./../../../utilites/validators/Validators";
+import { maxLengthTC, Required } from "../../../utilites/validators/Validators";
 import { Input } from "../../Global/FormsControl/FormsControl";
-import { loginTC } from "./../../../Redux/authReducer";
+import { loginTC } from "../../../Redux/authReducer";
 import { Navigate } from "react-router-dom";
+import { appStateType } from "../../../Redux/reduxStore";
 let maxLength = maxLengthTC(30);
 
-const LoginForm = (props) => {
+const LoginForm: React.FC<
+  InjectedFormProps<formSubmitType & loginFormOwnType> & loginFormOwnType
+> = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -58,12 +58,12 @@ const LoginForm = (props) => {
   );
 };
 
-const LoginReduxForm = reduxForm({
+const LoginReduxForm = reduxForm<formSubmitType & loginFormOwnType>({
   form: "login",
 })(LoginForm);
 
-let LoginPage = (props) => {
-  const onSubmit = (formData) => {
+let LoginPage: React.FC<mstpType & mdtpType> = (props) => {
+  const onSubmit = (formData: formSubmitType) => {
     props.loginTC(
       formData.email,
       formData.password,
@@ -84,7 +84,26 @@ let LoginPage = (props) => {
     </div>
   );
 };
-const mstp = (state) => ({
+type loginFormOwnType = { captchaUrl: string | null };
+type formSubmitType = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+  captcha: string | null;
+};
+type mstpType = {
+  isAuth: boolean;
+  captchaUrl: string | null;
+};
+type mdtpType = {
+  loginTC: (
+    email: string,
+    password: string,
+    rememberMe: boolean,
+    captcha: string | null
+  ) => void;
+};
+const mstp = (state: appStateType): mstpType => ({
   isAuth: state.auth.isAuth,
   captchaUrl: state.auth.captchaUrl,
 });

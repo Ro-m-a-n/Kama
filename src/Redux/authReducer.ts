@@ -20,7 +20,7 @@ let authReducer = (state: InitialStateType = initialState, action: any) => {
         ...state,
         ...action.data,
       };
-    case "setCaptchaUrl":
+    case SET_CAPTCHA_URL:
       return {
         ...state,
         captchaUrl: action.url,
