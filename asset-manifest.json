@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Kama/static/css/main.d850bb88.css",
-    "main.js": "/Kama/static/js/main.b08ee982.js",
+    "main.js": "/Kama/static/js/main.cf2b530f.js",
     "static/css/578.458da5bc.chunk.css": "/Kama/static/css/578.458da5bc.chunk.css",
     "static/js/578.9287a48c.chunk.js": "/Kama/static/js/578.9287a48c.chunk.js",
     "static/media/shutterstock_437713483-scaled.jpg": "/Kama/static/media/shutterstock_437713483-scaled.a6b38bc676d88e2d1341.jpg",
@@ -19,12 +19,12 @@
     "static/media/site.png": "/Kama/static/media/site.35cfb4d429186a21ebae.png",
     "index.html": "/Kama/index.html",
     "main.d850bb88.css.map": "/Kama/static/css/main.d850bb88.css.map",
-    "main.b08ee982.js.map": "/Kama/static/js/main.b08ee982.js.map",
+    "main.cf2b530f.js.map": "/Kama/static/js/main.cf2b530f.js.map",
     "578.458da5bc.chunk.css.map": "/Kama/static/css/578.458da5bc.chunk.css.map",
     "578.9287a48c.chunk.js.map": "/Kama/static/js/578.9287a48c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d850bb88.css",
-    "static/js/main.b08ee982.js"
+    "static/js/main.cf2b530f.js"
   ]
 }
