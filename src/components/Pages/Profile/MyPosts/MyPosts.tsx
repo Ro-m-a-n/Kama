@@ -46,7 +46,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
         {postsElements}
       </div>
       <div className="addPost" sx={{ bg: "primary" }}>
-        <AddPostReduxForm onSubmit={onSubmit} full_widht={"widht"} />
+        <AddPostReduxForm onSubmit={onSubmit} />
       </div>
     </div>
   );

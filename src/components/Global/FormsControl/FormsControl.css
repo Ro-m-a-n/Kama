@@ -5,3 +5,6 @@
 .formsControl.error span {
   color: red;
 }
+.formsControl{
+  width: 100%;
+}

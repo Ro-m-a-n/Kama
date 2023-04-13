@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #9abba0; */
+  height: 96vh;
   overflow-y: scroll;
 }
 .profileInfoWrapper::-webkit-scrollbar {
@@ -14,26 +14,14 @@
 .profileInfoWrapper::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-.Users__avatar {
-  width: 30vh;
-  height: 30vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center;
-  align-self: center;
-}
-
-.Users__avatar img {
-  position: absolute;
-  width: 30vh;
-  height: 30vh;
-}
 
 .uploadFile_wrap {
-  position: relative;
+  position: absolute;
   display: inline-block;
   transition: 2s;
+  bottom: 15%;
+  height: 20px;
+  
 }
 .uploadFile_wrap input[type="file"] {
   opacity: 0;
@@ -53,8 +41,25 @@
   cursor: pointer;
   font-size: 16px;
   transition: 2s;
+  
 }
-.Users__avatar:hover .upload_avatar__label {
+
+.myAvatar {
+  margin-top: 2vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  align-self: center;
+  position: relative;
+}
+.myAvatar img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+ }
+.myAvatar:hover .upload_avatar__label {
   display: inline-block;
 }
 
@@ -69,6 +74,7 @@
   background-color: rgba(255, 255, 255, 0.904);
   border-radius: 15px;
   position: relative;
+  width: 90%;
 }
 .profile_description__editMode {
   display: flex;
@@ -79,6 +85,7 @@
   background-color: rgba(255, 255, 255, 0.904);
   border-radius: 15px;
   position: relative;
+  width: 90%;
 }
 .profile_description__editMode input {
   padding: 10px;
@@ -123,7 +130,7 @@
   flex-direction: column;
   padding: 10px;
   margin-bottom: 10px;
-  width: 50vh;
+  width: 90%;
   border: 3px rgba(22, 68, 3, 0.404) solid;
   background-color: rgba(255, 255, 255, 0.904);
   border-radius: 15px;

@@ -4,3 +4,9 @@
   margin: 2vh;
   grid-gap: 2vh;
 }
+@media (max-width: 1200px) {
+  .profileWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}

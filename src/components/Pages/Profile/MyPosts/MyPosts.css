@@ -1,6 +1,7 @@
 .myPost_wrap {
   display: grid;
   grid-template-rows: 84vh 12vh;
+  min-width: 350px;
 }
 
 .myPosts {
@@ -26,7 +27,7 @@
   flex-direction: column;
   padding: 10px 25px 10px 10px;
   margin-bottom: 10px;
-  width: 50vh;
+  width: 90%;
   border: 3px rgba(22, 68, 3, 0.404) solid;
   background-color: rgba(255, 255, 255, 0.904);
   border-radius: 15px;
@@ -74,12 +75,10 @@
   transform: scale(1.2);
 }
 .addPost {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-top: 3px darkgrey solid;
-  /* background-color: #9abba0; */
-}
-.addPost .widht textarea {
-  width: 60vh;
+ 
 }

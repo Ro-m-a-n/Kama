@@ -1,16 +1,19 @@
 import "../../../../Global/AddText.css";
-import React from "react";
 import { Field } from "redux-form";
-import { maxLengthTC, notEmpty } from "./../../../../../utilites/validators/Validators";
+import {
+  maxLengthTC,
+  notEmpty,
+} from "./../../../../../utilites/validators/Validators";
 import { Textarea } from "../../../../Global/FormsControl/FormsControl";
-
 
 let maxLength = maxLengthTC(150);
 
 export const AddMessageForm = (props) => {
-  
   return (
-    <form onSubmit={props.handleSubmit(props.onSubmit)} className={`addText_wrap ${props.full_widht}`} >
+    <form
+      onSubmit={props.handleSubmit(props.onSubmit)}
+      className={`addText_wrap`}
+    >
       <Field
         name="message"
         component={Textarea}

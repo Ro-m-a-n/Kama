@@ -1,5 +1,8 @@
 .addText_wrap {
   display: flex;
+  width: 100%;
+  margin: 2vh;
+  align-items: center;
 }
 
 .addText_wrap button:hover {
@@ -15,8 +18,12 @@
   color: #000000;
   cursor: pointer;
   font-size: 16px;
-  padding: 21px 10px;
   transition: all 0.5s ease-in-out;
   position: relative;
   bottom: 2px;
+  height: 8vh;
+}
+.addText_wrap textarea {
+  height: 8vh;
+  width: 100%;
 }

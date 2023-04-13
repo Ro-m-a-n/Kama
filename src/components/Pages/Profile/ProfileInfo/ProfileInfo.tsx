@@ -33,7 +33,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
   };
   return (
     <div className="profileInfoWrapper" sx={{ bg: "primary" }}>
-      <div className="Users__avatar">
+      <div className="myAvatar">
         <img src={props.photo} />
         <div className="uploadFile_wrap">
           <label htmlFor="file-input" className="upload_avatar__label">
