@@ -1,5 +1,8 @@
+import { Dispatch } from "react";
 import { authAPI, securityApi } from "../api/api";
 import { stopSubmit } from "redux-form";
+import { ThunkAction } from "redux-thunk";
+import { appStateType } from "./reduxStore";
 
 const SET_USER_DATA = "SET_USER_DATA";
 const SET_CAPTCHA_URL = "SET_CAPTCHA_URL";
@@ -13,7 +16,7 @@ let initialState = {
   captchaUrl: null as string | null, // if null then captcha is not required
 };
 
-let authReducer = (state: InitialStateType = initialState, action: any) => {
+let authReducer = (state: InitialStateType = initialState, action: actionstypes) => {
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -30,6 +33,7 @@ let authReducer = (state: InitialStateType = initialState, action: any) => {
       return state;
   }
 };
+type actionstypes = SetAuthUserDataType | SetCaptchaUrlType
 
 type SetAuthUserDataType = {
   type: typeof SET_USER_DATA;
@@ -56,7 +60,7 @@ export const setCaptchaUrl = (url: string): SetCaptchaUrlType => ({
   url,
 });
 
-export const isLoginedTC = () => (dispatch: any) => {
+export const isLoginedTC = () => (dispatch: Dispatch<actionstypes>) => {
   return authAPI.isLogined().then((data: any) => {
     if (data.resultCode === 0) {
       let { id, email, login } = data.data;
@@ -70,8 +74,8 @@ export const loginTC = (
   password: string,
   rememberMe: boolean,
   captcha: any
-) => {
-  return (dispatch: any) => {
+):ThunkAction<Promise<void>, appStateType, unknown, actionstypes> => {
+  return (dispatch) => {
     authAPI.login(email, password, rememberMe, captcha).then((data: any) => {
       if (data.resultCode === 0) {
         dispatch(isLoginedTC());

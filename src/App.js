@@ -5,9 +5,9 @@ import Navbar from "./components/Navbar/Navbar";
 
 import { Route, Routes, Navigate } from "react-router-dom";
 import News from "./components/Pages/News/News";
-import Music from "./components/Pages/Music/Music";
+
 import Settings from "./components/Pages/Settings/Settings";
-import Friends from "./components/Pages/Friends/Friends";
+
 import UsersContainer from "./components/Pages/UsersPage/Users/UsersContainer";
 import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
 import CurrentUserContainer from "./components/Pages/UsersPage/CurrentUser/CurrentUserContainer";
@@ -35,8 +35,11 @@ const App = (props) => {
   }, []);
 
   if (!props.initialized) {
-    return  <div className="preloader"><Preloader /></div>
-    ;
+    return (
+      <div className="preloader">
+        <Preloader />
+      </div>
+    );
   }
 
   if (!props.isAuth) {
@@ -52,11 +55,14 @@ const App = (props) => {
               <Route path="/" element={<Navigate to="/profile" />} />
               <Route path="/profile" element={<ProfileContainer />} />
               <Route path="/messages" element={<DialogsContainer />} />
-              <Route path="/messages/:dialogId/*" element={<DialogsContainer />} />
+              <Route
+                path="/messages/:dialogId/*"
+                element={<DialogsContainer />}
+              />
               <Route path="/news" element={<News />} />
-              <Route path="/music" element={<Music />} />
+
               <Route path="/settings" element={<Settings />} />
-              <Route path="/friends" element={<Friends />} />
+
               <Route path="/users/:userId" element={<CurrentUserContainer />} />
               <Route path="/users" element={<UsersContainer />} />
               <Route path="/login" element={<LoginPage />} />

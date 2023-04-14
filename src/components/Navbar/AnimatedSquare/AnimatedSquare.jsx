@@ -10,7 +10,7 @@ const AnimatedSquare = () => {
         whileTap={{ scale: 0.9, backgroundColor: "#709dc5" }}
         transition={{ duration: 0.5 }}
       >
-        <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/profile" className='NavbarLink'>Profile</NavLink>
       </motion.div>
 
       <motion.div
@@ -37,7 +37,7 @@ const AnimatedSquare = () => {
         whileTap={{ scale: 0.9, backgroundColor: "#90a3d1" }}
         transition={{ duration: 0.5 }}
       >
-        <NavLink to="/news">News</NavLink>
+        <NavLink to="/news" className='NavbarLink'>News</NavLink>
       </motion.div>
       <motion.div
         className="grid_area__g flex_center"
@@ -45,7 +45,7 @@ const AnimatedSquare = () => {
         whileTap={{ scale: 0.9, backgroundColor: "#98a5d3" }}
         transition={{ duration: 0.5 }}
       >
-        <NavLink to="/messages">Messages</NavLink>
+        <NavLink to="/messages" className='NavbarLink'>Messages</NavLink>
       </motion.div>
       <motion.div
         className="grid_area__k flex_center"
@@ -54,7 +54,7 @@ const AnimatedSquare = () => {
         transition={{ duration: 0.5 }}
       >
         {" "}
-        <NavLink to="/users">Users</NavLink>
+        <NavLink to="/users" className='NavbarLink'>Users</NavLink>
       </motion.div>
       <motion.div
         className="grid_area__l"
@@ -80,7 +80,7 @@ const AnimatedSquare = () => {
         whileTap={{ scale: 0.9, backgroundColor: "#e5c1d0" }}
         transition={{ duration: 0.5 }}
       >
-        <NavLink to="/settings">Settings</NavLink>
+        <NavLink to="/settings" className='NavbarLink'>Settings</NavLink>
       </motion.div>
       <motion.div
         className="grid_area__i flex_center"

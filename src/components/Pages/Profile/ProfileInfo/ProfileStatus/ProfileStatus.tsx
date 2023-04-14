@@ -23,7 +23,7 @@ const ProfileStatus: React.FC<propsType> = (props) => {
     setStatus(e.target.value);
   };
   return (
-    <div className="profile_status">
+    <div className="profile_status" onClick={activateEditMode}>
       {!editMode && (
         <div>
           <b>Status : </b>

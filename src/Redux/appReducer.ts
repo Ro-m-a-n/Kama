@@ -7,7 +7,7 @@ let initialState = {
   initialized: false as boolean,
 };
 
-let appReducer = (state: InitialStateType = initialState, action: any) => {
+let appReducer = (state: InitialStateType = initialState, action: InitializedSuccesType) => {
   switch (action.type) {
     case INITIALIZED_SUCCES:
       return {
