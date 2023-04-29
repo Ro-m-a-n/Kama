@@ -1,4 +1,7 @@
+import { Dispatch } from "react";
 import { usersAPI, currentUserApi } from "../api/api";
+import { ThunkAction } from "redux-thunk";
+import { appStateType } from "./reduxStore";
 
 const FOLLOW = "follow";
 const UNFOLLOW = "unFollow";
@@ -21,9 +24,7 @@ type photosType = {
   small: string | null;
   large: string | null;
 };
-type sendedRequestType = {
-  id: number;
-};
+
 let initialState = {
   users: [] as Array<usersType>,
   pageSize: 4 as number,
@@ -31,12 +32,12 @@ let initialState = {
   currentPage: 1 as number,
   isFetching: false as boolean,
   currentUserInfo: null as usersType | null,
-  sendedRequest: [] as Array<sendedRequestType>,
+  sendedRequest: [] as Array<number>,
 };
 
 let usersReducer = (
   state: initialStateType = initialState,
-  action: any
+  action: actionsTypes
 ): initialStateType => {
   switch (action.type) {
     case FOLLOW:
@@ -82,37 +83,88 @@ let usersReducer = (
       return state;
   }
 };
+type actionsTypes =
+  | followType
+  | unfollowType
+  | setUsersType
+  | setCurrentPageType
+  | setUsersQuantityType
+  | changeFetchingType
+  | setCurrentUserInfo
+  | setSendedRequestType;
+export type followType = {
+  type: typeof FOLLOW;
+  id: number;
+};
+export const follow = (id: number): followType => ({ type: FOLLOW, id });
+export type unfollowType = {
+  type: typeof UNFOLLOW;
+  id: number;
+};
+export const unFollow = (id: number): unfollowType => ({ type: UNFOLLOW, id });
 
-export const follow = (id: number) => ({ type: FOLLOW, id });
-export const unFollow = (id: number) => ({ type: UNFOLLOW, id });
-export const setUsers = (users: Array<usersType>) => ({
+export type setUsersType = {
+  type: typeof SET_USERS;
+  users: Array<usersType>;
+};
+export const setUsers = (users: Array<usersType>): setUsersType => ({
   type: SET_USERS,
   users,
 });
-export const setCurrentPage = (currentPage: number) => ({
+export type setCurrentPageType = {
+  type: typeof SET_CURRENT_PAGE;
+  currentPage: number;
+};
+export const setCurrentPage = (currentPage: number): setCurrentPageType => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setUsersQuantity = (totalCount: number) => ({
+export type setUsersQuantityType = {
+  type: typeof SET_USERS_QUANTITY;
+  totalCount: number;
+};
+export const setUsersQuantity = (totalCount: number): setUsersQuantityType => ({
   type: SET_USERS_QUANTITY,
   totalCount,
 });
-export const changeFetching = (changeFetching: boolean) => ({
+export type changeFetchingType = {
+  type: typeof TOGGLE_IS_FETCHING;
+  changeFetching: boolean;
+};
+export const changeFetching = (
+  changeFetching: boolean
+): changeFetchingType => ({
   type: TOGGLE_IS_FETCHING,
   changeFetching,
 });
-export const setCurrentUserInfo = (userInfo: usersType) => ({
+
+export type setCurrentUserInfo = {
+  type: typeof SET_CURRENT_USER_INFO;
+  userInfo: usersType;
+};
+export const setCurrentUserInfo = (
+  userInfo: usersType
+): setCurrentUserInfo => ({
   type: SET_CURRENT_USER_INFO,
   userInfo,
 });
-export const setSendedRequest = (request: boolean, id: number) => ({
+
+export type setSendedRequestType = {
+  type: typeof TOGGLE_SENDED_REQUEST;
+  request: boolean;
+  id: number;
+};
+export const setSendedRequest = (
+  request: boolean,
+  id: number
+): setSendedRequestType => ({
   type: TOGGLE_SENDED_REQUEST,
   request,
   id,
 });
-
+type thunkType = ThunkAction<void, appStateType, unknown, actionsTypes>;
 export const getUsersTC = (currentPage: number, pageSize: number) => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch<actionsTypes>) => {
     dispatch(changeFetching(true));
     dispatch(setCurrentPage(currentPage));
     usersAPI.getUsers(currentPage, pageSize).then((data: any) => {
@@ -123,8 +175,8 @@ export const getUsersTC = (currentPage: number, pageSize: number) => {
   };
 };
 
-export const unfollowTC = (id: number) => {
-  return (dispatch: any) => {
+export const unfollowTC = (id: number): thunkType => {
+  return (dispatch) => {
     dispatch(setSendedRequest(true, id));
     usersAPI.unfollow(id).then((data: any) => {
       if (data.resultCode === 0) {
@@ -134,8 +186,8 @@ export const unfollowTC = (id: number) => {
     });
   };
 };
-export const followTC = (id: number) => {
-  return (dispatch: any) => {
+export const followTC = (id: number): thunkType => {
+  return (dispatch) => {
     dispatch(setSendedRequest(true, id));
     usersAPI.follow(id).then((data: any) => {
       if (data.resultCode === 0) {
@@ -145,8 +197,8 @@ export const followTC = (id: number) => {
     });
   };
 };
-export const getCurrentUserTC = (router: any) => {
-  return (dispatch: any) => {
+export const getCurrentUserTC = (router: any): thunkType => {
+  return (dispatch) => {
     currentUserApi.getUser(router).then((data: any) => {
       dispatch(setCurrentUserInfo(data));
     });

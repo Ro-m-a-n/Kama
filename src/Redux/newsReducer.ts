@@ -9,7 +9,7 @@ const UNLIKE_THIS_NEWS = "UNLIKE_THIS_NEWS";
 
 type initialStateType = typeof initialState;
 type newsType = {
-  id: 1;
+  id: number;
   resource: string;
   resourceAvatar: object;
   image: object;
@@ -54,7 +54,7 @@ let initialState = {
 };
 let newsReducer = (
   state: initialStateType = initialState,
-  action: any
+  action: actionsTypes
 ): initialStateType => {
   switch (action.type) {
     case LIKE_THIS_NEWS: {
@@ -82,7 +82,7 @@ let newsReducer = (
       return state;
   }
 };
-
+type actionsTypes = likeThisNewsACType | unlikeThisNewsACType;
 type likeThisNewsACType = {
   type: typeof LIKE_THIS_NEWS;
   id: number;

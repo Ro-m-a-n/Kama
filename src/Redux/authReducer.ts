@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { authAPI, securityApi } from "../api/api";
-import { stopSubmit } from "redux-form";
+import { FormAction, stopSubmit } from "redux-form";
 import { ThunkAction } from "redux-thunk";
 import { appStateType } from "./reduxStore";
 
@@ -16,7 +16,10 @@ let initialState = {
   captchaUrl: null as string | null, // if null then captcha is not required
 };
 
-let authReducer = (state: InitialStateType = initialState, action: actionstypes) => {
+let authReducer = (
+  state: InitialStateType = initialState,
+  action: actionsTypes
+) => {
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -33,7 +36,7 @@ let authReducer = (state: InitialStateType = initialState, action: actionstypes)
       return state;
   }
 };
-type actionstypes = SetAuthUserDataType | SetCaptchaUrlType
+type actionsTypes = SetAuthUserDataType | SetCaptchaUrlType;
 
 type SetAuthUserDataType = {
   type: typeof SET_USER_DATA;
@@ -50,7 +53,7 @@ export const setAuthUserData = (
   data: { id, email, login, isAuth },
 });
 
-type SetCaptchaUrlType = {
+export type SetCaptchaUrlType = {
   type: typeof SET_CAPTCHA_URL;
   url: string;
 };
@@ -59,8 +62,13 @@ export const setCaptchaUrl = (url: string): SetCaptchaUrlType => ({
   type: SET_CAPTCHA_URL,
   url,
 });
-
-export const isLoginedTC = () => (dispatch: Dispatch<actionstypes>) => {
+type thunkType = ThunkAction<
+  void,
+  appStateType,
+  unknown,
+  actionsTypes | FormAction
+>;
+export const isLoginedTC = () => (dispatch: Dispatch<actionsTypes>) => {
   return authAPI.isLogined().then((data: any) => {
     if (data.resultCode === 0) {
       let { id, email, login } = data.data;
@@ -74,7 +82,7 @@ export const loginTC = (
   password: string,
   rememberMe: boolean,
   captcha: any
-):ThunkAction<Promise<void>, appStateType, unknown, actionstypes> => {
+): thunkType => {
   return (dispatch) => {
     authAPI.login(email, password, rememberMe, captcha).then((data: any) => {
       if (data.resultCode === 0) {
@@ -91,8 +99,8 @@ export const loginTC = (
   };
 };
 
-export const logoutTC = () => {
-  return (dispatch: any) => {
+export const logoutTC = (): thunkType => {
+  return (dispatch) => {
     authAPI.logout().then((data: any) => {
       if (data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
@@ -100,8 +108,8 @@ export const logoutTC = () => {
     });
   };
 };
-export const getCaptchaTC = () => {
-  return (dispatch: any) => {
+export const getCaptchaTC = (): thunkType => {
+  return (dispatch) => {
     securityApi.getCaptchaUrl().then((response: any) => {
       dispatch(setCaptchaUrl(response.url));
     });

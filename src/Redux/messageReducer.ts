@@ -90,7 +90,7 @@ let initialState = {
 };
 let messageReducer = (
   state: initialStateType = initialState,
-  action: any
+  action: actionsTypes
 ): initialStateType => {
   switch (action.type) {
     case ADD_MESSAGE: {
@@ -128,6 +128,7 @@ let messageReducer = (
       return state;
   }
 };
+type actionsTypes = addMessageType | deleteMessageACType
 export type addMessageType = {
   type: typeof ADD_MESSAGE;
   message: string;
